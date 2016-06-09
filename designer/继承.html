@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承</title>
+</head>
+<body>
+	
+	
+	<script>
+
+		var Book = function ( name ) {
+
+			this.name = name;
+
+		}
+
+		Book.prototype = {
+
+			constructor: Book,
+
+			page: 500,
+
+			getName: function(){
+
+				return this.name;
+
+			}
+
+		}
+
+
+		var Sj = function ( name ) {
+
+			var a = 10;	
+
+			Book.call(this,name);
+
+		}
+
+		Sj.prototype = new Book();
+
+		var s = new Sj('javascript book');
+
+		console.log( s );
+
+		console.log( s.constructor );
+
+	</script>
+
+
+
+</body>
+</html>

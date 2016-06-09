@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<style type="text/css">
+html, body {
+	height: 100%;
+}
+div {
+	position: absolute;
+}
+.rect {
+	width: 100px;
+	height: 100px;
+	background: red;
+}
+.cricle {
+	width: 100px;
+	height: 100px;
+	background: green;
+	border-radius: 50%;
+}
+.arrow-top {
+	width: 0;
+	border-top: 100px solid blue;
+	border-bottom: 100px solid transparent;
+	border-left: 100px solid transparent;
+	border-right: 100px solid transparent;
+}
+</style>
+<script type="text/javascript">
+// 获取页面的宽高
+var w = document.body.offsetWidth;
+var h = document.body.offsetHeight;
+// 创建正方形
+var Rect = function (x, y) {
+	// 构建元素
+	this.dom = document.createElement('div');
+	// 设置坐标
+	this.dom.style.left = x + 'px';
+	this.dom.style.top = y + 'px';
+	// 初始化形状
+	this.dom.className = 'rect';
+}
+Rect.prototype = {
+	init: function () {
+		// 在body种插入形状
+		document.body.appendChild(this.dom)
+	}
+}
+
+// 创建圆
+var Cricle = function (x, y) {
+	this.dom = document.createElement('div');
+	this.dom.style.left = x + 'px';
+	this.dom.style.top = y + 'px';
+	this.dom.className = 'cricle';
+}
+Cricle.prototype = {
+	init: function () {
+		document.body.appendChild(this.dom)
+	}
+}
+
+// 创建三角形
+var ArrowTop = function (x, y) {
+	this.dom = document.createElement('div');
+	this.dom.style.left = x + 'px';
+	this.dom.style.top = y + 'px';
+	this.dom.className = 'arrow-top';
+}
+ArrowTop.prototype = {
+	init: function () {
+		console.log(1);
+		document.body.appendChild(this.dom);
+	}
+}
+
+// 测试用例
+// new ArrowTop(x, y).init();
+
+function Fectory ( type ){
+
+	type = type || 'cricle';
+
+	var x = Math.random() * w;
+	var y = Math.random() * h;
+
+	var fectory = null;
+
+	switch ( type ) {
+
+		case 'rect':
+
+			fectory = new Rect(x,y);
+
+		break;	
+
+		case 'cricle': 
+			
+			fectory = new Cricle(x,y);			
+
+		break;
+
+		case 'arrowTop': 	
+			
+			fectory = new ArrowTop(x,y);			
+
+		break;	
+
+	}
+
+	if( fectory )
+		fectory.init();
+
+}
+
+Fectory();
+Fectory('arrowTop');
+
+
+</script>
+</body>
+</html>

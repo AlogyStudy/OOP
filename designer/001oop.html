@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<canvas id="cvs" width="700" height="500" style="background: #000000;"></canvas>
+
+	<script>
+
+	var cvs = document.getElementById('cvs');
+
+	var cs = cvs.getContext('2d');
+	
+	var w = cvs.width;
+	var h = cvs.height;
+	
+	//定时器
+	var timer = null;
+	
+	/**
+	 * 小球类
+	 * @param {Object} x
+	 * @param {Object} y
+	 * @param {Object} r
+	 */
+	var Ball = function( x,y,r ){
+		
+		this.x = x;
+		this.y = y;
+		this.r = r;
+		
+	}
+	
+	Ball.prototype = {
+		
+		constructor: Ball,
+		
+		draw: function(){
+			
+			cs.fillStyle = 'deeppink';
+			
+			cs.beginPath();
+			
+			cs.arc(this.x,this.y,this.r,0,2 * Math.PI,false);
+			cs.fill();
+			
+			cs.closePath();
+			
+		}
+	}
+	
+		
+	/**
+	 * BallFectory 工厂
+	 */
+	function BallFectory(){
+		
+		var x = Math.random() * w;
+		var y = Math.random() * h;
+		var r = Math.random() * 10 + 10;
+		
+		var ball = new Ball(x,y,r);
+		
+		ball.vx = Math.random() * 5;
+		ball.vy = Math.random() * 5;
+		
+		ball.move = function(){
+			
+			var _this = this;
+			
+			timer = setInterval(function(){
+				
+				
+				
+			},33);
+			
+			
+		}
+		
+	}
+	
+	var ball = BallFectory();
+	
+
+	</script>
+
+</body>
+</html>

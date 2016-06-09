@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<style type="text/css">
+html, body {
+	height: 100%;
+}
+div {
+	position: absolute;
+}
+.rect {
+	width: 100px;
+	height: 100px;
+	background: red;
+}
+.cricle {
+	width: 100px;
+	height: 100px;
+	background: green;
+	border-radius: 50%;
+}
+.arrow-top {
+	width: 0;
+	border-top: 100px solid blue;
+	border-bottom: 100px solid transparent;
+	border-left: 100px solid transparent;
+	border-right: 100px solid transparent;
+}
+</style>
+<script type="text/javascript">
+// 获取页面的宽高
+var w = document.body.offsetWidth;
+var h = document.body.offsetHeight;
+
+
+/**
+ * 基类
+ * @param {[string]} x [description]
+ * @param {[string]} y [description]
+ */
+var Base = function ( x,y ) {
+
+	this.dom = document.createElement('div');
+
+	this.x = x;
+	this.y = y;
+
+	this.dom.style.top = this.x + 'px';
+	this.dom.style.left = this.y + 'px';
+
+}
+
+Base.prototype = {
+
+	init: function () {
+
+		document.body.appendChild(this.dom);
+
+	}
+
+}
+
+var Rect = function( x,y ){
+
+	Base.apply(this,arguments);
+	this.dom.className = 'rect';
+
+}
+
+
+Rect.prototype = new Base();
+
+var rect = new Rect(100,100);
+
+console.log( rect );
+
+rect.init();
+
+
+</script>
+</body>
+</html>

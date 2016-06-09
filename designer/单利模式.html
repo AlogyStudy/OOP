@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			var LazySlingle = (function(){
+				
+				var _uniqIntance;
+				
+				var Slingle = function(){
+					
+					
+				}
+				
+				Slingle.prototype = {
+					
+					'version': 2,
+					
+					'sayHello': fucntion(){
+						
+						console.log(this.version);
+						
+					}
+					
+				}
+				
+				if ( !_uniqIntance ) {
+					
+					_uniqIntance = new Slingle();
+					
+				} 
+						
+				return _uniqIntance;		
+				
+			})();
+			
+			LazySlingle();
+			
+		</script> 
+		
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>静态变量</title>
+</head>
+<body>
+	
+	<script>
+
+
+	var J = (function(){
+
+		var R = {
+			'MaxNum': 1000
+		}
+
+		return function( num ){
+
+			return R['MaxNum'];
+
+		}
+
+	})();
+
+console.log( J('MaxNum') );
+
+	</script>
+
+</body>
+</html>
