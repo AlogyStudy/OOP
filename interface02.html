@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			//2 属性检测的方式
+			// 判断接口是否存在
+			
+			/**
+			 * interface Composite{
+			 * 
+			 * 	function add (obj) ;
+			 *  function remove (obj) ;
+			 *  function update ( obj ) ;
+			 * 
+			 * }
+			 * 
+			 * interface FormItem {
+			 * 	
+			 * 	function select (obj) ;
+			 * 
+			 * }
+			 * 
+			 */
+			
+			//CompositeImp1 implements Composite , FormItem
+			var CompositeImpl = function () {
+				//显式在类的内部， 接受所实现的接口
+				//一般来说， 在类的内部，定义一个数组(数组变量名字固定)
+				this.implementsInterfaces = ['Composite', 'FormItem'];  //利用 implementsInterfaces 后续的判断使用
+				
+			}
+			
+			CompositeImpl.prototype.remove = function ( obj ) {
+				// do something ...
+			}
+			CompositeImpl.prototype.update = function ( obj ) {
+			}
+			CompositeImpl.prototype.add = function (obj) {
+				alert('add');
+			}
+			CompositeImpl.prototype.select = function (obj) {
+			}
+			
+			//检测 CompositeImpl 类 的对象
+			function CheckCompositeImpl ( instance ) {//实例对象作为参数，检测是否存在
+				
+				//判断当前对象是否实现了所有的接口。
+				if ( !IsImplements(instance,'Composite','FormItem') ) {
+					throw new Error('Object does not implement a requried interface');
+				}
+				
+			}
+			
+			//公用的具体的检测方法(核心方法)  //return boolean
+			function IsImplements ( obj ) { //判断实例对象，有没有实现相关的接口.
+				
+				//arguments 对象 获得函数的实际参数
+				for ( var i=1; i<arguments.length; i++ ) {
+					
+					//接收所实现接口的名字
+					var interfaceName = arguments[i];
+					
+					//判断此方法， 是 成功，还是失败。 
+					var interfaceFound = false;
+					
+					for ( var j=0; j<obj.implementsInterfaces.length; j++ ) {
+						
+						if ( obj.implementsInterfaces[j] == interfaceName ) {
+							
+							interfaceFound = true;
+							
+							break;
+							
+						}
+						
+					}
+					
+					if ( !interfaceFound ) {
+						
+						return false;
+						
+					}
+					
+				}
+				
+				return true;
+				
+			}
+			
+			var c1 = new CompositeImpl();
+			
+			CheckCompositeImpl( c1 );
+			
+			c1.add();
+			
+			
+		</script>
+		
+	</body>
+</html>

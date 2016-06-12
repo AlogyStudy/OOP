@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+	<script type="text/javascript">
+		
+		
+		//继承  //将多个数据对象转化为一个数据对象
+		function extend ( target,obj ) {
+			
+			for ( var i in obj ) {
+				
+				target[i] = obj[i];
+				
+			}
+			
+			return target;
+			
+		}
+		
+		var Button = function ( param ) {
+			
+			var btn = document.createElement('button');
+			
+			//默认参数
+			var def = {
+				'background': 'red',
+				'color': 'white',
+				'fontSize': '12px',
+				'text': '按钮'
+			}
+			
+			def = extend(def,param);
+			
+			//遍历参数
+			for ( var i in def ) {
+				
+//				text属性不能直接赋值，要用innerHTML赋值
+				if ( i === 'text' ) {
+					
+					btn.innerHTML = def[i];
+					
+				} else {
+					
+					btn.style[i] = def[i];
+					
+				}
+				
+			}
+			
+			document.body.appendChild(btn);
+			
+		}
+		
+		Button();
+		
+	</script>	
+		
+		
+		
+	</body>
+</html>

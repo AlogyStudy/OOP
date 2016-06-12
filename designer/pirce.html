@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<p>价格：<span id="num1"></span></p>
+		<p>淘宝价：<span id="num2"></span></p>
+		
+		
+		<script type="text/javascript">
+			
+			var price = 500;
+			
+			var PriceStrategy = (function () {
+				
+				var strategy = {
+					
+					'return100': function ( price ) {
+						
+						var num = parseInt(price / 100) * 10;
+						
+						return price - num;
+						
+					},
+					
+					'percent50': function ( price ) {
+						
+					}
+					
+				}
+				
+			})();
+			
+		</script>
+		
+	</body>
+</html>
