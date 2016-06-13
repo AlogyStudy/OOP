@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+		/**
+			 * 订阅模式
+			 */
+			
+			var Observer = (function () {
+				
+				var __msg = {};
+				
+				return {
+					
+					/**
+					 * 添加订阅者 
+					 * @param {String} type  订阅者名字
+					 * @param {Function} fn  执行函数  
+					 */
+					regist: function ( type,fn ) {
+						
+						if ( __msg[type] ) {
+							
+							__msg[type].push(fn);
+							
+						}	else {
+							
+							__msg[type] = [fn];
+							
+						}
+						
+						return this;
+						
+					},
+					
+					/**
+					 * 执行回调函数
+					 * @param {String} type
+					 */
+					fire: function ( type,data ) {
+						
+						console.log( __msg );
+						
+						if ( __msg[type] ) {
+							
+							var e = data
+							
+							for ( var i=0; i<__msg[type].length; ++i ) {
+								
+								__msg[type][i](e);
+								
+							}
+							
+						}
+						
+						return this;
+						
+					},
+					
+					/**
+					 * 移除回调函数
+					 * @param {String} type
+					 * @param {String} fnName
+					 */
+					remove: function ( type,fnName ) {
+						
+						if ( __msg[type] ) {
+							
+							for ( var i = __msg[type].length-1; i>=0; --i ) {
+								
+								if ( __msg[type][i] === fnName ) {
+									
+									__msg[type].splice(i,1);
+									
+								}
+								
+							}
+							
+						}
+						
+						return this;
+					}
+					
+				}
+				
+			})()		
+		</script>
+		
+		<script type="text/javascript">
+			
+			var Student = function ( name,answer ) {
+				
+				this.name = name;
+				this.answer = answer;
+				
+				
+				var _this = this;
+				
+				this.replay = function () {
+					
+					console.log( _this.name + ' ' + _this.answer );
+					
+					Observer.fire('replay');
+					
+				}
+				
+			}
+			
+			Student.prototype.listen = function ( questions ) {
+				
+				Observer.regist(questions,this.replay);
+				
+			};
+			
+			Student.prototype.slepp = function ( questions ) {
+				
+				Observer.remove(questions,this.replay);
+				
+			}
+			
+			var stu1 = new Student('xiaoming','不知道呀');
+			var stu2 = new Student('zf','就是不告诉你咯');
+			
+			stu1.listen('甚么是设计模式');
+			stu2.listen('甚么是设计模式');
+			
+			var Teacher = function ( name ) {
+				
+				this.name = name;
+				this.age = '';
+				
+			}
+			
+			Teacher.prototype.ask = function ( question ) {
+				
+				Observer.fire(question);
+				
+			}
+			
+			Teacher.prototype.listen = function () {
+				
+				Observer.regist('replay',function () {
+					
+					console.log(123123);
+					
+				});
+				
+			}
+			
+			var teacher = new Teacher('Mr ....');
+			
+			teacher.listen();
+			teacher.ask('甚么是设计模式');
+		</script>
+		
+	</body>
+</html>

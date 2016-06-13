@@ -28,6 +28,31 @@
 				padding: 5px;
 				margin: 10px 0;
 			}
+			
+			#msg_list {
+				margin: 0 0 30px 0;
+			}
+			li {
+				list-style: none;
+				line-height: 30px;
+				height: 30px;
+				padding: 0 5px;
+			}
+			li span {
+				float: right;
+				width: 20px;
+				height: 20px;
+				/*display: none;*/
+				background: tan;
+			}
+			li:hover span {
+				display: block;
+			} 
+			li:nth-child(even) {
+				background: #f7f7f7;
+			}
+
+			
 		</style>
 	</head>
 	<body>
@@ -50,21 +75,36 @@
 			
 			<h2>最近发布的消息</h2>
 			
-			<ul id="msg_con"></ul>
+			<ul id="msg_list"></ul>
 			
 		</div>
 		
 		<div class="text main">
 			
-			<textarea name="" rows="20" cols="70"></textarea>
+			<textarea id="msg_text" name="" rows="20" cols="70"></textarea>
 			<br />
-			<input type="button" name="" id="" value="提交" />
+			<input type="button" name="" id="msg_submit" value="提交" />
 		</div>
 		
 		<script src="obersver.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			function $ ( id ) {
+				return document.getElementById(id);
+			}
+		</script>
+		
 		<script src="a.js" type="text/javascript" charset="utf-8"></script>
 		<script src="b.js" type="text/javascript" charset="utf-8"></script>
 		<script src="c.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+/*			Observer.fire('addMsg',{
+				msg: 'aaaa' 
+			});
+*/			
+		</script>
 		
 	</body>
 </html>

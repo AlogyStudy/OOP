@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			var arr = [2,3,4,6,2];
+			
+			/**
+			 * 遍历
+			 * @param {Array} arr 遍历的函数
+			 * @param {Function} cb 
+			 */
+			function each ( arr,cb ) {
+				
+				for ( var i=0,len=arr.length; i<len; ++i ) {
+					
+					cb && cb.call(arr,arr[i],i,arr);
+					
+				}
+				
+			}
+			
+			each(arr,function ( val,index,arr ) {
+				
+				console.log( val,index,arr,this);
+				
+			});	
+			
+			console.log('-------------');
+			
+			arr.forEach(function ( val,index ) {
+				
+				console.log( val,index,this );
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>

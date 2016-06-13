@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			var obj = {
+				a: 'zf',
+				b: 'ting',
+				c: 'zero'
+			}
+			
+			function each ( obj,cb ) {
+				
+				for ( var i in obj ) {
+					
+					cb && cb.call(obj,obj[i],i,obj);
+					
+				}
+				
+			}
+			
+			each(obj,function ( val,key,obj ) {
+				
+				console.log( val,key,obj );
+				
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>

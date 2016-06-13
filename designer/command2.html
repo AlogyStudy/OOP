@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<canvas id="canvas" width="800" height="500" style="border: 1px solid magenta;"></canvas>
+		
+		<script type="text/javascript">
+			
+			var ViewCommand = (function () {
+				
+				var canvas = document.getElementById("canvas");
+				var cvs = canvas.getContext('2d');
+				
+				var w = canvas.width;
+				var h = canvas.height;
+				
+				var cmd = {
+					
+					beginPath: function () {
+						
+						cvs.beginPath();
+						
+					},
+					
+					colsePath: function () {
+						
+						cvs.colsePath;
+						
+					},
+					
+					arc: function ( x,y,r ) {
+						
+						cvs.arc(x,y,r,0,2*Math.PI,false);
+						
+					},
+					
+					fill: function () {
+						
+						cvs.fill();
+						
+					},
+					
+					fillStyle: function ( c ) {
+						
+						cvs.fillStyle = c;
+						
+					},
+					
+					stock: function () {
+						
+						cvs.stroke();
+						
+					}
+					
+				}
+				
+				return {
+					
+					excute: function ( arr ) {
+						
+						cmd[arr[0]].apply(cmd,arr.slice(1));
+						
+						return this;
+						
+					},
+					
+					excuteArr: function ( arrTo ) {
+						
+						for ( var i=0; i<arrTo.length; i++ ) {
+							
+							this.excute( arrTo[i] );
+							
+						}
+						
+						
+					}
+					
+				}
+				
+			})()
+			
+			ViewCommand
+				.excute(['beginPath'])
+				.excute(['arc',100,100,20])
+				.excute(['colsePath'])
+				.excute(['fillStyle','pink'])
+				.excute(['fill'])
+				.excuteArr([
+					['beginPath'],
+					['arc',300,300,20],
+					['colsePath'],
+					['fillStyle','yellow'],
+					['stock']
+				]);
+				
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			
+			
+			var Base = function () {
+				
+				this.name = name;
+				
+			}
+			
+			Base.prototype.says = '1000';
+			
+			
+			
+			var Ball = function () {
+
+				Base.call();
+				
+				this.age = 120;
+				
+			}
+			Ball.prototype = new Base();
+			
+			Ball.prototype.has = 'tan';
+			
+			
+			var b = new Ball('xiaoming');
+			
+			console.log( b );
+			
+			console.log( b.hasOwnProperty(b.age) , b.age);
+			
+		</script>
+		
+	</body>
+</html>

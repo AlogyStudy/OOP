@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			.worgn {
+				color: crimson;
+			}
+			.container {
+				margin: 0 auto;
+				width: 500px;
+			}
+			fieldset {
+				margin: 20px auto;
+			}
+			#tijiao {
+				padding: 5px 8px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+	<div class="container">
+		<fieldset id="">
+			<legend>账号</legend>
+			
+			<div class="username" id="username">
+				
+			</div>
+			
+		</fieldset>
+		
+		<button id="tijiao">提交</button>
+	
+	</div>		
+	
+		<script src="obersver/obersver.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			function $ ( id ) {
+				return document.getElementById(id);
+			}
+			
+			var InputStrategy = function () {
+				
+				var strategy = {
+					//判断是否为空
+					notNull: function ( val ) {
+						
+						return /^\s*$/g.test(val) ? '输入的不能为空' : '';
+						
+					},
+					
+					//判断 4-6位数字或字母
+					isNumAndLetter: function ( val ) {
+						
+						return /^[\w]{4,6}$/g.test(val) ? '' : '输入正确的数字或字母';
+						
+					},
+					
+					//判断 6 到 12位 数字
+					isNum: function ( val ) {
+						
+						return /^[\d]{6,12}$/g.test(val) ? '' : '输入6到12位，正确的密码';
+						
+					}
+					
+				}
+				
+			}
+			
+			var dict = ['notNull', 'isNumAndLetter', 'isNum']; 
+			
+			var dom = $('username');
+			
+			Observer.add('addElem',function () {
+				
+				//用户名
+				var oP = document.createElement('p');
+				var oInp = document.createElement('input');
+				
+				oInp.type = 'text';
+				
+				var otext1 = document.createTextNode('用户名：');
+				oP.appendChild(otext1);
+				
+				oP.appendChild(oInp);
+				
+				dom.appendChild(oP);
+				
+				//密码
+				var oP2 = document.createElement('p');
+				var oInp2 = document.createElement('input');
+				
+				oInp.type2 = 'text';
+				
+				var otext2 = document.createTextNode('密      码：');
+				oP2.appendChild(otext2);
+				
+				oP2.appendChild(oInp2);
+				
+				dom.appendChild(oP2);
+				
+				
+			});
+			
+			Observer.fire('addElem');
+			
+		</script>
+		
+	</body>
+</html>

@@ -16,6 +16,11 @@
 			
 			var PriceStrategy = (function () {
 				
+				var rate = {
+					RMBTODOLLAR: 0.1525,
+					DOLLARTORMB: 6.5590
+				}
+				
 				var strategy = {
 					
 					'return100': function ( price ) {
@@ -27,12 +32,31 @@
 					},
 					
 					'percent50': function ( price ) {
-						
+						return price * .5;
+					},
+					
+					'RMBToDollar': function ( price ) {
+						return price * rate.RMBTODOLLAR;
 					}
 					
 				}
 				
+				return function ( price,type ) {
+					
+					if ( strategy[type] ) {
+						
+						return strategy[type](price);
+						
+					}
+					
+					return price;
+				}
+				
 			})();
+			
+			document.getElementById('num1').innerHTML = '￥：' +　price + '  $：' + PriceStrategy(price,'RMBToDollar');
+			document.getElementById('num2').innerHTML = '￥：' + PriceStrategy(price,'percent50');
+			
 			
 		</script>
 		

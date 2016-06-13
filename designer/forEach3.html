@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			var arr = [1,2,4,5];
+			var obj = {
+				a: 111,
+				b: 222,
+				c: 333
+			}
+			
+			
+			function each ( type,cb ) {
+				
+				if ( type instanceof Array ) {
+					
+					for ( var i=0,len=type.length; i<len; ++i ) {
+						
+						cb && cb.call(type,type[i],i,type);
+						
+					}
+					
+				} else {
+					
+					for ( var i in type ) {
+						
+						cb && 
+						
+					}
+					
+				}
+				
+			}
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

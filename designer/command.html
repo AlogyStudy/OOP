@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			var data = {
+				'src': 'http://www.baidu.com',
+				'logo': 'http://www.baidu.com/logo',
+				'text': 'logo图'
+			}
+			//O__O"
+			var tpl = '<div><a href="O_src_O\""><h1><img src="O_logo_O\""/>O_text_O\"</h1></a></div>';
+			
+			//{##}
+			/*var reslut = tpl.replace(/\{\#([\w]+)\#}/g,function ( mathc,$1 ) {
+				
+				return data[$1];
+				
+			});*/
+			
+			
+			//O__O"
+			var reslut = tpl.replace(/\O\_([\w]+)\_\O\"/g,function ( match,$1 ) {
+				
+				return  data[$1];
+				
+			});
+			
+			console.log( reslut );
+			
+		</script>
+		
+	</body>
+</html>

@@ -35,6 +35,8 @@ var Observer = (function () {
 	 */
 	fire: function ( type,data ) {
 		
+		console.log( __msg );
+		
 		if ( __msg[type] ) {
 			
 			var e = data
@@ -75,10 +77,6 @@ var Observer = (function () {
 			return this;
 		}
 		
-	}
-	
-	function $ ( id ) {
-		return document.getElementById(id);
 	}
 	
 })()
