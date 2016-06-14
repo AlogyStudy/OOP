@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li {
+				width: 100px;
+				height: 100px;
+				background: tan;
+				float: left;
+				margin-right: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div>
+			<ul>
+				<li>1<a href="">1</a></li>
+				<li>2<a href="">2</a></li>
+				<li>3<a href="">3</a></li>
+				<li>4<a href="">4</a></li>
+				<li>5<a href="">5</a></li>
+				<li>6<a href="">6</a></li>
+				<li>7<a href="">7</a></li>
+				<li>8<a href="">8</a></li>
+				<li>9<a href="">9</a></li>
+				<li>10<a href="">10</a></li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			
+			var oDiv = document.getElementsByTagName('div')[0];
+			var oUl = document.getElementsByTagName('ul')[0];
+			var li = document.getElementsByTagName('li');
+			
+			/*for ( var i=0; i<li.length; i++ ) {
+				
+				li[i].onclick = function () {
+					
+					this.style.background = 'deeppink';
+					
+				}
+				
+			}*/
+			
+			oDiv.onclick = function ( e ) {
+				
+				console.log( e.target );
+				
+				if ( e.target.nodeName.toLocaleLowerCase() == 'li' ) {
+					
+					e.target.style.background = 'red';					
+					
+				}
+				
+			}
+			
+		</script>
+		
+	</body>
+</html>

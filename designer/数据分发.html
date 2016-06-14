@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<style type="text/css">
+	body {
+		margin: 0;
+		color: #fff;
+	}
+	.banner {
+		height: 100px;
+		background: red;
+		margin-bottom: 20px;
+	}
+	.aside {
+		float: right;
+		width: 300px;
+		height: 500px;
+		background: blue;
+	}
+	.article {
+		margin-right: 320px;
+		height: 500px;
+		background: green;
+	}
+	</style>
+	
+	<div class="banner">1</div>
+	<div class="aside">2</div>
+	<div class="article">3</div>
+
+	<script src="lib/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+
+	<script type="text/javascript">
+		
+		
+		//对每个模块进行封装
+		var DealStrategy = {
+			
+			'banner': function ( data ) {
+				
+				$('.banner').html(data);
+				
+			},
+			
+			'article': function ( data ) {
+				
+				$('.article').html(data);
+				
+			},
+			
+			'aside': function ( data ) {
+				
+				$('.aside').html(data);
+				
+			}
+			
+		}
+		
+		function Deal ( data ) {
+			
+			for ( var i in data ) {
+				
+				DealStrategy[i](data[i]);
+				
+			}
+			
+		}
+		
+		//发出 get 请求
+		$.get('data/all.json',function ( res ) {
+			
+			if ( res.errno === 0 ) {
+				
+				Deal( res.data );
+				
+			}
+			
+		});
+		
+		
+	</script>
+		
+	</body>
+</html>

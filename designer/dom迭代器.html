@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM迭代器</title>
+	</head>
+	<body>
+		
+		<ul id="list">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+		</ul>
+		
+		<script type="text/javascript">
+			
+			var Iter = function ( id,tagName ) {
+				
+				this._id = document.getElementById(id);
+				
+				this.items = this._id.getElementsByTagName(tagName);
+				
+				this.length = this.items.length;
+				
+				this.index = 0;
+				
+			}
+			
+			Iter.prototype = {
+				
+				'getCurrent': function () {
+					
+					return this.items[this.index];
+					
+				},
+				
+				'first': function () {
+					
+					this.index = 0;
+					
+					return this.getCurrent();
+					
+				},
+				
+				'last': function () {
+					
+					this.index = this.length - 1;
+					
+					return this.getCurrent();
+					
+				},
+				
+				'prve': function () {
+					
+					if ( this.index > 0 ) {
+						
+						this.index --;
+						
+						return this.getCurrent();
+						
+					} else {
+						
+						return this.first();
+						
+					}
+					
+					
+				},
+				
+				'next': function () {
+					
+					if ( this.index < this.length - 1 ) {
+						
+						this.index = this.length + 1;
+						
+						return this.getCurrent();
+						 
+					} else {
+						
+						return this.last();
+						
+					}
+					
+				},
+				
+				'get': function ( idx ) {
+					
+					var num = ( (idx % this.length) + this.length ) % this.length;
+					
+					return this.items[num];
+					
+				},
+				
+				'set': function ( idx ) {
+					
+					var num = ( (idx % this.length) + this.length ) % this.length;
+					
+					this.index = num;
+					
+					return this.items();
+					
+				},
+				
+				/**
+				 * 处理某个元素
+				 * @param {Number} idx 处理的第 i 个元素
+				 * @param {Function} cb 处理该函数的回调函数
+				 */
+				'dealItem': function ( idx,cb ) {
+					
+					var dom = this.get(idx);
+					
+					cb.call(dom,idx,dom);
+					
+					return this;
+					
+				},
+				
+				/**
+				 * 处理所有元素
+				 * @param {Function} cb 处理所有元素的回调函数
+				 */
+				'each': function ( cb ) {
+					
+					for ( var i=0; i<this.length; i++ ) {
+						
+						cb.call(this.items[i],i,this.items[i]);
+						
+					}
+					
+					return this;
+					
+				},
+				
+				/**
+				 * 过滤某些元素并执行
+				 */
+				'fillter': function ( arr,arrFn,allFn ) {
+					
+				}
+				
+				
+			}
+			
+			var list = new Iter('list','li');
+			
+			list.dealItem(2,function ( i,val ) {
+				
+				val.style.background = 'pink';
+				
+			}).each(function ( i,val ) {
+				
+				val.style.color = 'tan';
+				
+			});
+			
+//			list.next().style.background = 'pink';
+			
+		</script>
+		
+	</body>
+</html>
