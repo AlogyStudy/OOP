@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			
+			/**
+			 * 原始数据
+			 * @param {Array} arr 数据
+			 */
+			function DealData ( arr ) {
+				
+				var div = document.createElement('div');
+				var img = new Image();
+				var a = document.createElement('a');
+				var p = document.createElement('p');
+				
+				img.src = arr[1];
+				a.href = arr[0];
+				
+				p.innerHTML = arr[2];
+				a.appendChild(p);
+				a.appendChild(img);
+				div.appendChild(a);
+				
+				document.body.appendChild(div);
+				
+			}
+			
+			
+			//适配器
+			function DataAdaptor ( data ) {
+				
+				var arr = [];
+				
+				//适配映射表
+				var map = {
+					'src': 1,
+					'href': 0,
+					'title': 2
+				}
+				
+				for ( var i in map ) {
+					
+					//把第三方数据源中的数据，放到自己数据中的数组中的相应位置
+					//map[i] -> 自己数据源中的位置
+					//i -> 第三方数据源中的属性
+					
+					arr[map[i]] = data[i];
+					
+				}
+				
+				//匹配出来后的数据
+//				arr[0] = data.href
+//				arr[1] = data.src
+//				arr[2] = data.title
+				
+				return arr;
+				
+			}
+			
+			
+			//第三方提供数据
+//   		obj.href  : 链接地址	
+//				obj.src   : 图片地址
+//				obj.title : 图片标题
+			
+			$.get('xxx.json',function ( oD ) {
+				
+				if ( oD && oD.errno === 0 ) {
+					
+					var newRes = new DataAdaptor( oD.data ); 
+					
+					DealData(newRes);
+					
+				}
+				
+			})
+			
+		</script>
+		
+	</body>
+</html>

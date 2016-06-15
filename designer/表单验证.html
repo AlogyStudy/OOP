@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>策略模式-表单验证</title>
+	</head>
+	<body>
+	<style type="text/css">
+		span { 
+			color: red;
+		}
+		
+		input {
+			margin: 0 20px;
+		}
+		
+		div {
+			height: 30px;
+			line-height: 30px;
+		}
+	</style>
+	
+	<div>
+		<label for="">昵称</label>
+		<input type="text" id="inp1">
+		<span id="err1"></span>
+	</div>
+	<div>
+		<label for="">数字</label>
+		<input type="text" id="inp2">
+		<span id="err2"></span>
+	</div>
+	<div>
+		<label for="">电话</label>
+		<input type="text" id="inp3">
+		<span id="err3"></span>
+	</div>
+	
+	<script type="text/javascript">
+		
+		var InputStrategy = (function () {
+			
+			//策略模型
+			var strategy = {
+				
+				//判断是否为空
+				'notNull': function ( val ) {
+					
+					return /^\s*$/g.test(val) ? '输入的内容不能为空' :　'';
+					
+				},
+				
+				//判断是否是数字
+				'isNumber': function ( val ) {
+					
+					return /^-?[\d]+(\.[\d])?$/.test(val) ? '' : '输入的不是一个正确的数字';
+					
+				},
+				
+				//判断电话格式  010-12345678 1234-1234567
+				'isTelephoneNumber': function ( val ) {
+					
+					return /^[\d]{3}\-[\d]{8}$|^[\d]{4}\-[\d]{7}$ /.test(val) ? '' : '请输入一个正确的电话号码';
+					
+				}
+				
+			}
+			
+			return {
+				/**
+				 * 检测表单输入的文本内容是否正确
+				 * @param {String} val 检测文本
+				 * @param {String} type 检测算法
+				 */
+				check: function ( val,type ) {
+					
+					if ( strategy[type] ) {
+						
+						return strategy[type](val);
+						
+					} else {
+						
+						return '没有该算法';
+						
+					}
+					
+				},
+				
+				//拓展算法
+				add: function ( type,fn ) {
+					
+					strategy[type] = fn;
+					
+				} 
+			}
+			
+		})()
+		
+		
+		//策略名称 与 页面中的表单的 映射表
+//		var arr = ['notNull', 'isNumber', 'isTelephoneNumber'];
+		var arr = ['name46', 'isNumber', 'isTelephoneNumber'];
+		
+		for ( var i=1; i<4; i++ ) {
+			
+			checkInp( 'inp'+i ,'err'+i,arr[i-1] );
+			
+		}
+		
+		//执行 检测表单
+		function checkInp ( inpId,errId,type ) {
+			
+			//添加监听
+			document.getElementById(inpId).onblur = function ( ev ) {
+				
+				var val = ev.target.value;
+				
+				var reslut = InputStrategy.check( val,type );
+				
+				if ( reslut ) {
+					
+					document.getElementById(errId).innerHTML = reslut;
+					
+				} else {
+					
+					document.getElementById(errId).innerHTML = '';
+					
+				}
+				
+			}
+			
+		}
+		
+		//拓展算法
+		InputStrategy.add('name46',function ( val ) {
+			console.log( 123 );
+			//请输入4到6位字母或者下划线或者数字
+			return /^[\w]{4,6}$/g.test(val) ? '' : '请输入4到6位字母或者下划线或者数字';
+			
+		});
+		
+	</script>
+		
+	</body>
+</html>

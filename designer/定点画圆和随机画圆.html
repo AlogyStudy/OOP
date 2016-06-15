@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<canvas id="canvas" width="600" height="400" style="border: 1px solid #d98e57;"></canvas>
+		
+		<script type="text/javascript">
+			
+			var cvs = document.getElementById("canvas");
+			
+			var ctx = cvs.getContext('2d');
+			
+			var w = cvs.width;
+			var h = cvs.height;
+			
+			var Ball = function (x,y,r) {
+				
+				this.x = x;
+				this.y = y;
+				this.r = r;
+				
+			}
+			
+			Ball.prototype = {
+				
+				'draw': function () {
+					ctx.beginPath();
+					ctx.arc(this.x, this. y, this.r, 0, 2 * Math.PI);
+					ctx.fillStyle = '#52bf56';
+					ctx.fill();
+					ctx.closePath();
+					ctx.fill();
+				}
+				
+			}
+			
+			// 实现需求，创建的小球不仅仅画在画布里，而且让它们动起来
+			function BallFectory ( x,y,r ) {
+				
+				//对类 进行实例化，  -- 寄生
+				var x = x || Math.random() * w;
+				var y = y || Math.random() * h;
+				var r = r || Math.random() * 10 + 10;
+				
+				var ball = new Ball(x,y,r);
+				
+				//对实例化对象的拓展  -- 增强
+				ball.vx = Math.random() * 5;
+				ball.vy = Math.random() * 5;
+				ball.changeColor = function () {
+					
+					return Math.random() > .5 ? '#52bf56' : 'coral';
+					
+				}
+				
+				ball.move = function () {
+					
+					var _this = this;
+					
+					setInterval(function () {
+						
+						//判断边界
+						if ( _this.x + _this.r > w || _this.x - _this.r < 0 ) {
+							
+							//方向相反
+							_this.vx *= -1;
+							
+						}
+						if ( _this.y + _this.r > h || _this.y - _this.r < 0 ) {
+							
+							//方向相反
+							_this.vy *= -1;
+							
+						}
+						
+						//添加能量
+						_this.x += _this.vx;
+						_this.y += _this.vy;
+						
+						// 清除上一帧，并重新绘制小球
+						ctx.clearRect(0,0,w,h);
+						ctx.fillStyle = _this.changeColor();
+						
+						//绘画
+						_this.draw();
+						
+					},30);
+					
+				}
+				
+				//返回 实例对象
+				return ball;
+				
+			}
+			
+			var ball = new BallFectory(null,200);
+			
+			//执行动画
+			ball.move();
+			
+		</script>
+		
+	</body>
+</html>

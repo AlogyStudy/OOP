@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			var _interface = null;
+			
+			var LazySingle = (function () {
+				
+				var Signle = function () {
+					// do 	
+				}
+				
+				Signle.prototype = {
+					version: 2,
+					sayHello: function () {
+						console.log('1');
+					}
+				}
+				
+				return function () {
+					
+					if ( !_interface ) {
+						
+						_interface = new Signle();
+						
+					}
+					
+					return _interface;
+					
+				}
+				
+			})()
+			
+			
+			var s = LazySingle();
+			
+			s.sayHello();
+			
+		</script>
+		
+	</body>
+</html>

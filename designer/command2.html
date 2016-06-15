@@ -61,6 +61,7 @@
 				
 				return {
 					
+					//命令执行
 					excute: function ( arr ) {
 						
 						cmd[arr[0]].apply(cmd,arr.slice(1));
@@ -69,6 +70,7 @@
 						
 					},
 					
+					//扩展
 					excuteArr: function ( arrTo ) {
 						
 						for ( var i=0; i<arrTo.length; i++ ) {

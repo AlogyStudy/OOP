@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			function extend ( targetObj,obj ) {
+				
+				for ( var i in obj ) {
+					
+					targetObj[i] = obj[i];
+					
+				}
+				
+				return targetObj;
+				
+			}
+			
+			var Button = function ( param ) {
+				
+				var btn = document.createElement('button');
+				
+				//默认参数
+				var def = {
+					'background': 'tan',
+					'color': 'yellow',
+					'fontSize': '12px',
+					'text': '按钮'
+				}
+				
+				// 适配用户传递的参数与默认的参数
+				var def1 = extend(def,param);
+				
+				for ( var i in def1 ) {
+					
+					if ( i === 'text' ) {
+						
+						btn.innerHTML = def1[i];
+						
+					} else {
+						
+						btn.style[i] = def1[i];
+						
+					}
+					
+				}
+				
+				document.body.appendChild(btn);
+				
+			}
+			
+			Button({'background': 'deeppink'});
+			
+		</script>
+		
+	</body>
+</html>

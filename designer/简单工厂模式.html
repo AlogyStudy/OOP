@@ -4,9 +4,110 @@
 		<meta charset="UTF-8">
 		<title></title>
 	</head>
+		
+		<canvas id="canvas" width="800" height="400" style="background: #000;"></canvas>
+	
 	<body>
 		
-		
+		<script type="text/javascript">
+			
+			//简单工厂模式    通过一个 函数，来 创建多个对象。  //处理大量具有相同属性的小对象
+			//例如：在 canvas中创建  小球
+			
+			var cvs = document.getElementById("canvas");
+			
+			//获取上下文对象
+			var ctx = cvs.getContext('2d');
+			
+			var w = cvs.width;
+			var h = cvs.height;
+			
+			//小球 构造函数
+			var Ball = function ( x,y,r ) {
+				
+				this.x = x;
+				this.y = y;
+				this.r = r;
+				
+			}
+			
+			//扩展画小球方法
+			Ball.prototype = {
+				
+				'draw': function () {
+					
+					ctx.beginPath();
+					
+					ctx.arc(this.x,this.y,this.r,0,2*Math.PI,false);
+					ctx.fillStyle = 'peru';
+					ctx.fill();
+					
+					ctx.closePath();
+				}
+				
+			}
+			
+			//小球工厂   //通过一个函数来周转 ，把对象在函数内部实例化。 返回实例化对象。  
+			//① 可以 减少全局变量 . ② 再次进行对象改造， ③ 返回对象 单一。
+			
+//			第二种, 直接对 工厂进行改造
+			function BallFectory ( num ) {
+				
+				if ( num ) {
+					
+					var result = [];
+					
+					for ( var i=0; i<num; i++ ) {
+						
+						reslut.push(arguments.callee());
+						
+					}
+					
+					return result;
+					
+				} else {
+				
+					//将 具有相同属性的小对象 放入 来进行实例化   
+					
+					var x = Math.random() * w;
+					var y = Math.random() * h;
+					var r = Math.random() * 10 + 10;
+					
+					var b = new Ball(x,y,r);
+					
+					return b;  //返回小球对象实例
+					
+				}
+				
+			}
+			
+
+				//第一种：
+			  // 批量生产
+				// @param {Number} num 需要生产几个.
+//				function ManyBallFentery ( num ) {
+//					
+//					//存放  返回小球对象实例
+//					var reslut = [];
+//					
+//					if ( num ) {
+//						
+//						for ( var i=0; i<num; i++ ) {
+//							
+//							reslut.push(BallFectory());
+//							
+//						}
+//						
+//					}
+//					
+//					return reslut;
+//					
+//				}
+//				
+//				ManyBallFentery(10);
+
+			
+		</script>
 		
 	</body>
 </html>

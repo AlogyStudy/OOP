@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			//创建 Book类
+			//安全工厂
+			var Book = function ( title ) {
+				
+				//判断是否调用 new 关键字
+				if ( this instanceof Book ) {
+					
+					this.title = title;
+					
+				} else {
+					
+					return new Book(title);	
+					
+				}
+				
+			}
+			
+//			var b1 = new Book('设计模式1');
+			var b2 = Book('设计模式2');
+			
+//			console.log( b1 ,b1 instanceof Book );
+			console.log( b2 ,b2 instanceof Book );
+			
+		</script>
+		
+	</body>
+</html>
