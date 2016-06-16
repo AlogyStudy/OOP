@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="demo"></div>
+		
+		<script src="../lib/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="MVC.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			MVC.model.add('zf',{
+				title: '这是一个标题',
+				item: {
+					key: '这是key',
+					val: '这是val'
+				}
+			});
+			
+			MVC.View = (function () {
+				
+				var V = {}
+				
+				return {
+					
+					/**
+					 * 创建视图
+					 * @param {String} id 表示视图的模块
+					 */
+					create: function ( id ) {
+						
+						var view = V[id];
+						
+						view.call(MVC,MVC.model,MVC.template);
+						
+					},
+					
+					/**
+					 * 添加视图创建方法的
+					 * @param {String} id 创建方法的名称
+					 * @param {Function} method 创建方法的实现
+					 */
+					add: function ( id,method ) {
+						
+						V[id] = method;
+						
+						return this;
+						
+					}
+					
+				}
+				
+			})()
+			
+		</script>
+		
+	</body>
+</html>

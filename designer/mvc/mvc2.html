@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="demo"></div>
+		
+		<script src="../lib/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="MVC.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			MVC.model.add('zf',{
+				title: '这是一个标题'
+			});
+			
+			var m = MVC.model.get('zf');
+			
+			var fromatString = function ( tpl,data ) {
+				
+				return tpl.replace(/\{\#([\w\.]+)\#\}/g,function ( match,$1 ) {
+					
+					var path = $1.split('.');
+					
+					//缓存 data参数
+					var reslut = data;
+					
+					for ( var i=0; i<path.length; i++ ) {
+						
+						reslut = reslut[path[i]];
+						
+						if ( reslut === undefined ) {
+							
+							return '';
+							
+						}
+						
+					}
+					
+					return reslut;
+					
+				});
+				
+			}
+			
+			var tpl = '<h1>{#title#}{#item.key#}{#item.value#}</h1>';
+			
+			document.getElementById("demo").innerHTML = fromatString( tpl,m );
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app"></div>
+		
+		<script src="../lib/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script src="MVC.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			MVC.Model.add('demo', {
+				title: "这是一个标题",
+				item: {
+					key: '这是个key',
+					value: '这是个value'
+				}
+			});
+			
+			
+			MVC.View.add('demo',function ( model,template ) {
+				
+				var dom = $('<div id="demo" class="demo"></div>');
+				
+				var data = this.Model.get('demo');
+				
+				var tpl = '<h1>{#title#}<span>{#item.key#}</span><span>{#item.value#}</span></h1>';
+				
+				var html = '';
+				
+				html = template(tpl,data);
+				
+				dom.html(html);
+				dom.appendTo('#app');
+				
+				return dom;
+				
+			});
+
+			
+			MVC.Controller.add('demo',function ( model,view ) {
+				
+				//将视图创建
+				var dom = view.create('demo');
+				
+				//添加交互
+				dom.delegate('h1','click',function () {
+					
+					$(this).css('background','tan');
+					
+				});
+				
+			});
+			
+//			MVC.Controller.init();
+
+			MVC.install = function () {
+				
+				window.onload = function () {
+					
+					MVC.Controller.init();
+					
+				}
+				
+			}
+			
+			MVC.install();
+			
+			
+		</script>
+		
+	</body>
+</html>

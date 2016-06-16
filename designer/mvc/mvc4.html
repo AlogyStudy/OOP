@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app"></div>
+		
+		<script src="../lib/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script src="MVC.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			MVC.Model.add('demo', {
+				title: "这是一个标题",
+				item: {
+					key: '这是个key',
+					value: '这是个value'
+				}
+			})
+						
+			MVC.View = (function () {
+				
+				var V = {};
+				
+				return {
+					
+					/**
+					 * 创建某个视图
+					 * @param {String} id 视图的模块
+					 */
+					create: function ( id ) {
+						
+						var view = V[id];
+						
+						view.call(MVC,MVC.Model,MVC.template);
+						
+					},
+					
+					/**
+					 * 添加视图创建方法
+					 * @param {String} id 创建方法名称 
+					 * @param {Function} method 创建方法的实现
+					 */
+					add: function ( id,method ) {
+						
+						V[id] = method;
+						
+						return this;
+						
+					}
+					
+				}
+				
+			})()
+			
+			/**
+			 * 1: 创建容器
+			 * 2: 获取模块数据
+			 * 3: 书写视图模板
+			 * 4: 定义模板字符串
+			 * 5: 格式化模板字符串
+			 * 6: 完成视图的创建
+			 * 7: 将dom reutrn出来
+			 */
+			
+			MVC.View.add('demo',function ( model,template ) {
+				
+				//1: 创建容器
+				var dom = $('<div class="demo" id="demo"></div>');
+				
+				//2: 获取模块数据
+				var data = model.get('demo');
+				
+				//3: 书写视图模板
+				var tpl = '<h1>{#title#}<span>{#item.key#}</span><span>{#item.value#}</span></h1>';
+				
+				//4: 定义模板字符串
+				var html = '';
+				
+				//5: 格式化模板字符串
+				html = template(tpl,data);
+				
+				//6: 完成视图的创建
+				dom.html(html);
+				dom.appendTo('#app');
+					
+				return dom;	
+					
+			});
+			
+			MVC.View.create('demo');
+			
+		</script>
+		
+	</body>
+</html>

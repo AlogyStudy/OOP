@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			var MVC = {}
+			
+			MVC.model = (function () { 
+				
+				//用来存储数据层面的数据
+				var M = {};
+				
+				return {
+					
+					/**
+					 * 读取数据的方法
+					 * @param {String} strName 读取数据的名称
+					 *
+					 * eg: get('a.b.c') => M.a.b.c
+					 */
+					'get': function ( strName ) {
+						
+						var path = strName.split('.');
+						
+						var reslut = M;
+						
+						for ( var i=0; i<path.length; i++ ) {
+							
+							reslut = reslut[path[i]];
+							
+							//后置判定   undefined || 属性值不存在  
+							if ( undefined === reslut ) {
+								
+								return null;
+								
+							}
+							
+						}
+						
+						return reslut;	
+							
+					},
+					
+					/**
+					 * 为模型添加数据
+					 * @param {String} strName  属性层级的字符串
+					 * @param {mixed} val 添加的数据值
+					 * 
+					 * eg:  add('a.b.c',111);
+					 * 			add('a.b',{c: 222})
+					 */
+					'add': function ( strName,val ) {
+						
+						var path = strName.split('.');
+						
+						var reslut = M;
+						
+						for ( var i=0; i<path.length-1; i++ ) {
+							
+							if ( reslut[path[i]] !== undefined && typeof reslut[path[i]] !== 'object' ) {
+								
+								throw new Error('非对象类不可以添加属性');
+								
+							}
+							
+//							reslut 没有属性, 就添加属性
+							if ( reslut[path[i]] === undefined ) {
+								
+								reslut[path[i]] = {};
+								
+							}
+							
+							//缓存
+							reslut = reslut[path[i]];
+							
+						}
+						
+						reslut[path[i]] = val;
+						
+						return this;
+						
+					}
+					
+				}
+				
+			})()
+			
+			MVC.model.add('a.b',123);
+			
+		</script>
+		
+	</body>
+</html>
