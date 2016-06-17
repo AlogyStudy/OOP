@@ -1,5 +1,6 @@
 
-MVC.addModel('slider',{
+MVC
+.addModel('slider',{
 	data: [
 		{
 			"icon": "01.png",
@@ -37,7 +38,8 @@ MVC.addModel('slider',{
 			"img": "05.png"
 		}
 	]
-}).addView('slider',function ( model,tplatce ) {
+})
+.addView('slider',function ( model,tplatce ) {
 	
 		/**
 	 * 1: 创建容器
@@ -51,7 +53,7 @@ MVC.addModel('slider',{
 			
 	var dom = $('<div id="slider" class="slider"></div>');
 	
-	var data = model.get('slider');
+	var d = model.get('slider');
 	
 	var tpl = [
 		'<div class="container"><ul>{#list#}</ul></div>',
@@ -59,8 +61,59 @@ MVC.addModel('slider',{
 	].join('');
 	
 	var liTpl = [
-		'li',
-		'<img src="img/"'
-	];
+		'<li>',
+			'<img src="img/slider_icon_{#icon#}" alt="" />',
+			'<p>{#iconTitle#}</p>',
+			'<div>',
+				'<img src="img/slider_img_{#img#}" alt="" />',
+				'<h4>{#title#}</h4>',
+				'<p>{#content#}</p>',
+			'</div>',
+		'</li>'
+	].join('');
+	
+	var html = liHtml = '';
+	
+	//处理模板字符串
+	for ( var i=0; i<d.data.length; i++ ) {
+		
+		liHtml += tplatce(liTpl,d.data[i]);
+		
+	}
+	
+	html = tplatce(tpl,{
+		list: liHtml
+	});
+		
+	dom.html(html);
+	
+	dom.appendTo('body');
+	
+	return dom;
+	
+})
+.addCtrl('slider',function ( model,view ) {
+	
+	var dom = view.create('slider');
+	
+	//添加显示隐藏逻辑
+	
+	dom.delegate('.arrow','click',function () {
+		
+		if ( $(this).hasClass('close') ) {
+			
+			$(this).removeClass('close');
+			
+			$(this).siblings('.container').animate({'margin-left': 0},200);
+			
+		} else {
+			
+			$(this).addClass('close');
+			
+			$(this).siblings('.container').animate({'margin-left': -50},200);
+			
+		}
+		
+	});
 	
 });

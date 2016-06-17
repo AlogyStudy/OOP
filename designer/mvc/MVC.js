@@ -204,7 +204,31 @@ MVC.template = function (tpl, data) {
 }
 
 
+// 简化MVC.Model.add方法
+MVC.addModel = function (key, value) {
+	
+	MVC.Model.add(key, value);
+	
+	return this;
+}
 
+// 简化MVC.View.add方法
+MVC.addView = function (id, method) {
+	
+	MVC.View.add(id, method);
+	
+	return this;
+	
+}
+
+// 简化MVC.Contorller.add方法
+MVC.addCtrl = function (id, method) {
+	
+	MVC.Controller.add(id, method);
+	
+	return this;
+	
+}
 
 
 
