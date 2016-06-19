@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div><button>显示信息</button></div>
+		
+		<script type="text/javascript">
+			
+			var oDiv = document.getElementsByTagName('div')[0];
+			
+			var oBtn = document.getElementsByTagName('button')[0];
+			
+//			oBtn.onclick = function () {
+//				
+//				oBtn.onclick = null;
+//				oDiv.innerHTML = 'info';
+//				
+//			}
+
+//			在事件内部对dom的元素的主动接触事件不是更好的方式，
+
+				oDiv.onclick = function ( ev ) {
+					
+					if ( ev.target.tagName.toLocaleLowerCase() === 'button' ) {
+						
+						oDiv.innerHTML = 'info';
+						
+					}
+					
+				}	
+					
+			
+		</script>
+		
+	</body>
+</html>

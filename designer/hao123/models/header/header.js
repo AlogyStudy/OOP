@@ -86,9 +86,54 @@ MVC
 		observer.fire('openLoginLayer');
 		
 	})
-	.delegate('.email','click',function () {
+	.delegate('.email','click',function ( ev ) {
 		
-		observer.fire('openEmailLayer');
+		if ( ev.target.tagName.toLowerCase() === 'b' ) {
+			
+			if ( !$(this).hasClass('open') ) {
+				
+				//打开浮层
+				observer.fire('openEmailLayer');
+				
+				$(this).addClass('open');
+				
+			} else {
+				
+				//关闭浮层
+				observer.fire('closeEmailLayer');
+				
+			}
+			
+		}
+		
+	})
+	.delegate('.skin','click',function () {
+		
+		//skin
+		if ( $(this).hasClass('open') ) {
+			
+			observer.fire('closeSkinLayer');
+			
+		} else {
+			
+			$(this).addClass('open');
+			
+			observer.fire('openSkinLayer');
+			
+		}
+		
+	})
+	
+	// emial
+	observer.regist('closeEmailLayer',function () {
+		
+		dom.find('.email').removeClass('open');
+		
+	})
+	//关闭skin 
+	.regist('closeSkinLayer',function () {
+		
+		dom.find('.skin').removeClass('open');
 		
 	});
 	

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script>
+
+		/**
+		 * 触发操作
+		 * @param[0] [Function]  表示函数的名称
+		 * @param[1] [Object] 配置项
+		 */
+		
+		/**
+		 *  清除操作
+		 *  @param[0] [Boolean] 表示是否取消操作. true 取消
+		 *  @param[1] [Function] 取消的函数名称
+		 */
+		
+		//对重复的业务逻辑，通常执行最后一个，取消前面的业务逻辑，来实现业务逻辑的优化。
+		//高频事件， mousemove ，window.onscorll
+		var Throttle = function () {
+		
+
+			var isClear = arguments[0] , fn;
+		
+			if ( isClear !== 'true' ) {
+
+			 // 触发操作
+			 // @param[0] [Function]  表示函数的名称
+			 // @param[1] [Object] 配置项
+
+				//触发操作
+				fn = isClear;
+				var o = arguments[1] || {};
+
+				var obj = {
+					time: o.time || 200,
+					context: o.context || null,
+					data: o.data || null
+				};  //配置项
+				
+				//设表先关
+				fn._throttle && clearTimeout(fn._throttle);
+				
+				fn._throttle = setTimeout(function(){
+
+					fn.call(obj.context,obj.data);	
+
+				},obj.time);
+
+			} else {
+
+				// 清除操作
+				// @param[0] [Boolean] 表示是否取消操作. true 取消
+				// @param[1] [Function] 取消的函数名称
+
+				//取消操作
+				fn = arguments[1];
+
+				//清除定时器
+				fn._throttle && clearTimeout(fn._throttle);
+
+			}
+
+		}
+
+		function goBack(){
+			console.log(1);
+		}
+
+		//触发
+		Throttle(goBack,{time: 500,data: {msg: 'hello'}});
+
+		//清除操作
+		// Throttle(true,goBack);
+		
+
+
+	</script>
+			
+	
+</body>
+</html>

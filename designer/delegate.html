@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<style type="text/css">
+			ul {
+				width: 1100px;
+				margin: 100px auto;
+			}
+			li {
+				float: left;
+				width: 100px;
+				height: 100px;
+				background: gray;
+				margin: 0 5px;
+				list-style: none;
+				color: #fff;
+				text-align: center;
+				font-size: 30px;
+				line-height: 100px;
+			}
+			</style>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li class="a">3</li>
+				<li>4</li>
+				<li class="b">5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+				<li>10</li>
+			</ul>
+		
+		<script src="//cdn.bootcss.com/jquery/3.0.0/jquery.js"></script>
+		
+		<script type="text/javascript">
+			
+			
+			$('ul').delegate('.a','click',function () {
+				
+				$(this).css('background','tan');
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>

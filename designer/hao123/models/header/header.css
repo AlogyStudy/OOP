@@ -2,7 +2,7 @@
 	height: 60px;
 	border: 1px solid #eff0f0;
 }
-.header .container {
+.container {
 	width: 1190px;
 	margin: 0 auto;
 }
@@ -206,7 +206,7 @@ html, body {
 	display: none;
 }
 .skin .container {
-	width: 1190px;
+	width: 1140px;
 	margin: 0 auto;
 	font-size: 14px;
 }
@@ -237,7 +237,7 @@ html, body {
 }
 .skin .skin-header .save-btn {
 	color: #fff;
-	background: #34a637 url(../../image/index_icon.png) no-repeat -263px -88px;
+	background: #34a637 url(../../img/index_icon.png) no-repeat -263px -88px;
 	padding-left: 50px;
 }
 .skin .skin-header .cancel-btn {
@@ -288,4 +288,37 @@ html, body {
 .skin .skin-content img {
 	width: 180px;
 	height: 98px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------------------------------------------------------*/
+
+#header {
+	background: rgba(255, 255, 255, 0.34);
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			//原理：通过延迟定时器，来延迟执行 某段代码。
+			
+			/**
+			 * 触发操作
+			 * @param {Function} fn 函数名称
+			 * @param {Object} o  配置项
+			 */
+			var add = function ( fn,o ) {
+				
+				var obj = o || {};
+				
+				var options = {
+					time: obj.time || 20,
+					context: obj.context || null,
+					data: obj.data || null
+				}
+				
+				fn._throttle = setTimeout(function () {
+					
+					fn.call(options.context,options.data);
+					
+				}, options.time);
+				
+			}
+			
+			/**
+			 * 取消操作
+			 * @param {Object} isClear 是否取消， true 取消
+			 * @param {Object} fn  取消句柄函数
+			 */
+			var clerar = function ( isClear,fn ) {
+				
+				var isClear = isClear;
+				
+				fn._throttle && clearTimeout(fn._throttle);
+				
+			}
+			
+		</script>
+		
+	</body>
+</html>

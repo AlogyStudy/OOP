@@ -1,3 +1,9 @@
+
+/**
+ * 邮箱模块
+ */
+
+
 MVC
 .addModel('email',{
 	
@@ -10,10 +16,10 @@ MVC
 	
 	//模板字符串
 	var tpl = [
-		'<div class="maillogin" id="maillogin">',
-			'<div class="">',
-				'<input type="text" placeholder="邮箱账号" />',
-				'<span>{#chooseEmail#}</span>',
+		'<div class="container">',
+			'<div>',
+				'<input type="text" placeholder="邮箱账号"/>',
+				'<span class="choose-email">{#chooseEmail#}</span>',
 				'<ul>{#list#}</ul>',
 			'</div>',
 			'<div>',
@@ -31,17 +37,18 @@ MVC
 	//格式化模板
 	var html = htmlList = '';
 	
-	var tplHtml = '<li>{#key#}</li>';
+	var tplHtml = '<li class="{#cls#}">{#key#}</li>';
 	
 	for ( var i=0; i<data.normalEmail.length; i++ ) {
 		
 		htmlList += template(tplHtml,{
-			key: data.normalEmail[i]
+			key: data.normalEmail[i],
+			cls: 'choose'
 		});
 		
 	}
 	
-	htmlList += '<li>以下为弹出登录</li>';
+	htmlList += '<li class="not-email">以下为弹出登录</li>';
 	
 	for ( var i=0; i<data.specialEmail.length; i++ ) {
 		
@@ -79,7 +86,6 @@ MVC
 			
 		}
 		
-				
 	})
 	.regist('closeEmailLayer',function () {
 		
@@ -112,9 +118,54 @@ MVC
 			
 	}
 	
+	//事件绑定
 	function bindEvent () {
 		
+		// 取消按钮
 		dom.delegate('.cancel','click',function () {
+			
+			//打开关闭 浮层 标识
+			observer.fire('closeEmailLayer');
+			
+		})
+		// 下拉
+		.delegate('.choose-email','click',function () {
+			
+			if ( !dom.find('ul').hasClass('open') ) {
+				
+				$(this).siblings('ul').addClass('open');
+				
+			} else {
+				
+				$(this).siblings('ul').removeClass('open');
+				
+			}
+			
+		})
+		// 下拉列表
+		.delegate('ul li','click',function () {
+			
+			if ( $(this).hasClass('choose') ) {
+				 
+				var val = $(this).html();
+				
+				$('.choose-email').html(val);
+				
+			}
+			
+			$(this).parent('ul').removeClass('open');
+			
+		})
+		
+		//docuemnt
+		$(document).on('click',function ( ev ) {
+			
+			//过滤元素
+			if ( $.contains( $('#header .email')[0], ev.target ) || ev.target === $('#header .email')[0] ) {
+					
+				return ;
+					
+			}
 			
 			//打开关闭 浮层 标识
 			observer.fire('closeEmailLayer');
@@ -128,13 +179,10 @@ MVC
 		
 		dom.addClass('open');
 		
-		dom.parent('.email').addClass('open');
-		
 	}
 	
+	//关闭 EmailLayer
 	function hideEmailLayer () {
-		
-		console.log(123);
 		
 		dom.removeClass('open');
 		
