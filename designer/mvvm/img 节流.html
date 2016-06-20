@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<button id="btn">info</button>
+		
+		
+		<script type="text/javascript">
+			
+			//节流处理： 当发送第一个请求的时候，将其缓存下来，当其触发的次数达到规定的次数再发送
+			//想缓存，需要有缓存容器，   次数，需要有次数的规定。
+			//将一条数据，作为请求的  一个  id.
+			
+			var LogPack = (function () {
+				
+				var dataCache = [];  //缓存容器
+				
+				var maxNum = 10; //缓存的次数				
+				
+				var oImg = new Image();  //请求的触发器
+			
+				var itemSplit = '|';
+				var keyValSplit = '*';
+				
+				//发送统计
+				function sendLog () {
+					
+					var logs = dataCache.splice(0,10);
+					
+					var str = '';
+					
+					for ( var i=0; i<logs.length; i++ ) {
+						
+						//拼接 id
+						'Log1=type*click|date*123&log2=type*mouserover|date*234';
+						
+						str += 'log' + i + '=';
+						
+						for ( var j in logs[i] ) {
+							
+							str += i + keyValSplit + logs[i][j] + itemSplit;
+							
+						}
+						
+						str = str.replace(/\|$/,'')
+					}
+					
+					img.src = 'a.jpg?=' + logs.length + str;
+					
+				}
+			
+				return function( val ){
+					
+//					当没有val 数据,主动触发
+						if ( !val ) {
+							sendLog();
+						}
+					
+					//统计信息缓存下来
+					dataCache.push( val );
+					
+					//缓存数据条目  大于 定义的条目
+					if ( dataCache.length > maxNum ) {
+						
+						sendLog();
+						
+					}
+					
+				};
+				
+			})()
+			
+			new Image().src = 'a.jpg?' + 'Log1=type*click|date*123&log2=type*mouserover|date*234';
+			
+			var oBtn = document.getElementById("btn");
+			
+			oBtn.onmousemove = function () {
+				
+				LogPack({
+					type: 'onmousemove',
+					date: new Date().getTime()
+				});
+				
+			}
+			
+			oBtn.onmouseover = function () {
+				
+				LogPack({
+					type: 'onmouseover',
+					date: new Date().getTime()
+				});
+				
+			}
+//			oBtn.onclick = function () {
+//				
+//				LogPack({
+//					type: 'onmouseover',
+//					date: new Date().getTime()
+//				});
+//				
+//			}
+			
+		</script>
+		
+	</body>
+</html>

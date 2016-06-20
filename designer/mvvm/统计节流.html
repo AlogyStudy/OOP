@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<button id="btn">info</button>
+		
+		
+		<script type="text/javascript">
+			
+			var oBtn = document.getElementById("btn");
+			
+//			oBtn.onmousemove = function () {
+//				
+//				sendLog({
+//					type: 'onmousemove',
+//					date: new Date().getTime()
+//				});
+//				
+//			}
+			
+			oBtn.onmouseover = function () {
+				
+				sendLog({
+					type: 'onmouseover',
+					date: new Date().getTime()
+				});
+				
+			}
+//			oBtn.onclick = function () {
+//				
+//				sendLog({
+//					type: 'onmouseover',
+//					date: new Date().getTime()
+//				});
+//				
+//			}
+			
+			
+			var img = new Image();
+			
+			function sendLog ( val ) {
+				
+				var reslutStr = '';
+				//a.jpg?type=mouseove&date=100
+				for ( var i in val ) {
+					
+					reslutStr += '&' + i + '=' +  val[i];
+					
+				}
+				
+				console.log( reslutStr.substr(1) );
+				
+				img.src = 'a.jpg?' + reslutStr;
+				
+			}
+			
+		</script>
+		
+	</body>
+</html>

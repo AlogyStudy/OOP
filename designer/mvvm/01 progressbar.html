@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<style type="text/css">
+	div {
+		height: 1em;
+	}
+	
+	.ui-progressbar {
+		width: 80%;
+		margin: 100px auto;
+		border: 1px solid #000;
+	}
+	
+	.ui-progressbar div {
+		background: orange;
+	}
+	</style>	
+		
+	<div bind-data="type: 'progressBar', data: demo"></div>
+	<div bind-data="type: 'progressBar', data: demo1"></div>
+	
+	<script type="text/javascript">
+		
+		//model
+		var demo = { position: 50 }
+		var demo1 = { position: 70 }
+		
+		
+		//contorller
+		
+		function progressBar ( view,model ) {
+			
+			bar = document.createElement('div');
+			
+			bar.style.width = (model.position || 100) + '%';
+			
+			view.className = 'ui-progressbar';
+			
+			view.appendChild(bar);
+			
+		}
+		
+		progressBar(
+			document.getElementsByTagName("div")[0],
+			demo
+		);
+		
+	</script>	
+		
+	</body>
+</html>

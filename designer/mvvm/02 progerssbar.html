@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<style type="text/css">
+		div{height: 1em;}
+		.ui-progressbar {
+			width: 80%;
+			margin: 100px auto;
+			border: 1px solid #000;
+		}
+		.ui-progressbar div{
+			background: orange;
+		}	
+		</style>
+		
+		<div bind-data="type: 'progressBar', data: demo"></div>
+		<div bind-data="type: 'sliderBar', data: demo1"></div>
+		<div bind-data="type: 'progressBar', data: demo1"></div>
+		<div bind-data="type: 'progressBar', data: demo2"></div>
+		
+		<script type="text/javascript">
+		
+		//model
+		var demo = { position: 50 }
+		var demo1 = { position: 70 }
+		var demo2 = { position: 30 }
+			
+		//vm	
+		var VM = (function () {
+			
+			var method = {
+				progressBar: function ( dom,data ) {
+					
+					bar = document.createElement('div');
+					bar.style.width = (data.position || 100) + '%';
+					dom.className = 'ui-progressbar';
+					
+					dom.appendChild(bar);
+					
+				},
+				sliderBar: function () {
+					
+				}
+			}
+			
+			//获取绑定数据
+			function getBindData ( dom ) {
+				
+				var attr = dom.getAttribute('bind-data');
+				
+				var oData = (new Function('return ({'+ attr +'})'))();
+				
+				method[oData.type] && method[oData.type].call(null,dom,oData.data);
+				
+			}
+			
+			return function () {
+				
+				//获取 所有元素
+				var dom = document.getElementsByTagName('*');
+				
+				var reslut = [];
+				
+				for ( var i=0; i<dom.length; i++ ) {
+					
+					if ( dom[i].getAttribute('bind-data') ) {
+						
+						reslut.push(dom[i]);
+						
+					}
+					
+				}
+				
+				for ( var i=0; i<reslut.length; i++ ) {
+					
+					//执行方法
+					getBindData( reslut[i] );
+					
+				}
+				
+			}
+			
+		})()	
+				
+		VM();		
+		
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<button id="btn">info</button>
+		
+		<script type="text/javascript">
+			
+			var img = new Image();
+			
+			document.getElementById("btn").onclick = function () {
+				
+				img.src = 'a.jpg?aa=' + this.innerHTML;
+				
+			}
+			
+		</script>
+		
+		
+	</body>
+</html>
