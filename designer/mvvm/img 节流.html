@@ -36,20 +36,21 @@
 					for ( var i=0; i<logs.length; i++ ) {
 						
 						//拼接 id
-						'Log1=type*click|date*123&log2=type*mouserover|date*234';
+//						'Log1=type*click|date*123&log2=type*mouserover|date*234';
 						
-						str += 'log' + i + '=';
+						str += '&log' + i + '=';
 						
 						for ( var j in logs[i] ) {
 							
-							str += i + keyValSplit + logs[i][j] + itemSplit;
+							str += j + keyValSplit + logs[i][j] + itemSplit;
 							
 						}
 						
-						str = str.replace(/\|$/,'')
+						str = str.replace(/\|$/,'');
+						console.log( str );
 					}
 					
-					img.src = 'a.jpg?=' + logs.length + str;
+					oImg.src = 'a.jpg?len=' + logs.length + str;
 					
 				}
 			
@@ -74,7 +75,7 @@
 				
 			})()
 			
-			new Image().src = 'a.jpg?' + 'Log1=type*click|date*123&log2=type*mouserover|date*234';
+//			new Image().src = 'a.jpg?' + 'Log1=type*click|date*123&log2=type*mouserover|date*234';
 			
 			var oBtn = document.getElementById("btn");
 			
@@ -86,7 +87,7 @@
 				});
 				
 			}
-			
+//			
 			oBtn.onmouseover = function () {
 				
 				LogPack({
@@ -95,6 +96,7 @@
 				});
 				
 			}
+
 //			oBtn.onclick = function () {
 //				
 //				LogPack({
