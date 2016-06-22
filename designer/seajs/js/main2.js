@@ -1,6 +1,6 @@
 define(function ( require,exports,module ) {
 	
-	require('../css/css.css#');
+	require('../css/css.css');
 	
 	console.log( $ );
 	
