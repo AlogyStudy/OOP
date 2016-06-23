@@ -1,0 +1,90 @@
+
+#hao123-search {
+	width: 100%;
+	padding-top: 36px;
+	margin: 0 auto;
+}
+
+.search .logo-left {
+  width: 150px;
+  height: 48px;
+	float: left;	
+}
+
+.search .logo-left img {
+	width: 100%;
+	height: 100%;
+}
+
+.search .form-wrapper {
+	float: left;
+	position: relative;
+	padding-left: 20px;
+}
+.search .form-wrapper>a {
+	cursor: pointer;
+  padding: 0 10px;
+  width: 38px;
+  height: 42px;
+  font: normal 12px/45px simsun;
+  text-decoration: none;
+  color: #999;
+	float: left;
+	position: absolute;
+	left: 26px;
+  top: 3px;
+}
+
+.form-wrapper .wrap-search {
+	float: left;	
+}
+
+.form-wrapper .wrap-search from input[type=text] {
+	width: 540px;
+	height: 44px;	
+	padding-left: 38px;
+}
+.form-wrapper .wrap-search from input[type=button] {
+	width: 118px;
+  height: 47px;
+  font-size: 14px;
+  padding: 2px 0;
+  cursor: pointer;
+}
+
+.grid {
+	width: 154px;
+  height: 16px;
+  line-height: 16px;
+  background: deeppink;
+  float: left;
+  position: relative;
+  right: -34px;
+  top: 14px;
+}
+
+.listWeb {
+  position: absolute;
+  left: 40px;
+  top: 48px;
+  width: 66px;
+  background: #fff;
+  box-shadow: 1px 1px 10px #F0F8FF;
+  border: 1px solid rgb(238, 238, 238);
+  display: none;
+}
+.listWeb.open {
+	display: block;
+}
+
+.listWeb li {
+	width: 66px;
+	text-align: center;
+}
+.listWeb a {
+	text-decoration: none;
+	line-height: 40px;
+	text-align: center;
+	color: #333;
+	font-size: 12px;
+}

@@ -11,7 +11,7 @@
 			
 			.highcharts-grid path,
 			.highcharts-axis path {
-				border-color: 'red'
+				/*display: none;*/
 			}
 		</style>
 	</head>
@@ -22,6 +22,8 @@
 		<script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
 		<script src="lib/highcharts.js" type="text/javascript" charset="utf-8"></script>
 		
+		<script src="lib/exporting.src.js" type="text/javascript" charset="utf-8"></script>
+		
 		<script type="text/javascript">
 			
 			$.get('data/weather.json',function ( res ) {
@@ -30,16 +32,16 @@
 				if ( res.errno === 0 ) {  
 					
 					//修正字典
-					var data = dataAdaptor(req.data);
+					var data = dataAdaptor(res.data);
 					
 					//渲染视图
 					createView( data );
 						
+					console.log( data );	
+						
 				}
 				
 			});
-			
-			
 			
 			
 			//创建视图
@@ -54,7 +56,7 @@
 					
 					//x 轴
 					xAxis: {
-						categories: data.data,
+						categories: data.xAxis,
 						title: {
 							text: ''
 						}
@@ -64,7 +66,7 @@
 					yAxis: {
 						title: {
 							text: ''
-						}
+						},
 					},
 					
 					
@@ -115,6 +117,17 @@
 					//图例
 					legend: {
 						enabled: false
+					},
+					
+					
+					// highcharts支持国际化
+					lang: {
+	          printChart: "打印图表",
+	          contextButtonTitle: "图表导出菜单",
+	          downloadJPEG: "下载JPEG图片",
+	          downloadPDF: "下载PDF文件",
+	          downloadPNG: "下载PNG文件",
+	          downloadSVG: "下载SVG文件"
 					}
 					
 					
