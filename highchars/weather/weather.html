@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			/*.highcharts-grid path {
+				color: 'red'
+			}*/
+			
+			.highcharts-grid path,
+			.highcharts-axis path {
+				border-color: 'red'
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app" style="width: 700px; height: 300px; margin: 0 auto;"></div>
+		
+		<script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/highcharts.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			$.get('data/weather.json',function ( res ) {
+				
+				//数据返回成功
+				if ( res.errno === 0 ) {  
+					
+					//修正字典
+					var data = dataAdaptor(req.data);
+					
+					//渲染视图
+					createView( data );
+						
+				}
+				
+			});
+			
+			
+			
+			
+			//创建视图
+			function createView ( data ) {
+				
+				$('#app').highcharts({
+					
+					//标题
+					title: {
+						text: ''
+					},
+					
+					//x 轴
+					xAxis: {
+						categories: data.data,
+						title: {
+							text: ''
+						}
+					},
+					
+					//y 轴
+					yAxis: {
+						title: {
+							text: ''
+						}
+					},
+					
+					
+					//数据列
+					series: [
+						{
+							data: data.data
+						}
+					],
+					
+					//显示细节
+					plotOptions: {
+						
+						series: {
+							
+							dataLabels: {
+								enabled: true,
+								format: '{y} ℃',
+								style: {
+									color: 'red'
+								}
+							}
+							
+						}
+						
+					},
+					
+					//署名
+					credits: {
+						enabled: false,
+					},
+					
+					//数据列颜色
+					colors: ['red'],
+					
+					chart: {
+						animation: true,
+//						type: 'bar'
+					},
+					
+					//提示
+					tooltip: {
+						enabled: false
+					},
+					
+					
+					
+					//图例
+					legend: {
+						enabled: false
+					}
+					
+					
+				});
+				
+			}
+	
+		//适配数据
+		function dataAdaptor ( data ) {
+			
+			var reslut = {
+				
+				xAxis: [],  //result.xAxis表示横坐标的数据值
+				
+				data: []		//result.data表示数据列的数据值
+				
+			}
+			
+			//添加数据
+			$.each(data,function ( i,val ) {
+				
+				reslut.xAxis.push(val.wind + '<br />'+ val.level);
+				
+				reslut.data.push( val.temperate );
+				
+			})
+			
+			return reslut;
+			
+		}	
+	
+		</script>
+		
+	</body>
+</html>

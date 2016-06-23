@@ -5,7 +5,17 @@
 //	console.log( 123 );
 //	
 //});
-
+require.config({
+	paths: {
+		jquery: 'lib/jquery'
+	},
+	shim: {
+		'lib/jquery': {
+			deps: [],
+			expots: '$'
+		}
+	}
+});
 
 require(['moduels/main'],function ( main ) {
 	

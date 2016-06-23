@@ -1,5 +1,7 @@
 
-var q = require(['modules/header.js']);
+require(['modules/header.js']);
+
+
 
 //console.log( q );
 

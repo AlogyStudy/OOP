@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<div class="highcharts-containts" id="highcharts-containts" style="width: 90%; margin: 0 auto;"></div>
+		
+		<script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/highcharts.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			$('#highcharts-containts').highcharts({
+				
+				//标题
+				title: {
+					text: '我的图表',
+					style: {
+						color: 'pink'
+					}
+				},
+				
+				//子标题
+				subtitle: {
+					text: '天气',
+					x: 500
+				},
+				
+				//x轴
+				xAxis: {
+					
+					categories: ['星期一', '星期二', '星期三'],
+					
+					labels: {
+						style: {
+							color: 'tan',
+							fontSize: '16px'
+						}
+					},
+					
+					title: {
+						text: '日期',
+						style: {
+							color: 'aqua',
+							fontSize: '24px'
+						},
+						x: 600
+					}
+					
+				},
+				
+				//y轴
+				yAxis: {
+					
+					title: {
+						text: '温度',
+						style: {
+							fontSize: '18px'
+						}
+					},
+					
+					labels: {
+						
+						formatter: function () {
+							
+							// 低于25度清爽，高于25度炎热
+							if (this.value > 25) {
+								
+								return this.value + '-炎热';
+								
+							} else {
+								
+								return this.value + '-清爽'
+								
+							}
+							
+						}
+						
+					}	
+					
+				},
+				
+				//提示框
+				tooltip: {
+					
+					style: {
+						color: 'red'
+					},
+					
+					// formatter: function () {
+					// 	return 'hello<br>' + '<span style="color: green;">' + this.x + '--' + this.y + '</span>';
+					// },
+					// pointFormatter: function () {
+					// 	// return '<span style="color: green;">' + this.x + '--' + this.y + '</span>'
+					// 	return this.x + '--' + this.y;
+					// 	// console.log(this)
+					// }
+					// 表示用html模板渲染
+					//useHTML: true,
+					//headerFormat: 'hello',
+					//pointFormat: '<span style="color: green;">{point.y} -- {point.x}<span>'
+					
+				},
+				
+				//数据列
+				series: [
+				
+					{
+						name: '北京天气',
+						data: [10,234,43],
+					},
+					
+					{
+						name: '厦门天气',
+						data: [10,100,43],
+					}
+					
+				],
+				
+				//显示细节
+				plotOptions: {
+					
+					series: {
+						dataLabels: {
+							enabled: true,
+							format: '{y} ℃'
+						}
+					}
+					
+				},
+				
+				//图例：
+				legend: {
+					backgroundColor: '#ccc',
+					width: 200
+				},
+				
+				//数据列颜色
+				colors: ['red', 'green', 'blue'],
+				
+				//署名
+				credits: {
+					
+//					enabled: false,
+						text: 'bulder',
+						
+						href: 'http://www.lingxingzhang.com',
+						
+						style: {
+							color: 'red',
+							fontSize: 14
+						}
+						
+				}
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>
