@@ -22,3 +22,12 @@ require(['models/main'],function ( main ) {
 	main();
 	
 });
+
+
+main.js
+
+依赖其他模块
+
+执行
+
+

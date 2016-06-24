@@ -1,0 +1,16 @@
+
+index
+	seajs
+	插件
+		
+	seajs.config();
+	
+	seajs.use(app);	
+
+
+app.js
+	-> 
+	require();
+	
+	其它模块
+	

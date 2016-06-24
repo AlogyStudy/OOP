@@ -1,0 +1,14 @@
+
+index
+
+	require
+	
+	app.js
+	
+	
+app.js
+
+	require.config();
+	
+	//主模块
+	require(['main'],function( main ){});	

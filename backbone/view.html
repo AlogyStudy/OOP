@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app"></div>
+		
+		<script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/lodash.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/backbone.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			var App = new Backbone.View({
+				tanName: 'h1',
+				id: 'app',
+				className: 'app'
+			});
+
+
+			var App = Backbone.View.extend({
+				
+				initialize: function () {
+					
+					this.$el.html('¥79.00').css({
+						'background': 'tan'
+					})
+					
+				}
+				
+			});
+			
+			var divView = new App({
+				el: $('#app')
+			});
+			
+		</script>
+		
+	</body>
+</html>

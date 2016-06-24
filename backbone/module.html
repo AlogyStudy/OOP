@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/lodash.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/backbone.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+//			console.log( $ );
+//			console.log( _ );
+//			console.log( Backbone );
+			
+			
+			//第一种创建方式，模型的构造函数式
+//			var Dog = new Backbone.Model({
+//				name: 'hello kitty',
+//				age: 3
+//			})
+			
+			
+			//第二种    模型继承    
+			var WangCai = Backbone.Model.extend({
+				
+				//默认值
+				defaults: {
+					kg: 20,
+					name: 'wangcai',
+					age: 2
+				},
+				
+				//构造函数
+				initialize: function () {
+					
+					if ( this.attributes.price ) {
+						
+						this.attributes.onSale = true;
+						
+					}
+					
+				}
+				
+			});
+			
+			var ww = new WangCai({
+				price: 1000
+			});
+			
+			console.log( ww );
+			
+//			console.log( JSON.stringify(ww) );
+
+//				console.log( ww.toJSON() );
+			
+		</script>
+		
+	</body>
+</html>

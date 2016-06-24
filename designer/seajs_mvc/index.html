@@ -13,26 +13,38 @@
 		
 		<div id="hao123-search"></div>
 		
-		<script src="li" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/sea.js" type="text/javascript" charset="utf-8"></script>
 		
-		<!--<script src="lib/jquery-1.12.2.js" type="text/javascript" charset="utf-8"></script>
-		<script src="lib/MVC.js" type="text/javascript" charset="utf-8"></script>
-		
-		<script src="models/slider/slider.js" type="text/javascript" charset="utf-8"></script>
-		
-		<script src="models/header/header.js" type="text/javascript" charset="utf-8"></script>
-		<script src="models/header/email.js" type="text/javascript" charset="utf-8"></script>
-		<script src="models/header/skin.js" type="text/javascript" charset="utf-8"></script>
-		
-		
-		<script src="models/search/search.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/seajs-css.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/seajs-preload.js" type="text/javascript" charset="utf-8"></script>
 		
 		<script type="text/javascript">
-		
-			//主函数入口	
-			MVC.install();
 			
-		</script>-->
+			seajs.config({
+				
+				//js 配置文件
+				preload: ['jquery-1.12.2'],
+				
+				//别名
+				alias: {
+					MVC: 'MVC.js'
+				},
+				
+				//路径
+				paths: {
+					m: 'models'
+				}
+				
+			});
+			
+			seajs.use(['./app'],function ( app ) {
+				
+				app.init();
+				
+			});
+			
+		</script>
+		
 		
 	</body>
 </html>
