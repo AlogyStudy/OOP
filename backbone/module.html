@@ -37,11 +37,17 @@
 				//构造函数
 				initialize: function () {
 					
-					if ( this.attributes.price ) {
+					this.on('change',function ( model ) {
 						
-						this.attributes.onSale = true;
+						console.log(123);
 						
-					}
+					});
+					
+//					if ( this.attributes.price ) {
+//						
+//						this.attributes.onSale = true;
+//						
+//					}
 					
 				}
 				
@@ -50,8 +56,31 @@
 			var ww = new WangCai({
 				price: 1000
 			});
+				
+			//  ww 实例对象 未被修改
+			console.log( ww.hasChanged() );// false 
+//			ww.set('color','pink',{silent: true });	
+			ww.set({
+				say: function () {},
+				zf: 'dd'
+			},{silent: true });
+			//实例对象  已经被修改，添加 其它属性和方法 
+			console.log( ww.hasChanged() );// true
+//			console.log( ww.toJSON() );
+			
+			ww.validate = function ( attr ) {
+				
+				console.log( attr );
+				
+			}
+			
+			ww.unset('zf',{validate: false});
 			
 			console.log( ww );
+			
+			var price = ww.get('price');
+			
+//			console.log( price );
 			
 //			console.log( JSON.stringify(ww) );
 
