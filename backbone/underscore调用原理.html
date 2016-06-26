@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+
+		(function(){
+	
+			var root = this;
+	
+		var _  = function ( obj ) {
+			
+			if ( obj instanceof _ )  return obj;
+				
+			if (!(this instanceof _)) return new _(obj);
+			
+			this._wrapped = obj;
+	
+		}
+		
+		root._ = _;  //挂载 window
+	
+		_.each = function ( arr,cb ) {
+			
+			var len = arr.length; 
+	
+			if ( arr && len>0 && arr.constructor === Array && cb.constructor === Function ) {
+	
+				for ( var i=0; i<len; i++ ) {
+	
+					cb.call(this,arr[i],i);
+	
+				}
+	
+			}
+	
+		};
+	
+	}.call(this));
+	
+	var arr = [1,2,3];
+	
+	_.each(arr,function( i,val ){
+		
+		console.log( i,val );
+		
+	});
+	
+	// console.log( _({
+	// 	aa: 123
+	// }) );	
+
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+(function(){
+	
+	var _  = function ( obj ) {
+		
+		if ( obj instacneof _ )  return obj;
+			
+		if (!(this instanceof _)) return new _(obj);
+		
+		this._wrapped = obj;
+
+	}
+	
+	root._ = _;
+			
+		
+	//简便函数 取别名
+	
+	//利于压缩， 取别名
+	
+	optimizeCb  执行函数并改变所执行函数的作用域
+	cb 对回调函数进行处理
+	
+	assigner 分配器
+	
+	baseCreate 继承 一个单独原型
+	
+	获取对象属性
+
+	prototype	
+	
+	判断是否是数组
+	
+}.call(this));
+
