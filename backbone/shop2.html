@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+	#app {
+		width: 1020px;
+		height: 3940px;
+		margin-left: 260px;
+		margin-top: 50px;
+	}
+	.item {
+		/*border: 1px solid #ccc;*/
+		width: 220px;
+		height: 438px;
+		padding: 10px;
+		position: relative;
+		float: left;
+	}
+	.big-img {
+		margin-bottom: 5px;
+	}
+	.small-img {
+		margin-top: 10px;
+	}
+	.small-img img {
+		border: 2px solid transparent;
+	}
+	.small-img .choose {
+		border: 2px solid red;
+	}
+	.price {
+		color: red;
+		line-height: 30px;
+	}
+	.price-value {
+		font-size: 24px;
+		font-weight: bold;
+	}
+	.title {
+		font-size: 12px;
+		color: #333;
+	}
+	.comment {
+		font-size: 12px;
+		color: #999;
+	}
+	.comment span {
+		color: blue;
+		font-weight: bold;
+	}
+	.store {
+		font-size: 12px;
+		color: #333;
+	}
+	.big-cell {
+		position: relative;
+		overflow: hidden;
+		height: 282px;
+	}
+	.see {
+		position: absolute;
+		padding: 5px;
+		background: rgba(0, 0, 0, .5);
+		top: 290px;
+		right: 20px;
+		display: none;
+		color: #fff;
+		font-size: 12px;
+	}
+	</style>
+	</head>
+	<body>
+		
+		<input type="button" name="" id="btn" value="从小到大" />
+		
+		<div id="app"></div>
+		
+		<script type="text/template" id="itemView">
+			<div class="item">
+				<div class="big-cell">
+					<img class="big-img" src="<%=img1%>" width="220" height="282" alt=""> 
+					<span class="see">关注</span>
+				</div>
+				<div class="small-img">
+					<img class="choose" src="<%=img1%>" width="25" height="25" alt="">
+					<img src="<%=img2%>" width="25" height="25" alt="">
+					<img src="<%=img3%>" width="25" height="25" alt="">
+				</div>
+				<div class="price">
+					<span>￥<span class="price-value"><%=price%></span></span>
+				</div>
+				<p class="title"><%=title%></p>
+				<p class="comment">已有<span><%=comment%></span>人评价</p>
+				<p class="store"><%=store%></p>
+			</div>
+		</script>
+
+		
+		<script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/lodash.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/backbone.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			//数据
+			var listShop = Backbone.Model.extend({});
+			
+			//collection
+			var ItemCollection = Backbone.Collection.extend({
+				model: listShop
+			});
+			
+			var itemCollection = new ItemCollection();
+			
+			// view
+			var ItemView = Backbone.View.extend({
+				
+				tpl: _.template( $('#itemView').html() ),
+				
+				events: {
+					'click .small-img img': 'changeBigImg' 
+				},
+				
+				changeBigImg: function ( ev ) {
+					
+					var src = $(ev.target).attr('src');
+					
+					$(ev.target).parents('.item').find('.big-img').attr('src', src);
+					
+					$(ev.target).addClass('choose').siblings().removeClass('choose');
+					
+				},
+				
+				initialize: function () {
+					
+					var self = this;
+					this.collection.on('add',function ( model ) {
+						
+						self.render(model);
+						
+					});
+					
+				},
+				
+				render: function ( model ) {
+					
+					//数据
+					var data = model.toJSON();
+					
+					var html = this.tpl(data);
+					
+					//插入数据
+					this.$el.append(html);
+				
+				},
+				
+				renderSortBy: function ( reslut ) {
+					
+					this.$el.html('');
+					
+					var self = this;
+					$.each(reslut,function ( i,val ) {
+						
+						self.render(val);
+						
+					});
+					
+				}
+				
+			});
+			
+			var itemView = new ItemView({
+				el: $('#app'),
+				collection: itemCollection
+			});
+			
+			itemCollection.add([
+				{
+					img1: 'img/01.jpg',
+					img2: 'img/02.jpg',
+					img3: 'img/03.jpg',
+					price: '119.00',
+					title: '南极人男士短袖T恤 男修身圆领半袖体恤',
+					comment: '1151',
+					store: '南极人丹来欧专卖店'
+				},
+				{
+					img1: 'img/01.jpg',
+					img2: 'img/02.jpg',
+					img3: 'img/03.jpg',
+					price: '1221.00',
+					title: '南极人男士短袖T恤 男修身圆领半袖体恤',
+					comment: '1151',
+					store: '南极人丹来欧专卖店'
+				},
+				{
+					img1: 'img/01.jpg',
+					img2: 'img/02.jpg',
+					img3: 'img/03.jpg',
+					price: '9.00',
+					title: '南极人男士短袖T恤 男修身圆领半袖体恤',
+					comment: '1151',
+					store: '南极人丹来欧专卖店'
+				}
+			]);
+			
+			//渲染
+//			itemView.render();
+			
+			$('#btn').on('click',function () {
+				
+				var reslut = itemCollection.sortBy(function ( model ) {
+					
+					return +model.get('price');
+					
+				});
+				
+				itemView.renderSortBy( reslut );
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>

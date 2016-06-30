@@ -14,16 +14,21 @@
 		
 		<script type="text/javascript">
 			
-			var App = new Backbone.View({
-				tanName: 'h1',
-				id: 'app',
-				className: 'app'
-			});
+			//构造函数
+//			var App = new Backbone.View({
+//				tanName: 'h1',
+//				id: 'app',
+//				className: 'app'
+//			});
 
-
+			// extend
 			var App = Backbone.View.extend({
 				
 				initialize: function () {
+					
+					this.$el.html('xixihaha').css({
+						'color': 'pink'
+					});
 					
 					this.$el.html('¥79.00').css({
 						'background': 'tan'
@@ -36,6 +41,10 @@
 			var divView = new App({
 				el: $('#app')
 			});
+			
+			divView.setElement('<h1>123</h1>');
+			
+			console.log( divView );
 			
 		</script>
 		

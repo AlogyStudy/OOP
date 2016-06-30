@@ -1,4 +1,4 @@
-(function(){
+ï»¿(function(){
 	
 	var _  = function ( obj ) {
 		
@@ -13,22 +13,22 @@
 	root._ = _;
 			
 		
-	//¼ò±ãº¯Êý È¡±ðÃû
+	//ç®€ä¾¿å‡½æ•° å–åˆ«å
 	
-	//ÀûÓÚÑ¹Ëõ£¬ È¡±ðÃû
+	//åˆ©äºŽåŽ‹ç¼©ï¼Œ å–åˆ«å
 	
-	optimizeCb  Ö´ÐÐº¯Êý²¢¸Ä±äËùÖ´ÐÐº¯ÊýµÄ×÷ÓÃÓò
-	cb ¶Ô»Øµ÷º¯Êý½øÐÐ´¦Àí
+	optimizeCb  æ‰§è¡Œå‡½æ•°å¹¶æ”¹å˜æ‰€æ‰§è¡Œå‡½æ•°çš„ä½œç”¨åŸŸ
+	cb å¯¹å›žè°ƒå‡½æ•°è¿›è¡Œå¤„ç†
 	
-	assigner ·ÖÅäÆ÷
+	assigner åˆ†é…å™¨
 	
-	baseCreate ¼Ì³Ð Ò»¸öµ¥¶ÀÔ­ÐÍ
+	baseCreate ç»§æ‰¿ ä¸€ä¸ªå•ç‹¬åŽŸåž‹
 	
-	»ñÈ¡¶ÔÏóÊôÐÔ
+	èŽ·å–å¯¹è±¡å±žæ€§
 
 	prototype	
 	
-	ÅÐ¶ÏÊÇ·ñÊÇÊý×é
+	åˆ¤æ–­æ˜¯å¦æ˜¯æ•°ç»„
 	
 }.call(this));
 

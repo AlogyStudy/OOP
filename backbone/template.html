@@ -18,8 +18,8 @@
 			//moduel
 			var Price = Backbone.Model.extend({
 				defaults: {
-					parce: 100,
-					info: '包邮'
+					price: 100,
+					info: 'xixihaha'
 				}
 			})
 			
@@ -31,7 +31,13 @@
 				
 				initialize: function () {
 					
-					console.log( this );
+					//数据
+					var data = this.model.toJSON();
+					
+					//html
+					var html = this.tpl(data);
+					
+					this.$el.html(html).css('background','pink');
 					
 				}
 				

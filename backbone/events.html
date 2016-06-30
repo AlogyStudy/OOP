@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/lodash.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/backbone.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			
+			//events
+			
+//			var EventsModel =  Backbone.Model.extend();
+//			
+//			
+//			var events = new EventsModel();
+//			
+//			events.on('dd',function ( msg ) {
+//				
+//				console.log( msg );
+//				
+//			});
+//			
+//			
+//			events.trigger('dd','hello');
+
+
+
+//				var EventsView = Backbone.View.extend();
+//				
+//				var eventsView = new EventsView();
+//				
+//				eventsView.on('dd',function ( msg ) {
+//					
+//					console.log( msg );
+//					
+//				});
+//				
+//				eventsView.trigger('dd','zf');
+
+
+					
+//					var EventsCollection = Backbone.Collection.extend();
+//					
+//					var eventsCollection = new EventsCollection();
+//					
+//					eventsCollection.on('dd',function ( msg ) {
+//						
+//						console.log( msg );
+//						
+//					});
+//					
+//					eventsCollection.trigger('dd','dd-');
+					
+					
+					 //多个事件 联系
+					 
+					var ev1 = _.extend({},Backbone.Events);
+					var ev2 = _.extend({},Backbone.Events);
+					var ev3 = _.extend({},Backbone.Events);
+					
+//					console.log( myEvents );
+
+					ev2.listenTo(ev1, 'change', function ( msg ) {
+						
+						console.log( msg );
+						
+					});
+					
+					ev2.listenTo(ev1, 'add', function ( msg ) {
+						
+						console.log(msg);
+						
+					});
+					
+					ev2.listenTo(ev1, 'dd', function ( msg ) {
+						
+						console.log(msg);
+						
+					});
+					
+					ev2.stopListening(ev1, 'change');
+					
+					ev1.trigger('change', 'hello');
+					ev1.trigger('add', 'world');
+					
+					ev1.trigger('dd', 'pink');
+
+
+
+					 //模型 和  视图  之间的 事件联系  collection 和 view 之间的联系
+//					 var eventModel = new Backbone.Model();
+//					 
+//					 var eventView = new Backbone.View();
+//					 
+//					 var EventCollection = Backbone.Collection.extend();
+//					 
+//					 var eventCollection = new EventCollection();
+//					 
+//					 eventView.listenTo(eventModel,'change',function ( msg ) {
+//					 	
+//					 	console.log(msg);
+//					 	
+//					 });
+//					 
+//					 eventView.listenTo(eventCollection, 'remove', function ( msg ) {
+//					 	
+//					 	console.log( msg,'--' );
+//					 	
+//					 });
+//					 
+//					 eventModel.set({
+//					 	color: 'pink',
+//					 	age: 2
+//					 });
+//					 
+//					 eventCollection.add(eventModel);
+//					 eventCollection.remove(eventModel);
+					 
+			
+					// model    //fetch
+					
+					var ItemModel = Backbone.Model.extend({});
+			
+					var ListCollection = Backbone.Collection.extend({
+						model: ItemModel,
+						url: 'data/list.json',
+						initialize: function () {
+							
+							this.on('add',function ( model ) {
+								
+								console.log( model );
+								
+							});
+							
+						}
+					});
+					
+					
+					var listCollection = new ListCollection();
+					
+					console.log( listCollection );
+					
+					listCollection.fetch({
+						success: function ( collections ) {
+							
+							console.log( collections,'collections' );
+							
+						}
+					});
+					
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="div"></div>
+		
+		<button id="router">路由显示</button>
+		
+		<script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/lodash.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/backbone.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			var DictView = Backbone.View.extend({
+				
+				render: function ( dict ) {
+					
+					this.$el.html('DictView'+' '+ dict);
+					
+				}
+				
+			});
+			
+			
+			
+			//路由
+			
+			var Routers = Backbone.Router.extend({
+				
+				routes: {
+					home: 'showHome',
+					'en/ch/:dict': 'showSerch',
+					'*other': 'showDefault'
+				},
+				
+				showHome: function () {
+					console.log('showHome');
+				},
+				
+				showSerch: function ( dict ) {
+					
+					var dictView = new DictView({
+						el: $('.div')
+					});
+					
+					dictView.render( dict );
+					
+				},
+				
+				showDefault: function () {
+					
+					console.log('showDefault');
+					
+				}
+				
+			});
+			
+			var router = new Routers();
+			
+			//开启 路由
+			Backbone.history.start();
+
+
+			$('#router').on('click', function () {
+				
+				
+				console.log(router);
+				
+//				router.showSerch();
+				
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>

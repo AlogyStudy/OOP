@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+	#app {
+		width: 1020px;
+		height: 3940px;
+		margin-left: 260px;
+		margin-top: 50px;
+	}
+	.item {
+		/*border: 1px solid #ccc;*/
+		width: 220px;
+		height: 438px;
+		padding: 10px;
+		position: relative;
+	}
+	.big-img {
+		margin-bottom: 5px;
+	}
+	.small-img {
+		margin-top: 10px;
+	}
+	.small-img img {
+		border: 2px solid transparent;
+	}
+	.small-img .choose {
+		border: 2px solid red;
+	}
+	.price {
+		color: red;
+		line-height: 30px;
+	}
+	.price-value {
+		font-size: 24px;
+		font-weight: bold;
+	}
+	.title {
+		font-size: 12px;
+		color: #333;
+	}
+	.comment {
+		font-size: 12px;
+		color: #999;
+	}
+	.comment span {
+		color: blue;
+		font-weight: bold;
+	}
+	.store {
+		font-size: 12px;
+		color: #333;
+	}
+	.big-cell {
+		position: relative;
+		overflow: hidden;
+		height: 282px;
+	}
+	.see {
+		position: absolute;
+		padding: 5px;
+		background: rgba(0, 0, 0, .5);
+		top: 290px;
+		right: 20px;
+		display: none;
+		color: #fff;
+		font-size: 12px;
+	}
+	</style>
+	</head>
+	<body>
+		
+		<div id="app"></div>
+		
+		<script type="text/template" id="itemView">
+			<div class="item">
+				<div class="big-cell">
+					<img class="big-img" src="<%=img1%>" width="220" height="282" alt=""> 
+					<span class="see">关注</span>
+				</div>
+				<div class="small-img">
+					<img class="choose" src="<%=img1%>" width="25" height="25" alt="">
+					<img src="<%=img2%>" width="25" height="25" alt="">
+					<img src="<%=img3%>" width="25" height="25" alt="">
+				</div>
+				<div class="price">
+					<span>￥<span class="price-value"><%=price%></span></span>
+				</div>
+				<p class="title"><%=title%></p>
+				<p class="comment">已有<span><%=comment%></span>人评价</p>
+				<p class="store"><%=store%></p>
+			</div>
+		</script>
+
+		
+		<script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/lodash.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/backbone.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			//数据
+			var listShop = Backbone.Model.extend({});
+			
+			var shopView = new listShop();
+			
+			shopView.set({
+				img1: 'img/01.jpg',
+				img2: 'img/02.jpg',
+				img3: 'img/03.jpg',
+				price: '119.00',
+				title: '南极人男士短袖T恤 男修身圆领半袖体恤',
+				comment: '1151',
+				store: '南极人丹来欧专卖店'
+			});
+			
+			
+			// view
+			var ItemView = Backbone.View.extend({
+				
+				tpl: _.template( $('#itemView').html() ),
+				
+				events: {
+					'click .small-img img': 'changeBigImg' 
+				},
+				
+				changeBigImg: function ( ev ) {
+					
+					var src = $(ev.target).attr('src');
+					
+					this.$('.big-img').attr('src', src);
+					
+					$(ev.target).addClass('choose').siblings().removeClass('choose');
+					
+				},
+				
+				render: function () {
+					
+					//数据
+					var data = this.model.toJSON();
+					
+					var html = this.tpl(data);
+					
+					this.$el.html( html );
+				
+				}
+				
+			});
+			
+			var itemView = new ItemView({
+				el: $('#app'),
+				model: shopView
+			});
+			
+			//渲染
+			itemView.render();
+			
+		</script>
+		
+	</body>
+</html>
