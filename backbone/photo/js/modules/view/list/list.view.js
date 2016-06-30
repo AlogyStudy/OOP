@@ -19,6 +19,7 @@ define(function ( require ) {
 		events: {
 			
 			'click .search-btn': 'showSearch',
+			'tap .nav-wrap': 'showType',
 //			'tap .go-top': 'goTop'
 //			'click .go-top': 'goTop'
 
@@ -52,7 +53,7 @@ define(function ( require ) {
 				
 			});
 			
-			// 返回顶部
+			// 返回顶部  //evnets 不能触发， 放入initialize 执行
 			$('.go-top').on('tap', this.goTop);
 			
 		},
@@ -145,6 +146,15 @@ define(function ( require ) {
 			this.rightHeight += height + 6;
 			
 			this.rightContainer.append($(html));
+			
+		},
+		
+		
+		// 匹配规则
+		showType: function ( ev ) {
+			
+			// 获取typeId 
+			this.getTypeId( ev );
 			
 		},
 		
@@ -245,6 +255,19 @@ define(function ( require ) {
 			// 清楚计算宽高
 			this.leftHeight = 0;
 			this.rightHeight = 0;
+			
+		},
+		
+		
+		// 获取 匹配id
+		getTypeId: function ( ev ) {
+			
+			var typeId = $(ev.target).attr('data-id');
+			
+			console.log( typeId );
+			
+			
+			
 			
 		},
 		
