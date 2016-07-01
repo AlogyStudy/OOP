@@ -154,7 +154,13 @@ define(function ( require ) {
 		showType: function ( ev ) {
 			
 			// 获取typeId 
-			this.getTypeId( ev );
+			var typeId = this.getTypeId( ev );
+			
+			// 获取集合中相关模型
+			var reslut = this.getModelFormCollection(typeId,'type');
+			
+			// 渲染视图
+			this.renderSearchView(reslut);
 			
 		},
 		
@@ -262,12 +268,18 @@ define(function ( require ) {
 		// 获取 匹配id
 		getTypeId: function ( ev ) {
 			
-			var typeId = $(ev.target).attr('data-id');
+			return $(ev.target).attr('data-id');
 			
-			console.log( typeId );
+		},
+		
+		// 获取集合中相关模型
+		getModelFormCollection: function ( id, key ) {
 			
-			
-			
+			return this.collection.filter(function ( model ) {
+				
+				return model.get(key) == id;
+				
+			});
 			
 		},
 		

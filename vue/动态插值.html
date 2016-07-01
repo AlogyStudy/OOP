@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<input type="text" name="" id="txt" value="" />
+			<span>{{reslut | uppercase}}</span>
+		</div>
+		
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			
+			var txtVue = new Vue({
+				el: '#app',
+				
+				// 数据
+				data: {
+					value: 0
+				},
+				
+				//动态插值
+				computed: {
+					
+					reslut: function () {
+					
+						return this.value * 2;
+					
+					}
+					
+				}
+				
+			});
+			
+			document.querySelector('#txt').onkeyup = function ( ev ) {
+				
+				txtVue.value = ev.target.value;
+				
+			}
+			
+			
+		</script>
+		
+	</body>
+</html>

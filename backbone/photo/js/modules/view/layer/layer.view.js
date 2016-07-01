@@ -3,53 +3,131 @@
 
 define(function ( require ) {
 	
-//	require('modules/view/layer/layer.css');
+	require('modules/view/layer/layer.css');
 
-	var ImgEvent = _.extend({},Backbone.Events);
-
-	//大图视图
+	// 大图视图
 	var Layer = Backbone.View.extend({
 		
-		tpl: _.template( $('#moban').html() ),
+		tpl: _.template( $('#layerMoban').html() ),
 		
-		Cid: 0,
+		modelId: 0, // 索引
 		
-		initialize: function () {
+		events: {
+			'swipeLeft .img-container img': 'showNextImg',
+			'swipeRight .img-container img': 'showPrveImg',
+			'tap .back': 'goBack',
+			'tap .img-container img': 'showTitle'
+		},
+		
+		// 显示隐藏 头部
+		showTitle: function () {
 			
-			// 获取数据
-			this.getUrl();
-			
-			// 获取容器
-			this.getDom();
-			
-			// 渲染视图
-			this.render();
+			$('.title').toggleClass('hide');
 			
 		},
 		
-		getUrl: function () {
+		// 返回按钮
+		goBack: function () {
 			
-			var hash = window.location.hash;
-			this.Cid = hash.slice(7);
-			
-		},
-		
-		getDom: function () {
-			
-			this.layerMain = this.el;
+			window.location.hash = '#';
+//			$('.layer').remove();
 			
 		},
 		
-		render: function () {
+		// 后一张
+		showNextImg: function () {
 			
+			var nextid = ++this.modelId;
 			
+			//获取 model 数据
+			var model = this.collection.get(nextid);
 			
+			if ( model ) {
+				
+				// 更改 图片前后张
+				this.changeModel(model,nextid);
+				
+			} else {
+				
+				alert('已经是最后一张了');
+				this.modelId++;
+				
+			}
 			
+		},
+		
+		// 前一张
+		showPrveImg: function () {
 			
-		} 
+			var prveId = this.modelId--;
+			
+			//获取model 数据
+			var model = this.collection.get(prveId);
+			
+			if ( model ) {
+				
+				// 更改 图片前后张
+				this.changeModel(model,prveId);
+				
+			} else {
+				
+				alert('已经是第一张了');
+				this.modelId--;
+				
+			}
+			
+		},
+		
+		// 渲染视图
+		render: function ( leyarId ) {
+			
+			// 获取集合中模型
+			var model = this.getModelById(leyarId);
+			
+			// 获取json数据
+			var data = model.pick('url','title'); 
+			
+			// 获取模板字符串
+			var html = this.tpl(data);
+			
+			// 插入页面中
+			this.$el.html(html);
+			
+			// 显示大图页面
+			this.$el.show();
+			
+		},
+		
+		// 获取集合中的模型
+		getModelById: function ( id ) {
+			
+			return this.collection.get(id);
+			
+		},
+		
+		// 更改 图片前后张
+		changeModel: function ( model,nextId ) {
+			
+			// change url 
+			this.$('.img-container img').attr('src', model.get('url'));
+				
+			// change title
+			this.$('.title h1').html(model.get('title'));
+			
+			// 更改 url hash			
+			this.changeUrlHash(nextId);
+			
+		},
+		
+		// 更改 url hash
+		changeUrlHash: function ( hash ) {
+			
+			// layer/1
+//			window.location.hash = '#/layer/' + hash;
+			
+		}
 		
 	});
-	
 	
 	return Layer;
 	

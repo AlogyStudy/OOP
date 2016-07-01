@@ -107,11 +107,11 @@ body {
 	padding: 6px 6px 6px 3px;
 }
 
-.list-item .image-list img {
+.list-item img {
 	margin-bottom: 6px;
 	height: 100%;
+	display: block;
 }
-
 
 
 /*返回顶部*/
@@ -133,13 +133,11 @@ body {
 
 
 
-
-
 #listItem {
-	color: #fff;
+	/*color: #fff;
 	text-align: center;
 	font-size: 18px;
-	line-height: 40px;
+	line-height: 40px;*/
 }
 
 .tips {

@@ -9,7 +9,7 @@ define(function ( require ) {
 		
 		feachData: function ( cb ) {
 			
-			var self = this;
+			var _this = this;
 			
 			$.get('data/imageList.json',function ( res ) {
 				
@@ -23,7 +23,7 @@ define(function ( require ) {
 					});
 					
 					//数据 添加到 collection中
-					self.add(res.data);
+					_this.add(res.data);
 					
 					//添加成功执行
 					cb && cb();

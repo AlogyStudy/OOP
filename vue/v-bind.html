@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			/*.pink {
+				color: pink;	
+			}
+			.bgColor {
+				background: tan;
+			}*/
+		</style>
+	</head>
+	<body>
+		
+		<!--<div class="app" v-bind:class="[color, bgColor]">{{txt}}</div>-->
+		<!--<div class="app" v-bind:class="{pink: color , bgColor: bgColor}">{{txt}}</div>-->
+		
+		<!--<div class="app" v-bind:style="{ color: pink, background: tan }">{{txt}}</div>-->
+		<div class="app" v-bind:style="[line, color]">{{ txt }}</div>
+		
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			// 属性设置
+			
+//			var data = {
+//				txt: '嘻嘻哈哈哈哈哈哈哈',
+//				color: 'pink',
+//				bgColor: 'bgColor'
+//			}
+	
+		
+//				var data = {
+//					txt: '嘻嘻哈哈哈哈哈哈哈',
+//					color: true,
+//					bgColor: true
+//				}
+
+
+				// 对象设置
+				
+//				var data = {
+//					txt: '嘻嘻嘻嘻嘻嘻I嘻嘻啦啦啦啦啦啦啦啦',
+//					pink: 'pink',
+//					tan: 'tan'
+//				}
+
+			var data = {
+				txt: '嘻嘻嘻嘻嘻嘻I嘻嘻啦啦啦啦啦啦啦啦',
+				line: {
+					lineHeight: '30px', 
+					height: '30px'
+				},
+				color: {
+					color: 'pink',
+					background: 'cyan'
+				}
+			}
+			
+			
+			var view = new Vue({
+				el: '.app',
+				data: data
+			});
+			
+		</script>
+		
+	</body>
+</html>
