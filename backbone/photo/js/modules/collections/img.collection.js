@@ -11,7 +11,9 @@ define(function ( require ) {
 			
 			var _this = this;
 			
-			$.get('data/imageList.json',function ( res ) {
+			// data/imageList.json
+			
+			$.get('data/imgSo.json',function ( res ) {
 				
 				if ( res.errno === 0 ) {
 					

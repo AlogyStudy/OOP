@@ -84,17 +84,25 @@ define(function ( require ) {
 			// 获取集合中模型
 			var model = this.getModelById(leyarId);
 			
-			// 获取json数据
-			var data = model.pick('url','title'); 
-			
-			// 获取模板字符串
-			var html = this.tpl(data);
-			
-			// 插入页面中
-			this.$el.html(html);
-			
-			// 显示大图页面
-			this.$el.show();
+			if ( model ) {  //
+				
+				// 获取json数据
+				var data = model.pick('url','title'); 
+				
+				// 获取模板字符串
+				var html = this.tpl(data);
+				
+				// 插入页面中
+				this.$el.html(html);
+				
+				// 显示大图页面
+				this.$el.show();
+				
+			} else {
+				
+				window.location.hash = '#';
+				
+			}
 			
 		},
 		
