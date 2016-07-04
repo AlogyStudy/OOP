@@ -12,24 +12,48 @@ define(function ( require ) {
 			var _this = this;
 			
 			// data/imageList.json
+			// data/imgSo.json
 			
-			$.get('data/imgSo.json',function ( res ) {
+			$.ajax({
 				
-				if ( res.errno === 0 ) {
+				url: 'data/imgSo.json',
+				
+				statusCode: {
 					
-					//随机排序
-					res.data.sort(function () {
+					403: function () {
 						
-						return Math.random() > .5 ? 1 : -1;
+						console.log( 123 );
 						
-					});
+					}
 					
-					//数据 添加到 collection中
-					_this.add(res.data);
-					
-					//添加成功执行
-					cb && cb();
-					
+				},
+				
+				success: function ( res ) {
+				
+					if ( res.errno === 0 ) {
+						
+						//随机排序
+	//					res.data.sort(function () {
+	//						
+	//						return Math.random() > .5 ? 1 : -1;
+	//						
+	//					});
+						
+						// 字典修正  添加 type
+						for ( var i in res.data ) {
+							
+							res.data[i].type = _.random(0,7);
+							
+						}
+						
+						// 数据 添加到 collection中
+						_this.add(res.data);
+						
+						// 添加成功执行
+						cb && cb();
+						
+					}
+				
 				}
 				
 			});

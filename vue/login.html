@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li {
+				list-style: none;
+			}
+			.login {
+				width: 500px;
+				margin: 40px auto;
+				border: 1px solid cyan;
+				padding: 40px;
+				height: 400px;
+			}
+			.login input {
+				width: 250px;
+				height: 26px;
+				line-height: 26px;
+				border: 1px solid #111;
+				padding-left: 4px;
+				font-size: 14px;
+			}
+			
+			ul {
+				padding-left: 64px;
+				/*display: none;*/
+			}
+			ul li {
+				line-height: 40px;
+			}
+			ul li:hover {
+				background: #fafafa;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="login">
+			用户名：<input type="text" v-model="msg" />
+			<ul v-show="checkNum">
+				<li v-for="item in email"> {{ msg }}{{ item }} </li>
+			</ul>
+		</div>
+		
+		
+		<script src="vue1.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			var data = {
+				msg: '',
+				email: [
+					'@qq.com', 
+					'@gmail.com', 
+					'@129.com', 
+					'@189.com',
+					'@sina.com'
+				]
+			}
+			
+			// login Vue 模块
+			var vmLogin = new Vue({
+				
+				el: '.login',
+				data: data,
+				
+				// 动态数据
+				computed: {
+					
+					checkNum: function () {
+						
+//						return this.msg ? true : false;
+
+						return this.msg && this.msg.indexOf('@') < 0; 
+						
+					}
+					
+				}
+				
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>

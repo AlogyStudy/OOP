@@ -4,24 +4,27 @@
 		<meta charset="UTF-8">
 		<title></title>
 		
+	</head>
+	<body>
+		
 		<style type="text/css">
-			/*.pink {
+			.pink {
 				color: pink;	
 			}
 			.bgColor {
 				background: tan;
-			}*/
+			}
 		</style>
-	</head>
-	<body>
-		
 		<!--<div class="app" v-bind:class="[color, bgColor]">{{txt}}</div>-->
 		<!--<div class="app" v-bind:class="{pink: color , bgColor: bgColor}">{{txt}}</div>-->
 		
 		<!--<div class="app" v-bind:style="{ color: pink, background: tan }">{{txt}}</div>-->
+		
+		<!--<div class="app" v-bind:style="[line, color]">{{{*txt}}}</div>-->
+		
 		<div class="app" v-bind:style="[line, color]">{{ txt }}</div>
 		
-		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="vue1.js" type="text/javascript" charset="utf-8"></script>
 		
 		<script type="text/javascript">
 			
@@ -50,7 +53,7 @@
 //				}
 
 			var data = {
-				txt: '嘻嘻嘻嘻嘻嘻I嘻嘻啦啦啦啦啦啦啦啦',
+				txt: '嘻嘻嘻嘻嘻嘻I嘻嘻啦啦啦啦啦啦啦啦<strong>123</strong>',
 				line: {
 					lineHeight: '30px', 
 					height: '30px'
@@ -61,11 +64,25 @@
 				}
 			}
 			
-			
 			var view = new Vue({
+				
 				el: '.app',
-				data: data
+				
+				data: data,
+				
+				computed: {
+					
+					txt: function () {
+						
+						return this.txt = 'pink';
+						
+					}
+					
+				}
+				
 			});
+			
+//			data.txt = 'pink';
 			
 		</script>
 		

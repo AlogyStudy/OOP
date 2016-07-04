@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!--<div class="app" v-bind:style="[color]">
+			<span v-if="isShow">|</span>
+			<span v-else>&</span>
+			<span>{{msg}}</span>
+		</div>-->
+		
+		
+		<!--<div class="app" v-bind:style="[color]">
+			<template v-if="isShow">
+				<span>|</span>
+			</template>
+			<template v-else>
+				<span>&</span>
+			</template>
+			<span>{{msg}}</span>
+		</div>-->
+		
+		
+		<!--<div class="app" v-bind:style="[color]">
+			<span v-show="isShow">|</span>
+			<span>{{ msg }}</span>
+		</div>-->
+		
+		<!--<ul class="app">
+			<li v-for="item in msg" v-bind:style="{color: item.color}">{{ item.lisTxt }}</li>
+		</ul>-->
+		
+		<ul class="app">
+			<template v-for="item in msg">
+				<li v-bind:style="{color: item.color}">{{ item.lisTxt }}</li>
+			</template>
+		</ul>
+		
+		<script src="vue1.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			var data = {
+//				msg: ['pink', 'cyan', 'tan', 'black', 'khaki'],
+					msg: [
+						{
+							lisTxt: 'pink',
+							color: 'pink'
+						},
+						{
+							lisTxt: 'cyan',
+							color: 'cyan'
+						},
+						{
+							lisTxt: 'tan',
+							color: 'tan'
+						},
+						{
+							lisTxt: 'black',
+							color: 'black'
+						},
+						{
+							lisTxt: 'khaki',
+							color: 'khaki'
+						}
+					],
+//				isShow: false,
+//				isShow: true,
+				color: {
+					color: 'pink',
+					background: 'tan'
+				}
+			}
+			
+			var vm = new Vue({
+				el: '.app',
+				data: data
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>

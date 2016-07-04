@@ -20,7 +20,7 @@
 	
 				$arr = array(
 					'title' => $value[$i]->group_title,
-					'url' => $value[$i]->qhimg_url,
+					'url' => $value[$i]->cover_imgurl,
 					'width' => $value[$i]->qhimg_width,
 					'height' => $value[$i]->qhimg_height
 				);
@@ -28,8 +28,13 @@
 				$q = json_encode($arr);
 				
 				$filename = '../data/imgSo.json';
-				$word = $q;
 				
+//				$str = "errno: 0, data: [$q]";
+				
+				$word = $q . ',';
+				
+//				$word = substr($word, 0, strlen($word)-1);
+
 				$fh = fopen($filename, "a");
 				
 				fwrite($fh, $word);

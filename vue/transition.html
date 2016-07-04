@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			
+			.isHH-transition {
+				transition: all 1s;
+				width: 100px;
+				height: 300px;
+			}
+			.isHH-enter, .isHH-leave {
+				width: 0;
+				height: 0;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div class="app">
+			<button transition="isHH" v-on:click="isa">显示隐藏</button>
+		</div>
+		
+		
+		<script src="vue1.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			var data = {
+				isShow: true,
+				methods: {
+					isa: function () {
+						this.isShow = this.isShow ? false : true;
+					}
+				}
+			}
+			
+			var vm = new Vue({
+				el: '.app',
+				data: data
+			});
+			
+		</script>
+		
+	</body>
+</html>

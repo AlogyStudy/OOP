@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!--<div id="app">
+			<input type="text" name="" v-model="msg" value="" />
+			<span>{{msg | uppercase}}</span>
+		</div>-->
+		
+		
+		<!--<div class="app">
+			<input type="checkbox" v-model="size.size30" name="" id="" />中
+			<input type="checkbox" v-model="size.size20" name="" id="" />英
+			<span>{{ size| json }}</span>
+		</div>
+		-->
+		
+		<div class="app">
+			<input type="radio" name="" id="" v-model="" value="" />
+			<input type="radio" name="" id="" value="" />
+		</div>
+		
+		<!-- debounce -->
+		<!-- lazy -->
+		<!--<div class="app">
+			<!--<input type="text" v-model="msg" debounce="1000" lazy name="" id="" value="" />--
+			<input type="text" v-model="msg" lazy name="" id="" value="" />
+			{{msg}}
+		</div>-->
+		
+		
+		
+		<script src="vue1.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+//			var data = {
+//				msg: 'xixixii'
+//			}
+//			
+//			var vm = new Vue({
+//				el: '#app',
+//				data: data
+//			});
+		
+				var data = {
+					size: {
+						size30: true,
+						size20: false
+					}
+				}
+//		
+//				var vm = new Vue({
+//					el: '.app',
+//					data: data
+//				});
+
+
+	
+				var vm = new Vue({
+					el: '.app',
+					data: data
+				});
+
+
+//				var data = {
+//					msg: ''
+//				}
+//				
+//	
+//				var vm = new Vue({
+//					el: '.app',
+//					data: data
+
+			
+
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

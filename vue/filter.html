@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app" id="app">
+			<label for="price">输入价格</label>
+			<input type="text" name="" v-model="price" id="price" value="" />
+			<span>{{ price | showPrice priceName }}</span>
+		</div>
+		
+		<script src="vue1.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			Vue.filter('showPrice', function ( val,priceName ) {
+				
+				return priceName + '$' + (+val).toFixed(2);
+				
+			});
+			
+			var data = {
+				price: '',
+				priceName: '输入的价格为：'
+			}
+			
+			var vm = new Vue({
+				el: '.app',
+				data: data
+			});
+			
+		</script>
+		
+	</body>
+</html>
