@@ -39,8 +39,8 @@
 		
 		<div class="login">
 			用户名：<input type="text" v-model="msg" />
-			<ul v-show="checkNum">
-				<li v-for="item in email"> {{ msg }}{{ item }} </li>
+			<ul v-if="checkNum">
+				<li v-for="item in email | filterBy dealNum" v-on:click="chooseEmail"> {{ msg | removeEmail }}{{ item }} </li>
 			</ul>
 		</div>
 		
@@ -48,6 +48,13 @@
 		<script src="vue1.js" type="text/javascript" charset="utf-8"></script>
 		
 		<script type="text/javascript">
+			
+			var removeEmail = Vue.filter('removeEmail', function ( val ) {
+				
+				// @qq.com
+				return val.replace(/@.*/,'');	
+				
+			});
 			
 			var data = {
 				msg: '',
@@ -73,14 +80,39 @@
 						
 //						return this.msg ? true : false;
 
-						return this.msg && this.msg.indexOf('@') < 0; 
+//						return this.msg && this.msg.indexOf('@') < 0; 
+						return 	this.msg;
+						
+					},
+					
+					dealNum: function () {
+						
+						// 123@qq => 123  获取 @qq
+						// 第一步获取@位置
+						
+						var idx = this.msg.indexOf('@');
+						
+						if ( idx >= 0 ) {
+							
+							return this.msg.slice(idx);
+							
+						}
+						
+						return '';
 						
 					}
 					
+				},
+				
+				methods: {
+					chooseEmail: function ( ev ) {
+					
+						this.msg = ev.target.innerHTML.replace(/\s+/,'');
+						
+					}
 				}
 				
 			});
-			
 			
 		</script>
 		

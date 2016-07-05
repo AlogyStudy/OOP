@@ -12,6 +12,8 @@
 		</div>-->
 		
 		
+		<!-- 多选 -->
+		
 		<!--<div class="app">
 			<input type="checkbox" v-model="size.size30" name="" id="" />中
 			<input type="checkbox" v-model="size.size20" name="" id="" />英
@@ -19,15 +21,47 @@
 		</div>
 		-->
 		
+		<!--单选-->
+		
+		<!--<div class="app">
+			<label for="nan">男</label>
+			<input type="radio" name="" id="nan" v-model="sex" value="nan" />
+			<label for="nv">女</label>
+			<input type="radio" name="" id="nv" v-model="sex" value="nv" />
+			<span>{{sex}}</span>
+		</div>-->
+		
+		
+		<!--下拉框-->
+		
+		<!--<div class="app">
+			
+			<select name="" v-model="msg" multiple="multiple">
+				<option selected="selected">德国</option>
+				<option>法国</option>
+				<option>葡萄牙</option>
+				<option>意大利</option>
+			</select>
+			
+			<br />
+			<br />
+			<span>{{ msg }}</span>
+			
+		</div>-->
+		
+		<!--动态下拉框-->
+		
 		<div class="app">
-			<input type="radio" name="" id="" v-model="" value="" />
-			<input type="radio" name="" id="" value="" />
+			<select name="" v-model="country" multiple="multiple">
+				<option  value="{{item}}" v-for="item in countrys">{{ item }}</option>
+			</select>
+			<span>{{country}}</span>
 		</div>
 		
 		<!-- debounce -->
 		<!-- lazy -->
 		<!--<div class="app">
-			<!--<input type="text" v-model="msg" debounce="1000" lazy name="" id="" value="" />--
+			<input type="text" v-model="msg" debounce="1000" lazy name="" id="" value="" />--
 			<input type="text" v-model="msg" lazy name="" id="" value="" />
 			{{msg}}
 		</div>-->
@@ -47,13 +81,15 @@
 //				data: data
 //			});
 		
-				var data = {
-					size: {
-						size30: true,
-						size20: false
-					}
-				}
+//				var data = {
+//					size: {
+//						size30: true,
+//						size20: false
+//					}
+//				}
 //		
+
+
 //				var vm = new Vue({
 //					el: '.app',
 //					data: data
@@ -61,25 +97,27 @@
 
 
 	
+//				var vm = new Vue({
+//					el: '.app',
+//					data: data
+//				});
+//
+//
+//				var data = {
+//					msg: '',
+//					sex: 'nv'
+//				}
+//				
+					
+				var data = {
+					country: '',
+					countrys: ['德国', '英国', '冰岛', '葡萄牙']
+				}
+					
 				var vm = new Vue({
 					el: '.app',
 					data: data
 				});
-
-
-//				var data = {
-//					msg: ''
-//				}
-//				
-//	
-//				var vm = new Vue({
-//					el: '.app',
-//					data: data
-
-			
-
-			
-			
 			
 		</script>
 		

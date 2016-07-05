@@ -1,0 +1,176 @@
+
+body {
+	background: #f3f3f3;
+}
+
+.app-header {
+	color: #fff;		
+}
+/*f3e4b9*/
+/*ff7125*/
+
+.app-header .navbar {
+	background: #ff7125;
+}
+
+.app-header h1 {
+	width: 100%;
+	font-size: 28px;
+	text-align: center;
+	font-weight: normal;
+	height: 54px;
+	line-height: 54px;
+}
+
+.app-header .back {
+	position: relative;
+	top: 11px;
+}
+
+.app-header .arrow {
+	position: absolute;
+	border: 16px solid transparent;
+	border-right: 16px solid #fff;
+	font-size: 0;
+}
+.app-header .green {
+	position: absolute;
+	border: 16px solid transparent;
+	border-right: 16px solid #ff7125;
+	left: 3px;
+}
+
+
+.app-header .login {
+	position: absolute;
+	right: 20px;
+	font-size: 18px;
+	line-height: 54px;
+}
+
+
+.app-header input {
+	padding: 0 10px;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	box-sizing: border-box;
+	border-bottom: 1px solid #DEDEDE;
+}
+
+
+
+/*home-page*/
+
+.home-page {
+	margin-bottom: 10px;	
+} 
+
+.home-page .types {
+	background: #fff;
+}
+
+.home-page .types li {
+	float: left;
+	width: 20%;
+	list-style: none;
+	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.home-page .types a {
+	color: #666;
+}
+.home-page .types img {
+	width: 60%;
+	margin-bottom: 5px;
+}
+.home-page .types span {
+	display: block;
+	font-size: 12px;
+}
+
+
+
+.home-page .ad {
+	margin: 10px 5px;
+	background: #fff;
+}
+.home-page .ad li {
+	float: left;
+	width: 33.33%;
+	text-align: center;
+	list-style: none;
+	padding-top: 10px;
+	border-right: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.home-page .ad li:nth-child(3) {
+	border-right: none;
+}
+.home-page .ad a {
+	text-decoration: none;
+	color: #666;
+}
+.home-page .ad h2 {
+ 	color: #f76181;
+ 	font-size: 16px;
+}
+.home-page .ad img {
+	width: 50%;
+}
+.home-page .ad p {
+	margin: 10px 0 15px;
+}
+
+
+
+
+.list {
+	background: #fff;
+	padding: 15px;
+	padding-bottom: 0;
+}
+.list li {
+	border-bottom: 1px solid #ccc;
+	list-style: none;
+	height: 100px;
+}
+.list a {
+	text-decoration: none;
+}
+.list img {
+	float: left;
+	width: 140px;
+	height: 80px;
+	margin-top: 10px;
+}
+.list .description {
+	margin-left: 145px;
+	height: 100%;
+}
+.list h3 {
+	height: 60px;
+	padding-top: 10px;
+	color: #666;
+	font-weight: normal;
+	font-size: 16px;
+}
+.list .desc-left {
+	float: left;
+	font-size: 12px;
+	color: #666;
+}
+.list .desc-right {
+	float: right;
+	font-size: 12px;
+	color: #666;
+}
+.list .orign-price {
+	margin-left: 5px;
+}
+.list .price {
+	color: #06c1ae;
+	font-size: 14px;
+}

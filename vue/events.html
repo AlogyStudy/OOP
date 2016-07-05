@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app">
+
+			<button v-on:click="getMsg($event,msg,'嘻嘻哈哈')">获取值</button>
+			<input type="text" v-model="msg" name="" id="" value="" />
+			<span>{{msg}}</span>
+			
+		</div>
+		
+		<script src="vue1.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			var data = {
+				msg: ''
+			}
+			
+			var vmTxt = new Vue({
+				el: '.app',
+				data: data,
+				methods: {
+					getMsg: function ( ev, msg, info ) {
+						
+//						alert(this.msg);
+					
+							console.log( ev );
+							console.log( msg );
+							console.log( info );
+						
+					}
+				}
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>

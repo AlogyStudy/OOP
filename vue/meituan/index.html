@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>团购网</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+	</head>
+	<body>
+		
+		<div class="app" id="app">
+			
+			<header class='app-header'>
+				
+				<div class="navbar">
+					<div class="back fl"><span class="arrow"></span><span class="arrow green"></span></div>
+					<div class="login fr">登录</div>
+					<h1>团购网</h1>
+				</div>
+				
+				<div class="search">
+					<input type="text" placeholder="请输入搜索关键字">
+				</div>
+				
+			</header>
+			
+			<!--动态组件-->
+			<component v-bind:is="view"></component>
+			
+		</div>
+		
+		
+		
+		<!--tpl_home-->
+		<script type="text/template" id="tpl_home">
+			
+			<section class="home-page clearfix">
+				
+				<!--icon 模块-->
+				<ul class="types clearfix">
+					<li v-for="item in types">
+						<a href="#list/type/{{item.id}}">
+							<img v-bind:src="'img/icon/' + item.url" alt="" />
+							<!--<img src="img/icon/{{item.url}}" alt="" />-->
+							<span>{{item.title}}</span>
+						</a>
+					</li>
+				</ul>
+				
+				<!--ad 模块-->
+				<ul class="ad clearfix">
+					<li v-for="item in ad">
+						<a href="#product/{{item.id}}">
+							<h2>{{item.title}}</h2>
+							<p>{{item.description}}</p>
+							<img v-bind:src="'img/product/' + item.url" alt="" />
+						</a>
+					</li>
+				</ul>
+				
+				<!--list 模块-->
+				<ul class="list clearfix">
+					
+					<li v-for="item in list">
+						<a href="#product/{{ item.id }}">
+							<img v-bind:src="'img/list/' + item.img" alt="" />
+							<div class="description">
+								<h3>{{ item.title }}</h3>
+								<span class="desc-left price">{{ item.price | price }}</span>
+								<span class="desc-left orign-price">{{ item.orignPrice | orignPrice }}</span>
+								<span class="desc-right">{{ item.sales | sales }}</span>
+							</div>
+						</a>
+					</li>
+					
+				</ul>
+				
+			</section>
+			
+		</script>
+		
+		<!--end tpl_home-->
+		
+		<!--list-->
+		
+		<script type="text/template">
+			
+		</script>
+		
+		<!--end list-->
+		
+		
+		<script src="js/lib/vue.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script src="js/sea.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+
+			seajs.use('app', function ( app ) {
+				
+				app.showApp();
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app">
+			
+			<input type="text" v-model="inp" />
+			<span>{{inp}}</span>
+			
+			<!--组件自定义元素-->
+			<!--<components msg="-info"></components>-->
+			<components v-bind:msg="inp"></components>
+			
+		</div>
+		
+		<script src="vue1.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			// 定义组件  ， 模板：template
+			var component = Vue.extend({
+				// 将组件上的数据映射到组件上
+				props: ['msg'],
+				
+				template: '<h1>hello{{msg}}</h1> <button v-on:click="tuUpper">将h1中内容大写</button>', // 发布事件
+				
+				methods: {
+					
+					// 定义事件
+					tuUpper: function ( ev ) {
+						
+						this.msg = this.msg && this.msg.toUpperCase();
+						
+						// 发布事件
+						this.$dispatch('appMsg', this.msg);
+						
+					}
+				}
+			});
+			
+			// 注册组件
+			Vue.component('components',component);
+			
+			var vmCom = new Vue({
+				el: '.app',
+				data: {
+					inp: ''
+				},
+				
+				events: {
+					// 定义事件
+					appMsg: function ( msg ) {
+						
+						console.log(msg);
+						
+					}
+				}
+			});
+			
+		</script>
+		
+	</body>
+</html>

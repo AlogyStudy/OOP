@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app">
+			
+			<input type="text" v-model="msg" />
+			<span v-price-directive="msg"></span>
+			
+		</div>
+		
+		<script src="vue1.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			// 自定义指令
+			
+			// directive(id,options)
+			// options 三个函数 ： bind, update, unbind
+			Vue.directive('price-directive',{
+				
+				// 绑定方法，为元素绑定指令时候执行
+				bind: function () {
+					
+					// 应用： 有时候绑定一个指令需要执行大量业务逻辑，此时将这些业务逻辑放在bind中执行。这样update的时候，不会重复执行。 只会执行一次。
+					
+					console.log(this);  // directive 实例化对象
+					
+				},
+				
+				// 内容更新的时候调用， 这个内容指的是传递的内容msg，msg改动时即使input输入时。
+				// 指令内容更新调用的方法
+				// val 表示当前存在内容msg的值
+				// oldVal 表示前一个内容msg的值，第一次调用时，不存在，是undefined
+				update: function ( val,oldVal ) {
+					
+					console.log( val, oldVal );
+					
+					this.el.innerHTML = val;
+					
+				},
+				
+				// 对元素解除绑定 指令时执行.
+				unbind: function () {
+					
+					console.log(123);
+					
+				}
+				
+			});
+			
+			var data = {
+				msg: 123
+			}
+			
+			var vm = new Vue({
+				el: '.app',
+				data: data
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app">
+			
+			<label for="userName">用户名</label>
+			<input type="text" v-model="userName" name="userName" id="userName" value="" />
+			<span v-username-directive="userName">用户名4-8位</span>
+			
+		</div>
+		
+		<script src="vue1.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			var userName = Vue.directive('username-directive', {
+				
+				// update
+				update: function ( val,oldVal ) {
+					
+					// 四到八位
+					// 第二个条件：判断第一次执行该方法：特点：oldValue不存在，并且value值是个空的
+					if ( /^\w{4,8}$/.test(val) || ( !val && !oldVal ) ) {
+						
+						// 内容正确 
+						this.el.innerHTML = '';
+						
+					} else {
+						
+						this.el.innerHTML = '格式错误';
+						
+					}
+					
+				} 
+				
+			});
+			
+			var data = {
+				userName: ''
+			}
+			
+			var vmUser = new Vue({
+				el: '.app',
+				data: data
+			});
+			
+		</script>
+		
+	</body>
+</html>
