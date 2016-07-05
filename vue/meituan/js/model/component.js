@@ -53,12 +53,100 @@ define(function ( require ) {
 	
 	// List 组件
 	var List = Vue.extend({
-//		template: util.tpl('');
+		// list 模板
+		template: util.tpl('list_tpl'),
+		
+		// list 数据
+		data: function () {
+			
+			return {
+				types: [
+					{value: '价格排序', key: 'price'},
+					{value: '销量排序', key: 'sales'},
+					{value: '好评排序', key: 'evaluate'},
+					{value: '优惠排序', key: 'discount'}
+				],
+				data: [],
+				otherData: [],
+				srot: true
+			}
+			
+		},
+		
+		// 组件生成 执行 
+		created: function () {
+			
+			var _this = this;
+			
+			util.ajax('data/list.json', function ( res ) {
+				
+				var reslut = JSON.parse(res);
+				
+				// 返回数据成功
+				if ( reslut.errno === 0 ) {
+					
+					// 将数据加入组件
+					// 显示3条数据
+					_this.$set('data', reslut.data.slice(0,3));
+					
+					// 后续数据添加到
+					_this.$set('otherData', reslut.data.slice(3));
+					
+				}
+				
+			});
+			
+		},
+		
+		// 事件驱动
+		methods: {
+			
+			// 加载更多
+			loadMore: function () {
+			
+				// 把剩余输入添加到 执行数组中
+				this.data = this.data.concat(this.otherData);
+				
+				// 清空占用数组
+				this.otherData = [];
+				
+			},
+			
+			// 排序
+			sortNum: function ( key ) {
+				
+				this.data.sort(function ( a, b ) {
+					
+					// 优惠排序
+					if ( key === 'discount' ) {
+						
+						// 用原价减去售价排序
+						return (b.orignPrice - b.price) - (a.orignPrice - a.price);
+						
+					}
+					
+					// 由大到小排序
+					return  b[key] - a[key];
+					
+				});
+				
+			}
+			
+		}
+		
 	});
+	
 	
 	// Product 组件
 	var Product = Vue.extend({
-		template: '<h1>product</h1>'
+		// 模板
+		template: util.tpl('product_tpl'),
+		
+		// 数据
+		data: function () {
+			return {}
+		},
+		
 	});
 	
 	

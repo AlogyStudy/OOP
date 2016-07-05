@@ -24,4 +24,11 @@ define(function ( rqeuire, exports, module ) {
 	});
 	
 	
+	// 加载更多
+	Vue.filter('otherNum', function ( val ) {
+		
+		return '查看其他 ' + val + ' 条团购';
+		
+	});
+	
 });

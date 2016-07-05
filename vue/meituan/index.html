@@ -83,20 +83,64 @@
 		<!--end tpl_home-->
 		
 		<!--list-->
-		
-		<script type="text/template">
+		<script type="text/template" id="list_tpl">
+			
+			<section class="list-page">
+				
+				<!--sort 模块-->
+				<ul class="type clearfix white">
+					<li v-for="item in types" v-on:click="sortNum(item.key)">
+						<span>{{ item.value }}</span>
+						<span class="arrow"></span>
+					</li>
+				</ul>
+				
+				<div class="">
+					<!--list 模块-->
+					<ul class="list clearfix">
+						<li v-for="item in data">
+							<a href="#product/{{ item.id }}">
+								<img v-bind:src="'img/list/' + item.img" alt="" />
+								<div class="description">
+									<h3>{{ item.title }}</h3>
+									<span class="desc-left price">{{ item.price | price }}</span>
+									<span class="desc-left orign-price">{{ item.orignPrice | orignPrice }}</span>
+									<span class="desc-right">{{ item.sales | sales }}</span>
+								</div>
+							</a>
+						</li>
+					</ul>
+					
+					<div class="load-more white" v-on:click="loadMore" v-show="otherData.length">
+						<span>{{otherData.length | otherNum }}</span>
+						<span class="arrow-more">
+							<span class="arrow-more arrow-more-rep"></span>
+						</span>
+					</div>
+					
+				</div>
+				
+			</section>
 			
 		</script>
 		
 		<!--end list-->
 		
 		
-		<script src="js/lib/vue.js" type="text/javascript" charset="utf-8"></script>
+		<!--product-->
+		<script type="text/template" id="product_tpl">
+			
+			<h1>123123</h1>
+			
+		</script>
+		<!--end product-->
 		
+		
+		<script src="js/lib/vue.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/sea.js" type="text/javascript" charset="utf-8"></script>
 		
 		<script type="text/javascript">
-
+			
 			seajs.use('app', function ( app ) {
 				
 				app.showApp();

@@ -22,8 +22,15 @@ define(function ( require, exports, moduel ) {
 		
 		// model
 		var data = {
+			
+			// 动态 组件
 			view: '',
-			query: []
+			
+			// 存储 uri query 
+			query: [],
+			
+			// 控制 search
+			
 		}
 		
 		// meituan VM 

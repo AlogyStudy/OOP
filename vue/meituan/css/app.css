@@ -171,6 +171,57 @@ body {
 	margin-left: 5px;
 }
 .list .price {
-	color: #06c1ae;
+	color: #ff7125;
 	font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+/*list page*/
+.type {
+	border-bottom: 1px solid #eee;
+}
+.type li {
+	float: left;
+	width: 25%;
+	border-right: 1px solid #eee;
+	font-size: 16px;
+	text-align: center;
+	line-height: 50px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.type li .arrow {
+	position: relative;
+	top: 14px;
+	border: 6px solid transparent;
+	border-top: 6px solid #ccc;
+}
+
+.load-more {
+	line-height: 40px;
+	text-align: center;
+	font-size: 16px;
+	border-bottom: 1px solid #eee;
+	color: #ff7125;
+}
+
+.load-more .arrow-more {
+	position: relative;
+  top: 15px;
+  left: 5px;
+	border: 8px solid transparent;
+	border-top: 8px solid #ff7125; 
+}
+.load-more .arrow-more-rep {
+  position: absolute;
+  top: -11px;
+  left: -8px;
+	border-top: 8px solid white;
 }
