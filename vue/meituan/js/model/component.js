@@ -29,6 +29,9 @@ define(function ( require ) {
 		// 组件创建完成自动调用
 		created: function () {
 			
+			// 搜索框显示隐藏
+			this.$parent.hideSerch = true;
+			
 			var _this = this;
 			
 			// 异步读取数据
@@ -75,6 +78,9 @@ define(function ( require ) {
 		
 		// 组件生成 执行 
 		created: function () {
+			
+			// 搜索框显示隐藏
+			this.$parent.hideSerch = true;
 			
 			var _this = this;
 			
@@ -144,8 +150,38 @@ define(function ( require ) {
 		
 		// 数据
 		data: function () {
-			return {}
+			return {
+				product: {
+					src: '01.jpg'
+				}
+			}
 		},
+		
+		created: function () {
+			
+			// 搜索框显示隐藏
+			this.$parent.hideSerch = false;
+			
+			var _this = this;
+			
+			util.ajax('data/product.json', function ( res ) {
+				
+				var reslut = JSON.parse(res);
+				
+				// 数据请求成功
+				if ( reslut.errno === 0 ) {
+					
+					// 加入数据
+					_this.$set('product', reslut.data);
+					
+					console.log( _this.product );
+					
+				}
+				
+				
+			});
+			
+		}
 		
 	});
 	

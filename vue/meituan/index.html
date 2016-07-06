@@ -19,7 +19,7 @@
 					<h1>团购网</h1>
 				</div>
 				
-				<div class="search">
+				<div class="search" v-show="hideSerch">
 					<input type="text" placeholder="请输入搜索关键字">
 				</div>
 				
@@ -130,7 +130,58 @@
 		<!--product-->
 		<script type="text/template" id="product_tpl">
 			
-			<h1>123123</h1>
+			<section class="product-page">
+				
+				<div class="img-container">
+					<img v-bind:src="'img/item/' + product.src" alt="">
+					<div class="img-bg clearfix">
+						<h1>{{product.title}}</h1>
+						<p>{{product.description}}</p>
+					</div>
+				</div>
+				
+				<div class="price-container">
+					<span class="btn">立即购买</span>
+					<span class="price">
+						<span>{{product.price}}</span>元
+					</span>
+					<span>{{product.orignPrice | orignPrice}}</span>
+				</div>
+				
+				<ul class="sale-container clearfix">
+					<li>支持随时退款</li>
+					<li>支持过期自动退</li>
+					<li class="sales">{{product.sales | sales}}</li>
+				</ul>
+				
+				<div class="part store">
+					<h2>店家信息</h2>
+					<p>{{product.storeName}}</p>
+					<p>{{product.storeAdress}}</p>
+					<div class="see-more">查看全部{{product.storeNum}}家适用分店</div>
+				</div>
+				
+				<div class="part buy">
+					<h2>购买须知</h2>
+					<ul>
+						<li>
+							<h3>有效期</h3>
+							<div>{{product.validateTime}}</div>
+						</li>
+						<li>
+							<h3>使用时间</h3>
+							<div>{{product.useTime}}</div>
+						</li>
+						<li>
+							<h3>使用规则</h3>
+							<ul>
+								<li v-for="item in product.rules">{{item}}</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				
+			</section>
 			
 		</script>
 		<!--end product-->

@@ -29,7 +29,8 @@ define(function ( require, exports, moduel ) {
 			// 存储 uri query 
 			query: [],
 			
-			// 控制 search
+			// 控制 search 显示隐藏
+			hideSerch: true
 			
 		}
 		
