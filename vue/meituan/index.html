@@ -20,7 +20,7 @@
 				</div>
 				
 				<div class="search" v-show="hideSerch">
-					<input type="text" placeholder="请输入搜索关键字">
+					<input type="text" v-on:keyup.enter="search" placeholder="请输入搜索关键字">
 				</div>
 				
 			</header>

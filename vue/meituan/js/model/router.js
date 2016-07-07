@@ -19,6 +19,21 @@ define(function ( require, exports, moduel ) {
 			
 			MeituanVm.view = hash[0] || 'home';
 			
+			// 列表页面路由失效
+			// 当前页面的view组件是list， 搜索后得到的组件还是list， 同样的组件， created 不会再次执行
+			
+			if ( hash[0] === 'list' && MeituanVm.view === hash[0] ) {
+				
+				// 设置query
+				MeituanVm.query = hash.slice(1);
+				
+				// 子组件向父组件发送消息 
+				MeituanVm.$broadcast('reload-list'); // 路由改变，向List 子组件中发送消息
+				
+				return ;
+				
+			}
+			
 		}
 		
 		// hashchange 事件更改路由

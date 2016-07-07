@@ -79,33 +79,58 @@ define(function ( require ) {
 		// 组件生成 执行 
 		created: function () {
 			
-			// 搜索框显示隐藏
-			this.$parent.hideSerch = true;
+			// 请求数据
+			this.init();
 			
-			var _this = this;
+		},
+		
+		// 订阅消息
+		events: {
 			
-			util.ajax('data/list.json', function ( res ) {
-				
-				var reslut = JSON.parse(res);
-				
-				// 返回数据成功
-				if ( reslut.errno === 0 ) {
+			'reload-list': function () {
 					
-					// 将数据加入组件
-					// 显示3条数据
-					_this.$set('data', reslut.data.slice(0,3));
-					
-					// 后续数据添加到
-					_this.$set('otherData', reslut.data.slice(3));
-					
-				}
+				// 请求数据
+				this.init();
 				
-			});
+			}
 			
 		},
 		
 		// 事件驱动
 		methods: {
+			
+			// init 请求数据 逻辑
+			init: function () {
+				
+				// 搜索框显示隐藏
+				this.$parent.hideSerch = true;
+				
+				var _this = this;
+				
+				util.ajax('data/list.json', function ( res ) {
+					
+					var reslut = JSON.parse(res);
+					
+					// 返回数据成功
+					if ( reslut.errno === 0 ) {
+						
+						// 打乱返回数据的顺序
+						reslut.data.sort(function () {
+							return Math.random() > .5 ? 1 : -1;
+						});
+						
+						// 将数据加入组件
+						// 显示3条数据
+						_this.$set('data', reslut.data.slice(0,3));
+						
+						// 后续数据添加到
+						_this.$set('otherData', reslut.data.slice(3));
+						
+					}
+					
+				});
+				
+			},
 			
 			// 加载更多
 			loadMore: function () {

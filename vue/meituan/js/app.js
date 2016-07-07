@@ -36,8 +36,28 @@ define(function ( require, exports, moduel ) {
 		
 		// meituan VM 
 		var MeituanVm = new Vue({
+			
+			// app
 			el: '#app',
-			data: data
+			
+			// 数据
+			data: data,
+			
+			// 事件驱动 
+			methods: {
+				
+				// 搜索 事件
+				search: function ( ev ) {
+					
+					var val = ev.target.value;
+					
+					// 改变路由 '#list/search/val'
+					window.location.hash = '#list/search/' + val; 
+					
+				}
+				
+			}
+			
 		});
 		
 		// 路由配置
