@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="appBody">
+		
+		
+		<div ng-controller="filters">
+			
+			<!--<div>{{ color | filter : 'n' }}</div>
+			<div>{{ color | filter : filterChar }}</div>
+			<div>{{ color | filter : filterFirstStr }}</div>-->
+			
+			<!--<div>{{ color | limitTo : 2 }}</div>
+			
+			<div>{{ msg | limitTo : 3 }}</div>
+			
+			<div>{{ msg | uppercase }}</div>
+			<div>{{ msg | lowercase }}</div>
+			<div>{{ msg.toLowerCase() }}</div>-->
+			
+			<!--<div>{{ num | number }}</div>
+			<div>{{ num | number : 4 }}</div>-->
+			
+			<!--<div>{{ color | orderBy : '' : true }}</div>
+			<div>{{ color | orderBy }}</div>-->
+			
+			<!--自定义过滤器-->
+			<!--<input type="text" ng-model="msg" />
+			<div>{{ msg | CaseChar }}</div>
+			<div>{{ msg | CaseChar : true }}</div>-->
+			
+			
+			<!--表单过滤器-->
+			
+		</div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			// app 
+			var app = angular.module('appBody', []);
+			
+			// controller 
+			app.controller('filters', function ( $scope ) {
+				
+//				$scope.color = ['tan', 'khaki', 'Pink', 'cyan'];
+//				
+//				$scope.msg = 'Angular';
+//				
+//				$scope.num = 11113.141592653;
+				
+				
+				// a 过滤出来
+				$scope.filterChar = 'a';
+				
+				$scope.filterFirstStr = function ( val ) {
+					
+					// 匹配首字母大写
+					return val[0] === val[0].toUpperCase();
+					
+				}
+				
+			});
+			
+			
+			app.filter('CaseChar', function () {
+				
+				return function ( val, FirstToUpper ) {
+				
+					if ( val ) {
+						
+						// FirstToUpper 参数 表示第一个字母大写
+						if ( FirstToUpper ) {
+							
+							// 第一个字母 大写
+							val = val.replace(/^[a-z]/, function ( match, $1 ) {
+								
+								return match.toUpperCase();
+								
+							});
+							
+						}
+						
+						// 存在输入的val 值   转驼峰
+						return val.replace(/_([\w])/g, function ( match, $1 ) {
+							
+							return $1.toUpperCase();
+							
+						});
+						
+					} 
+					
+					return '';
+					
+				}
+				
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div ng-init="msg='hello wrold'; info='您输入的信息为：'" ng-controller="msg">
+			<input type="text" name="" id="" value="" ng-model="msg" />
+			<span ng-bind="msg"></span>
+			<span>{{ info }}</span>
+			<span>{{ msg }}</span>
+		</div>
+		
+		
+		<!--<div ng-controller="color" ng-click="clickBtn($event)">
+			<button ng-bind="c.red"></button>
+			<button ng-bind="c.green"></button>
+			<button ng-bind="c.blue"></button>
+			<span ng-bind="msg"></span>
+		</div>-->
+		
+		
+		<!--<div ng-controller="toggleCon">
+			<button ng-click="toggle()">toggle</button>
+			<!--<span ng-show="isShow">第一page</span>--
+			<!--<span ng-hide="isShow">第二page</span>--
+			<span>第{{msg}}page</span>
+		</div>-->
+		<span ng-show="isShow">第一page</span>
+		<span ng-hide="isShow">第二page</span>
+		
+		<div ng-controller="dates">
+			<span>{{ iDate | date : 'yyyy' + '年'}}</span>
+			<span>{{ iDate | date : 'MM' + '月' }}</span>
+			<span>{{ iDate | date : 'dd' + '日' }}</span>
+			<span>{{ iDate | date : 'HH' + ':' + 'mm' }}</span>
+			<p>{{ iDate | date : 'yyyy年 MM月dd日 HH:mm' }}</p>
+		</div>
+		
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+//			// app
+//			var app = angular.module('app', []);
+//			
+//			// contorller 
+//			var msg = app.controller('msg', function ( $scope ) {
+//				
+//				console.log( this );
+//				console.log( arguments );
+//				
+//			});
+
+			// app
+			var app = angular.module('app', []);
+			
+			// controller
+//			var colors = app.controller('color', function ( $scope ) {
+//				
+//				$scope.c = {
+//					red: 'red',
+//					green: 'green',
+//					blue: 'blue'
+//				}
+//				
+//				// 属性
+//				$scope.msg = '';
+//				
+//				// 绑定事件
+//				$scope.clickBtn = function ( ev ) {
+//					
+//					$scope.msg = ev.target.innerHTML;
+//					
+//				}
+//				
+//			});
+
+
+
+
+
+//			var toggles = app.controller('toggleCon', function ( $scope ) {
+//				
+////				$scope.isShow = true;
+////				
+////				$scope.toggle = function () {
+////					
+////					this.isShow = !this.isShow;
+////					
+////				}
+//				
+//				$scope.msg = '一';
+//				
+//				$scope.isShow = {
+//					isFirst: '一',
+//					isSecond: '二'
+//				}
+//				$scope.is = true;
+//					
+//				$scope.toggle = function () {
+//					
+//					if ( this.is ) {
+//						
+//						this.msg = this.isShow.isSecond;
+//						
+//					} else {
+//						
+//						this.msg = this.isShow.isFirst;
+//						
+//					}
+//					
+//					this.is = !this.is;
+//					
+//				}	
+//				
+//			});
+
+
+
+			app.controller('dates', function ( $scope ) {
+				
+				$scope.iDate = new Date();
+				
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>
