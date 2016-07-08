@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<div class="main" ng-app="main">
+			
+			<div>{{msg}}</div>
+			
+			<div ng-controller="parentCtrl">
+				
+				<div ng-click="clickParent()">{{msg}}</div>
+				
+				<div ng-controller="childCtrl">
+					<div ng-click="clickChild()">{{msg}}</div>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			var app = angular.module('main', []);
+			
+			app.controller('parentCtrl', function ( $scope ) {
+				
+				$scope.clickParent = function () {
+					
+					$scope.msg = 'parentScope';
+					
+					
+				}
+				
+			}).controller('childCtrl', function ( $scope ) {
+				
+				$scope.clickChild = function () {
+					
+					$scope.msg = 'childScope';
+					
+				}
+				
+			});
+			
+			// rootScope
+			app.run(function ( $rootScope ) {
+				
+				$rootScope.msg = 'rootScope';
+				
+			})
+			
+			console.log( app );
+			
+		</script>
+		
+	</body>
+</html>

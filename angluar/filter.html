@@ -33,7 +33,23 @@
 			<div>{{ msg | CaseChar : true }}</div>-->
 			
 			
-			<!--表单过滤器-->
+			<!--表单验证-->
+			<form name="appForm">
+				
+				<!--<label for="">用户名：</label>
+				<input type="text" name="username" ng-model="uname" ng-maxlength="5" id="" value="" />
+				<span ng-show="appForm.username.$invalid">输入的长度大于5</span>-->
+				
+				<!--兼容 HTML5 表单元素-->
+				<!--<label for="">邮箱：</label>
+				<input type="email" name="emial" ng-model="emailModel" id="" value="" />
+				<span ng-show="appForm.emial.$invalid">输入内容必须是emial</span>-->
+				
+				<!--使用 ng-pattern 匹配正则-->
+				<input type="text" name="txt" ng-model="passModel" ng-pattern="/^\d{4,6}$/" id="" value="" />
+				<span ng-show="appForm.txt.$invalid">输入的内容必须是4-6位数字</span>
+				
+			</form>
 			
 		</div>
 		
@@ -53,6 +69,7 @@
 //				
 //				$scope.num = 11113.141592653;
 				
+				console.log( $scope );
 				
 				// a 过滤出来
 				$scope.filterChar = 'a';
@@ -99,7 +116,6 @@
 				}
 				
 			});
-			
 			
 		</script>
 		
