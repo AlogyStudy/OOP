@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!--ng-disabled-->
+		
+		<div ng-app="form" ng-controller="inp">
+			
+			<input type="text" ng-disabled="isable" name="" id="" value="" />
+			
+		</div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			var app = angular.module('form', []);
+			
+			app.controller('inp', function ( $scope ) {
+				
+				$scope.isable = true;
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>
