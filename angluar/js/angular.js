@@ -745,7 +745,9 @@ var trim = function(value) {
 // http://docs.closure-library.googlecode.com/git/local_closure_goog_string_string.js.source.html#line1021
 // Prereq: s is a string.
 var escapeForRegexp = function(s) {
+	// 给特殊字符 加转义符
   return s.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1').
+  // 跟放了一个abc没啥两样    // 原字符匹配
            replace(/\x08/g, '\\x08');
           // [-()\[\]{}+?*.$\^  |  ,:#<!\\]  // -()[]{}+?*. $ ^ | ,:#<!\\  \\$1
           // +? 非贪婪模式
