@@ -3,15 +3,79 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+		<style type="text/css">
+			.red {
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			.green {
+				width: 100px;
+				height: 100px;
+				background: green;
+			}
+			
+		</style>
 	</head>
-	<body>
+	<body ng-app="form">
 		
 		<!--ng-disabled-->
 		
-		<div ng-app="form" ng-controller="inp">
+		<div ng-controller="inp">
 			
-			<input type="text" ng-disabled="isable" name="" id="" value="" />
+			<input type="text" ng-disabled="isable" name=""  />
 			
+			<input type="text" ng-readonly="isable" name="" id="" value="" />
+			
+			
+			<input type="checkbox" ng-checked="isabel" name="" id="" value="" />
+			
+			
+			<!--<input type="text" ng-model="msg" ng-change="change()" name=""  />-->
+
+
+			<form name="forms" ng-submit="submit()">
+				
+				<input type="text" name="" ng-model="msg" id="" value="" />
+				
+				<input type="submit" value="提交"/>
+			</form>
+			
+			<!--<img ng-src="{{imgSrc}}" />-->
+			
+			<a ng-href="{{Url}}">跳转</a>
+			
+			<div ng-class="{red: ngClassInfo>4, green: ngClassInfo <=4 }">{{ ngClassInfo }}</div>
+			
+			<div ng-style="{background: 'tan', width: '100px', height: '100px'}"></div>
+			
+			
+			<div ng-if="isable">111111111111</div>
+			<div ng-if="!isable">222222222222</div>
+			
+			
+			<input type="text" ng-model="switchInfo" name="" id="" value="" />
+				
+			<!--需要将分支判断的元素放入 ng-switch 容器中-->			
+			<div ng-switch="" on="switchInfo">
+				
+				<div ng-switch-default="">默认</div>
+				<div ng-switch-when="first">1111</div>
+				<div ng-switch-when="second">2222</div>
+				
+			</div>
+			
+			<ul>
+				<li ng-repeat="item in colors" ng-class="{red: $odd}">{{ item }} --- {{'索引值:'+$index}} --- {{ $middle }}</li>
+			</ul>
+			
+			
+		</div>
+		
+		<div ng-controller="aMsg">
+			
+			<div ng-include="'a.html'"></div>
+				
 		</div>
 		
 		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
@@ -21,9 +85,47 @@
 			
 			var app = angular.module('form', []);
 			
-			app.controller('inp', function ( $scope ) {
+			app.controller('inp', function ( $scope, $timeout ) {
 				
 				$scope.isable = true;
+				
+				$scope.change = function () {
+					
+					alert($scope.msg);
+					
+				}
+				
+				$scope.submit = function () {
+					
+					alert(123);
+					
+					console.log($scope.msg);
+					
+				}
+				
+				$timeout(function () {
+					
+					$scope.imgSrc = 'axin.jpg';
+					
+					$scope.Url = 'http://www.bing.com';
+					
+				},2000);
+				
+				
+//				$scope.imgSrc = 'axin.jpg';
+
+				$scope.ngClassInfo = parseInt(Math.random() * 11) + 1;
+
+				
+				$scope.colors = ['pink', 'tan', 'yellow', 'cyan'];
+				
+				
+			});
+			
+			// 数据传输
+			var aMsgApp = app.controller('aMsg', function ( $scope ) {
+				
+				$scope.msg = '载入成功';
 				
 			});
 			

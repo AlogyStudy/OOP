@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="custom">
+		
+		<div>
+			
+			<curtoms></curtoms>
+			
+			<div curtoms></div>
+			
+			<div class="curtoms"></div>
+			
+		</div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			var app = angular.module('custom', []);
+			
+			// directive() 自定义指令
+			app.directive('curtoms' , function () {
+				
+				console.log(111);
+				
+				return {
+					
+					// 指令类型
+					restrict: 'EAC',
+					
+					// 模板字符串
+//					template: '<h1>自定义指令</h1>',
+					
+					// 模板文件获取 url
+					templateUrl: 'a.html',
+					
+					// replace表示是否替换原来的元素，true是替换，false不替换
+//					replace: false,
+					replace: true,
+					
+					controller: function ( $scope, $element, $attrs ) {
+						
+						// this 指向 controller{} 空对象
+						
+						console.log( $scope, $element, $attrs );
+						
+					}
+					
+				}
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>
