@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<div ng-app="app">
+			
+			<div ng-controller="mian">
+				
+				<input type="text" ng-model="title" name="" id="" value="" />
+				
+				<div>{{title}}</div>
+				
+				<!--<my-custom my-title="{{title}}"></my-custom>-->
+				
+				<div>{{ title1 }}</div>
+				
+				<my-custom my-title="title1"></my-custom>
+				
+			</div>
+			
+		</div>
+		
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			var app = angular.module('app', []);
+			
+			app.controller('mian', function ( $scope ) {
+				
+				$scope.title = '';
+				
+				$scope.title1 = 123;
+				
+			});
+			
+			app.directive('myCutom', function () {
+				
+				return {
+					
+					restrict: 'E',
+					
+					template: '<h1>{{ msg }} -- {{ title }}</h1>',
+					
+//					scope: {},
+//						scope: true,
+//						scope: false
+					
+//					scope: {
+////						 告知 自定义指令 不需要从 自己的作用域中寻找 变量
+//						title: '@myTitle'
+//					},
+
+					scope: {
+						
+						// 映射的值，  自定义元素的属性
+						title1: '=myTitle'
+						
+					},
+					
+					controller: function ( $scope, $element, $attrs ) {
+						
+						$scope.title = 'aaaa';
+						
+						$scope.msg = 'xixixi';
+						
+					}
+					
+				}
+				
+			});
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

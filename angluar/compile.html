@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="app">
+		
+		
+		<div ng-controller="main">
+			
+			<my-directive>
+				
+			</my-directive>
+			
+		</div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			// 创建 app
+			var app = angular.module('app', []);
+			
+			// 创建控制器
+			app.controller('main', function ( $scope ) {
+				
+				
+				
+			});
+			
+			// 自定义指令
+			app.directive('myDirective', function () {
+				
+				return {
+					
+					restrict: 'E',
+					
+					compile: function ( jqlite, attrs ) {
+						
+						// this -> compile 对象 
+						
+						return function ( scope, jqlite, attrs ) {
+							
+							// this -> window
+							var color = attrs.color;
+								
+							
+						}
+						
+					}
+					
+				}
+				
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>

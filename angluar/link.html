@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="appLink">
+		
+		
+		<div ng-controller="main">
+			
+			<my-directive data-repeate="3">
+				<h1>天气闷</h1>
+			</my-directive>
+			
+		</div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			var app = angular.module('appLink', []);
+			
+			app.controller('main', function () {
+				
+			});
+			
+			app.directive('myDirective', function () {
+				
+				return {
+					
+					restrict: 'E',
+					
+					replace: true,
+					
+					/**
+					 * 操作自定义指令元素
+					 * @param {Object} scope
+					 * @param {Object} jqlite
+					 * @param {Object} attrs
+					 */
+					link: function ( scope, jqlite, attrs ) {
+						
+//						console.log( arguments );
+						
+						// this -> window
+						var el = jqlite.children('h1').attr('nodeValue', 1);
+						
+						// 使用 data 自定义属性  ，会自动省略  data-
+						
+						for ( var i=0; i<attrs.repeate; i++ ) {
+							
+							jqlite.append( el.clone() );
+							
+						}
+						
+					}
+					
+				}
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>
+
