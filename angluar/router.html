@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="app">
+		
+		<div ng-controller="mainCtrl">
+			
+			<div ng-view></div>
+			
+		</div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular-route.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			var app = angular.module('app', ['ngRoute']);
+			
+			app.controller('mainCtrl', function () {
+				
+			});
+			
+			// 配置
+			app.config(function ( $routeProvider ) {
+				
+				$routeProvider.when('/', {
+					
+					// 模板
+//					template: '<div>123</div>',
+					templateUrl: 'a.html',
+					
+					// 控制器
+					controller: function ( $scope ) {
+						
+						console.log( $scope );
+						$scope.style = {
+							color: 'deeppink'
+						}
+						
+					}
+					
+				});
+				
+			});
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

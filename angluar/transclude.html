@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="app">
+		
+		<div ng-controller="main">
+			
+			<my-directive>
+				<h1>嘻嘻哈哈</h1>
+			</my-directive>
+			
+		</div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var app = angular.module('app', []);
+			
+			app.controller('main', function ( $scope ) {
+				
+			});
+			
+			app.directive('myDirective', function () {
+				
+				return {
+					
+					restrict: 'E',
+					
+					template: '<div ng-transclude></div>',
+					
+					transclude: true	
+					
+				}
+				
+			});
+			
+			
+		</script>
+		
+		
+		
+	</body>
+</html>

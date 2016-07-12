@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="app">
+		
+		<div ng-model="main">
+			
+			<input type="text" my-directive  ng-model="title" name="" id="" value="" />
+			
+		</div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			var app = angular.module('app', []);
+			
+			app.controller('main', function ( $scope ) {
+				
+			});
+			
+			// 自定义指令
+			app.directive('myDirective', function () {
+				
+				// 返回一个描述指令对象
+				return {
+					
+					restrict: 'A',
+					
+					// 引入其它指令
+					require: 'ngModel',
+					
+					link: function ( scope, jqlite, attrs, ngModel ) {
+						
+						// $watch 检测某个值 发生改变 当 ngModel 值发生改变， 触发函数
+						scope.$watch(attrs.ngModel, function () {
+							
+							console.log(ngModel.$viewValue);
+							
+						});
+						
+					}
+					
+				}
+				
+			});
+			
+		</script>
+		
+		
+	</body>
+</html>

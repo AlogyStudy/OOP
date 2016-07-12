@@ -9,8 +9,8 @@
 		
 		<div ng-controller="main">
 			
-			<my-directive>
-				
+			<my-directive data-color="pink">
+				<h1>嘻嘻哈哈</h1>
 			</my-directive>
 			
 		</div>
@@ -23,11 +23,7 @@
 			var app = angular.module('app', []);
 			
 			// 创建控制器
-			app.controller('main', function ( $scope ) {
-				
-				
-				
-			});
+			app.controller('main', function ( $scope ) {});
 			
 			// 自定义指令
 			app.directive('myDirective', function () {
@@ -36,6 +32,12 @@
 					
 					restrict: 'E',
 					
+					/**
+					 *  自定义指令的编译方法
+					 * @param {Object} jqlite  获取自定义指令元素
+					 * @param {Object} attrs   自定义指令所在元素上的样式
+					 * @return {Function} cb   指代 link 
+					 */
 					compile: function ( jqlite, attrs ) {
 						
 						// this -> compile 对象 
@@ -44,7 +46,8 @@
 							
 							// this -> window
 							var color = attrs.color;
-								
+							
+							jqlite.css('color', color);
 							
 						}
 						

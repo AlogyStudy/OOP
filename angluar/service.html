@@ -25,6 +25,10 @@
 			
 			app.controller('main', function ( $scope, $interval, $http ) {
 				
+				console.log( $scope );
+				
+				debugger;
+				
 				$scope.date = new Date();
 				
 				// interval 服务
@@ -36,20 +40,55 @@
 				
 				
 				// $http 服务
-				$http({
-					method: 'GET',
-					url: 'data/service.json'
-				}).success(function ( res ) {  
-					
-					if ( res.errno === 0 ) {
-						
-						$scope.msg = res.msg;
-					
-						console.log(res);
-						
+//				$http({
+//					method: 'GET',
+//					url: 'data/service.json'
+//				}).success(function ( res ) {  
+//					
+//					if ( res.errno === 0 ) {
+//						
+//						$scope.msg = res.msg;
+//					
+//						console.log(res);
+//						
+//					}
+//					
+//				});
+				
+				// get 请求
+				$http.get('data/service.json', {
+					params: {
+						id: 1
 					}
+				})
+				// 请求成功
+				.success(function ( res ) {
+					
+					console.log( res );
+					
+				})
+				.then(function () {
+					
+					console.log(111);
+					
+				})
+				.then(function () {
+					
+					console.log(222);
 					
 				});
+
+				
+				 // post 请求
+//				 $http.post('data/service.json', {
+//				 	id: 1
+//				 })
+//				 // 请求成功
+//				 .success(function ( res ) {
+//				 	
+//				 	console.log(res);
+//				 	
+//				 });
 				
 			});
 			

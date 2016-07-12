@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="app">
+		
+		<div ng-controller="facotryCtrl" ng-bind="msg">
+			
+		</div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			var app = angular.module('app', []);
+			
+			// 其它控制器使用服务
+			app.controller('facotryCtrl', function ( $scope, news ) {
+				
+				$scope.msg = news.data;
+				
+			});
+			
+			// factory 定义 服务
+			app.factory('news', function () {
+				
+				return {
+					data: '嘻嘻哈哈'
+				}
+				
+			});
+			
+			
+			// 消息系统服务
+			app.factory('Observer', function () {
+				
+				var Observer  = (function () {
+						// 消息系统内定一个消息管道，将用户订阅的消息保存起来
+						var __message = {};
+				
+						return {
+							/**
+							 * 订阅消息的方法
+							 * @type： 	表消息名称
+							 * @fn： 	消息的回调函数
+							 */
+							regist: function (type, fn) {
+								// 如果消息管道中已经订阅果这类消息
+								if (__message[type]) {
+									// 向消息管道中推入消息
+									__message[type].push(fn)
+								// 如果消息管道中没有订阅过这则消息
+								} else {
+									// 向消息管道中添加消息，放在数组中的原因是，方便后面继续添加消息
+									return __message[type] = [fn]
+								}
+							},
+							/**
+							 * 触发已经订阅过的消息
+							 * @type： 	表示消息类型
+							 */
+							fire: function (type) {
+								// 首先判断消息是否存在
+								if (__message[type]) {
+									// 如果存在，就要遍历消息管道中每个回调函数并且执行
+									for (var i = 0; i < __message[type].length; i++) {
+										// 执行每个回调函数
+										return __message[type][i]()
+									}
+								}
+							}
+						}
+					})()
+					
+					return Observer;
+					
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>
