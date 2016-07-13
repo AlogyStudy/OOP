@@ -23,12 +23,12 @@
 			// app 
 			var app = angular.module('appService', []);
 			
-			app.controller('main', function ( $scope, $interval, $http ) {
+			app.controller('main', function ( $scope, $interval, $http, data ) {
 				
 				console.log( $scope );
-				
-				debugger;
-				
+			
+				$scope.msg = data.title;
+
 				$scope.date = new Date();
 				
 				// interval 服务
@@ -89,6 +89,17 @@
 //				 	console.log(res);
 //				 	
 //				 });
+				
+				
+				
+				
+				
+			});
+			
+			// 使用 service 自定义服务
+			app.service('data', function () {
+				
+				this.title = '嘻嘻哈哈';
 				
 			});
 			

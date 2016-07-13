@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			a {
+				text-decoration: none;
+				color: tan
+			}
+			
+		</style>
+	</head>
+	<body ng-app="app">
+		
+		
+		<div ng-controller="testRouterCtrl">
+			
+			<nav>
+				<a href="#/meishi">美食</a>
+				<a href="#/yingshi">影视</a>
+				<a href="#/yule">娱乐</a>
+				<a href="#/jiaoyou">交友</a>
+			</nav>
+			
+			<div ng-view=""></div>
+			
+		</div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular-route.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			// app
+			var app = angular.module('app', ['ngRoute']);
+			
+			// testRouterCtrl  controller
+			app.controller('testRouterCtrl', function ( $scope ) {
+				
+			}); 
+			
+			// config
+			app.config(function ( $routeProvider ) {
+				
+				// index
+				$routeProvider.when('/', {
+					
+					template: '<h1>{{ indexPage }}</h1>',
+					
+					controller: function ( $scope ) {
+						
+						$scope.indexPage = '美食';
+						
+					} 
+					
+				})
+				
+				// 影视
+				.when('/yingshi', {
+					
+					template: '<h1>{{ yingshiPage }}</h1>',
+					
+					controller: function ( $scope ) {
+						
+						$scope.yingshiPage = '影视';
+						
+					}
+					
+				})
+				
+				// 娱乐
+				.when('/yule', {
+					
+					template: '<h1>{{ yulePage }}</h1>',
+					
+					controller: function ( $scope ) {
+						
+						$scope.yulePage = '娱乐';
+						
+					}
+					
+				})
+				
+				// 交友
+				.when('/jiaoyou', {
+					
+					template: '<h1>{{ jiaoyouPage }}</h1>',
+					
+					controller: function ( $scope ) {
+						
+						$scope.jiaoyouPage = '交友';
+						
+					}
+					
+				})
+				
+				// 重定义 
+				.otherwise({
+					
+					redirectTo: '/'
+					
+				});
+				
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>

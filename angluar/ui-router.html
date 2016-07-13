@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="app">
+		
+		<div><h1>title</h1></div>
+		<div ui-view=""></div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular-ui-router.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			// 参数注入 ui.router
+			var app = angular.module('app', ['ui.router']);
+			
+			// 配置路由
+			app.config(function ( $stateProvider, $urlRouterProvider ) {
+				
+				// $stateProvider 定义状态
+				console.log( $stateProvider );
+				
+				$stateProvider.state('home', {
+					
+					// 配置 #/
+					url: '/',
+					
+					template: '<h1>{{ indexPage }}</h1>',
+					
+					controller: function ( $scope ) {
+							
+						$scope.indexPage = 'indexPage';
+						
+						console.log( this,arguments );
+						
+					}
+					
+				})
+				
+				.state('shop', {
+					
+					// url: '/shop/xixi/is/100?form=10&to=20'
+					url: '/shop/:value/is/{pageNum:int}?form&to',
+					
+					template: '<h1>{{ shopPage }}</h1>',
+					
+					controller: function ( $scope, $stateParams ) {
+						
+						console.log( $stateParams );
+						
+						$scope.shopPage = 'shopPage';
+//						
+//						console.log( this,arguments );
+						
+					},
+					
+					
+				});
+				
+				// 配置 不存在路由
+				$urlRouterProvider.when('', '/').otherwise('/');
+				
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>

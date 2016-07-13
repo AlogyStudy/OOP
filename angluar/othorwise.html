@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="app">
+		
+		<div ng-controller="routerCtrl">
+			
+			<header><h2>页面头部</h2></header>
+			
+			<div ng-view=""></div>
+			
+		</div>
+		
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular-route.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			// app
+			var app = angular.module('app', ['ngRoute']);
+			
+			// controller
+			app.controller('routerCtrl', function ( $scope ) {
+				
+				$scope.shop = 'shopPage1';
+				
+			});
+			
+			// config
+			app.config(function ( $routeProvider ) {
+				
+				// 配置首页 路由  
+				$routeProvider.when('/', {
+					
+					template: '<h1>{{ index }}</h1>',
+					
+					controller: function ( $scope ) {
+						
+						$scope.index = 'indexPage';
+						
+					}
+					
+				})
+				
+				// 配置  shop 页面 路由
+				.when('/shop', {
+					
+					template: '<h1>{{ shop }}</h1>',
+					
+					controller: function ( $scope ) {
+						
+//						$scope.shop = 'shopPage';
+						
+					}
+					
+				})
+				
+				// 其它路由 重定义 到  / 目录中
+				.otherwise({
+					redirectTo: '/'
+				});
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>

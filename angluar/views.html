@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="app">
+		
+		<div ng-controller="viewsCtrl">
+			
+			<header>标题部分</header>
+			
+			<div>
+				<div class="left" ui-view="leftView"></div>
+				<div class="content" ui-view="contentView"></div>
+				<div class="right" ui-view="rightView"></div>
+			</div>
+			
+			<div ui-view></div>
+			
+		</div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular-ui-router.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			var app = angular.module('app', ['ui.router']);
+			
+			app.controller('viewsCtrl', function ( $scope ) {
+				
+			});
+			
+			app.config(function ( $stateProvider, $urlRouterProvider ) {
+				
+				$stateProvider.state('home', {
+					
+					url: '/',
+					
+					template: '<div>index<div ui-view></div></div>'
+					
+				})
+				.state('home.shop', {
+					
+					url: 'shop',
+					
+					template: '<h1>shopPage</h1>'
+					
+				});
+				
+				$urlRouterProvider.when('','/');
+				
+			});
+			
+			app.run(function ( $rootScope ) {
+				
+				$rootScope.$on('$stateChangeSuccess', function ( ev, routeObj, routeParamsObj, preRouteObj, preRouteParamsObj ) {
+					
+					console.log( this,arguments );
+					
+				})
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="app">
+		
+		
+		<div ng-view=""></div>
+		
+		<script src="js/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/angular-route.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			var app = angular.module('app', ['ngRoute']);
+			
+			app.config(function ( $routeProvider ) {
+				
+				$routeProvider.when('/', {
+					
+					template: '<h1>{{ index }}</h1>',
+					
+					controller: function ( $scope ) {
+						
+						$scope.index = 'indexPage';
+						
+					}
+					
+				})
+				.when('/shop/:pageNum/:type', {
+					
+					template: '<h1>{{ shop }}</h1>',
+					
+					controller: function ( $scope, $routeParams ) {
+						
+						$scope.shop = 'shopPage';
+						
+						console.log( $routeParams );
+						
+					}
+					
+				});
+				
+			});
+			
+			
+			app.run(function ( $rootScope, $location ) {
+				
+				$rootScope.$on('$routeChangeSuccess', function ( ev, routeObj, preRouteObj ) {
+					
+					// var q = $location.path(); // 读
+					
+					$location.path('/xixi'); // 设置  
+					
+				});
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>
