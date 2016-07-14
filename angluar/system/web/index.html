@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="UTF-8">
+		<title>后台系统</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+	</head>
+	
+	<body >
+		
+		<div ng-app="app">
+			
+			<!--header-->
+			<header class="header">
+				<div class="container">
+					<img src="img/logo.png" alt="">
+					<h1>后台管理系统</h1>
+				</div>
+			</header>
+			<!-- end header-->
+			
+			<!--nav-->
+			<div class="nav">
+				
+			</div>
+			<!--end nav-->
+			
+			<!--main-->
+			<div class="main" ng-view=""></div>
+			<!--end main-->
+			
+		</div>
+		
+		<script src="js/sea.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="js/lib/seajs-preload.js" type="text/javascript" charset="utf-8"></script>-->
+		
+		<script src="js/lib/angular-1-4-1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/lib/angular-route.js" type="text/javascript" charset="utf-8"></script>
+
+
+		<script type="text/javascript">
+			
+			var app = angular.module('app', ['ngRoute']);
+			
+		</script>
+		
+		<script type="text/javascript">
+			
+			seajs.config({
+				
+			});
+			
+			// app
+			seajs.use('app1', function ( appShow ) {
+				
+				appShow(app);
+				
+			});
+			
+		</script>
+		
+	</body>
+	
+</html>

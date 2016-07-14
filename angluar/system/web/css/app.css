@@ -1,0 +1,92 @@
+body {
+	background: #efefef;
+}
+.header {
+	background: #fff;
+	height: 60px;
+	border-bottom: 1px solid #ccc;
+}
+.header img {
+	float: left;
+	margin-top: 7px;
+}
+.header h1 {
+	line-height: 60px;
+	margin: 0;
+	font-size: 26px;
+	margin-left: 80px;
+}
+.header .login {
+	float: right;
+	line-height: 60px;
+}
+.nav {
+	margin-top: 10px;
+	width: 240px;
+	background: #fff;
+	height: 600px;
+	float: left;
+}
+.main {
+	margin-top: 10px;
+	margin-left: 250px;
+	height: 600px;
+	background: #fff;
+}	
+/* 登录模块的样式 */
+.whole-page {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: #efefef;
+}
+.app-login .login-container {
+	background: #fff;
+	width: 400px;
+	margin: 100px auto;
+	padding: 10px 20px;
+	border-radius: 5px;
+}
+.app-login h2 {
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #efefef;
+	font-size: 24px;
+	text-align: center;
+}
+.app-login .form-group {
+	padding: 10px 0;
+	line-height: 30px;
+	margin-bottom: 0px;
+}
+.app-login label {
+	width: 100px;
+	display: inline-block;
+	text-align: right;
+}
+.app-login input {
+	width: 220px;
+	padding-left: 10px;
+}
+.app-login button {
+	width: 300px;
+	margin: 0 auto;
+}
+.app-login .btn-container {
+	text-align: center;
+	padding-bottom: 30px;
+}
+.app-login .error-container {
+	height: 35px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-indent: 105px;
+    overflow: hidden;
+}
+
+/* 列表样式 */
+.nav h3 {
+	font-size: 18px;
+} 
