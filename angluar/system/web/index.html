@@ -18,13 +18,32 @@
 			<header class="header">
 				<div class="container">
 					<img src="img/logo.png" alt="">
+					
+					<div class="login">
+						<span>你好，欢迎回来！</span>
+						<span class="text-info">{{ userName }}</span>
+						<span>|</span>
+						<a href="../admin/action/logout.php">退出</a>
+					</div>
+					
 					<h1>后台管理系统</h1>
 				</div>
 			</header>
 			<!-- end header-->
 			
 			<!--nav-->
-			<div class="nav">
+			<div class="nav" ng-controller="navCtrl">
+				
+				<ul>
+					<li ng-repeat="item in list">
+						<h3>{{ item.title }}</h3>
+						<ul class="childNav">
+							<li ng-repeat="childItem in item.childList">
+								<a href="{{ childItem.url }}">{{ childItem.title }}</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
 				
 			</div>
 			<!--end nav-->
@@ -35,33 +54,31 @@
 			
 		</div>
 		
-		<script src="js/sea.js" type="text/javascript" charset="utf-8"></script>
-		<!--<script src="js/lib/seajs-preload.js" type="text/javascript" charset="utf-8"></script>-->
 		
 		<script src="js/lib/angular-1-4-1.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/lib/angular-route.js" type="text/javascript" charset="utf-8"></script>
 
-
-		<script type="text/javascript">
+		<!--配置文件-->
+		<script src="js/config.js" type="text/javascript" charset="utf-8"></script>
+		<!--end 配置文件-->
 			
-			var app = angular.module('app', ['ngRoute']);
 			
-		</script>
+		<!--model-->	
+		<script src="js/services/models/navModel.js" type="text/javascript" charset="utf-8"></script>
+		<!--end model-->
+			
+		<!--controller-->
+		<script src="js/controllers/loginCtrl.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/controllers/mainCtrl.js" type="text/javascript" charset="utf-8"></script>
+		<!--end controller-->
 		
-		<script type="text/javascript">
-			
-			seajs.config({
-				
-			});
-			
-			// app
-			seajs.use('app1', function ( appShow ) {
-				
-				appShow(app);
-				
-			});
-			
-		</script>
+		<!--路由配置-->		
+		<script src="js/router.js" type="text/javascript" charset="utf-8"></script>
+		<!--end 路由配置-->
+		
+		<!--app-->
+		<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+		<!--end app-->
 		
 	</body>
 	

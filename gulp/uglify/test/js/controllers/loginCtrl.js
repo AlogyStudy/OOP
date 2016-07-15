@@ -1,0 +1,1 @@
+app.controller("loginCtrl",function(n,o,t,a){n.submit=function(){o({method:"POST",url:"../admin/action/login.php",data:n.user}).success(function(n){console.log(n),n&&0===n.errno&&(t.path("/"),a.userName=n.data.username)})}});

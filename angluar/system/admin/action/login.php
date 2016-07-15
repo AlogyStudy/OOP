@@ -9,7 +9,10 @@ session_start();
 $_SESSION['username'] = $res['username'];
 $_SESSION['password'] = $res['password'];
 
-$opt = array('errno' => 0);
+$opt = array(
+	'errno' => 0, 
+	'data' => array('username' => $res['username']) 
+);
 
 echo json_encode($opt);
 

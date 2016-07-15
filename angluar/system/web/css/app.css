@@ -20,6 +20,9 @@ body {
 	float: right;
 	line-height: 60px;
 }
+
+/* 列表样式 */
+
 .nav {
 	margin-top: 10px;
 	width: 240px;
@@ -27,6 +30,34 @@ body {
 	height: 600px;
 	float: left;
 }
+
+.nav > ul {
+	padding-left: 40px;
+}
+
+.nav > ul > li {
+	margin: 20px 0;
+}
+
+.nav .childNav {
+	padding-left: 16px;
+}
+
+.nav .childNav li {
+	line-height: 30px;
+}
+
+.nav h3 {
+	font-size: 18px;
+	line-height: 30px;
+} 
+
+.app-main {
+	padding: 30px;
+}
+
+
+
 .main {
 	margin-top: 10px;
 	margin-left: 250px;
@@ -86,7 +117,30 @@ body {
     overflow: hidden;
 }
 
-/* 列表样式 */
-.nav h3 {
-	font-size: 18px;
-} 
+
+
+/* 用户提交页面 */
+.main-inner {
+	padding: 10px 30px;
+}
+.main-inner h2 {
+	font-size: 28px;
+	border-bottom: 1px solid #efefef;
+	line-height: 60px;
+	margin-bottom: 40px;
+}
+.main-inner .row {
+	height: 60px;
+}
+.main-inner .col-lg-3,
+.main-inner .col-lg-2 {
+	text-align: right;
+}
+.main-inner .btn {
+	margin-top: 20px;
+}
+
+.main-inner .news-list .col-lg-3,
+.main-inner .news-list .col-lg-2 {
+	text-align: center;
+}

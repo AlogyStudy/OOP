@@ -1,0 +1,1 @@
+app.config(function(l){l.when("/login",{templateUrl:"js/views/login.html",controller:"loginCtrl"}).when("/",{templateUrl:"js/views/main.html",controller:"mainCtrl"}).when("/userList/1",{templateUrl:"js/views/userList.html",controller:"userListCtrl"})});

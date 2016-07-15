@@ -1,0 +1,1 @@
+app.run(function(a,n,t){n({url:"../admin/action/checkLogin.php",method:"GET"}).success(function(n){n&&n.data?(a.userName=n.data.username,t.path("/")):t.path("/login")})});

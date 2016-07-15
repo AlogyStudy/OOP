@@ -1,0 +1,1 @@
+app.controller("mainCtrl",function(t,n){t.date=new Date,n(function(){t.date=new Date},1e3)}),app.controller("navCtrl",function(t,n){t.list=n.list}),app.controller("userListCtrl",function(t,n){n({url:""})});
