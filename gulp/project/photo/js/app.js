@@ -1,6 +1,6 @@
 
 define(function ( require, exports, moduel ) {
-
+	console.log(require);
 	var ImgEvent = _.extend({},Backbone.Events);
 
 	// view 模块

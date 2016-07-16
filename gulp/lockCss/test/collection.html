@@ -1,0 +1,68 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><title></title></head><body><script src=lib/jquery.js type=text/javascript charset=utf-8></script><script src=lib/lodash.js type=text/javascript charset=utf-8></script><script src=lib/backbone.js type=text/javascript charset=utf-8></script><script type=text/javascript>
+		
+		//Model;
+		var ItemModel = Backbone.Model.extend({
+			
+			defaults: {
+				name: 'dd',
+				age: 3
+			}
+			
+		});
+		
+		var item = new ItemModel();
+		var item2 = new ItemModel({
+			color: 'pink'
+		});
+		
+		
+		//collection
+		var ItemCollection = Backbone.Collection.extend({
+			model: ItemModel,
+			initialize: function () {
+				
+				this.on('add',function ( model ) {
+
+//					console.log( model,'-model' );
+				
+//					console.log( this,'---' );
+
+				});
+				
+				this.on('reset',function ( model ) {
+					
+//					console.log( this );
+//					console.log( model,'--' );
+					
+				});
+				
+				this.on('remove',function ( model ) {
+					
+					console.log( model,'--' );
+					
+				});
+				
+			}
+		})
+		
+		
+		//创建
+		var itemCollection = new ItemCollection();
+		
+		itemCollection.add([item,item2]);
+		
+		var q = itemCollection.get(item);
+		
+//		console.log( q );
+		
+		itemCollection.remove(item);
+		
+		console.log( itemCollection );
+		
+//		itemCollection.reset();
+		
+//		console.log( itemCollection,'aaa' );
+		
+//		console.log( itemCollection.toJSON() );
+		
+	</script></body></html>

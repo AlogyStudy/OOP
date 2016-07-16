@@ -1,0 +1,1 @@
+define(function(){var i=parseInt(($(window).width()-18)/2),t=0,e=Backbone.Model.extend({initialize:function(){this.on("add",function(e){var n=e.get("height")*i/e.get("width");e.set({showWidth:i,showHeight:n,id:t++})})}});return e});

@@ -1,0 +1,1 @@
+define(function(a){var o=a("modules/model/list.model"),n=Backbone.Collection.extend({model:o,feachData:function(a){var o=this;$.ajax({url:"data/imgSo.json",statusCode:{403:function(){console.log(123)}},success:function(n){if(0===n.errno){for(var e in n.data)n.data[e].type=_.random(0,7);o.add(n.data),a&&a()}}})}});return n});

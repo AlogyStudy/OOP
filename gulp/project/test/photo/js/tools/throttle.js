@@ -1,0 +1,1 @@
+define(function(){var t=function(){var t,e=arguments[0];if(e===!0)t=arguments[1],t.__Throttle&&clearTimeout(t.__Throttle);else{t=arguments[0];var a=arguments[1]||{},n={time:a.time||200,context:a.context||null,data:a.data||{}};arguments.callee(!0,t),t.__Throttle=setTimeout(function(){t.call(n.context,n.data)},n.time)}};return t});

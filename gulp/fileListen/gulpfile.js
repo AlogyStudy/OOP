@@ -25,7 +25,7 @@ var gulp = require('gulp');
 // 多个状态
 gulp.task('zf', function () {
 	
-	// 流 -- 读文件
+	// 流 
 	var stream = gulp.src('js/*.js');
 	
 	// 写入位置

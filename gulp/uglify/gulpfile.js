@@ -6,15 +6,16 @@ var uglify = require('gulp-uglify');
 gulp.task('unlifyJs', function () {
 	
 	// 流
-	var liu = gulp.src('js/**/*.js');
+	var stream = gulp.src('js/**/app.js');
 	
 	// 位置
-	var pos = gulp.dest('test/js');
+	var pos = gulp.dest('test/aa');
 	
 	// 压缩
-	liu.pipe(uglify());
+	stream.pipe(uglify());
 	
-	liu.pipe(pos);	
+	// 监听流
+	stream.pipe(pos);	
 	
 });
 

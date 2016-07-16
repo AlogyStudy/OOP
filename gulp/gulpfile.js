@@ -22,21 +22,21 @@ var gulp = require('gulp');
 
 
 
-// 开启程序
+// 开启任务
 gulp.task('zf', function () {
 	
 	// 创建流
-	var liu = gulp.src('js/index.js');
+	var stream = gulp.src('js/index.js');
 	
 	// 写入位置
-	var dests = gulp.dest('test');
+	var pos = gulp.dest('test');
 	
 	// 管理状态
-	liu.pipe(dests);
+	stream.pipe(pos);
 	
 });
 
-// 启动程序
+// 启动任务
 gulp.task('default', ['zf']);
 
 
