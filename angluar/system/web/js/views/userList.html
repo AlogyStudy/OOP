@@ -17,15 +17,22 @@
 			</div>
 			
 			<div class="row" ng-repeat="item in list">
-				<div class="col-lg-1">
-					<a href="#/userdetail/{{ item.id }}" ng-bind="item.id"></a>
+				<div class="col-lg-2">
+					<a href="#/userDetail/{{ item.id }}" ng-bind="item.id"></a>
 				</div>
-				<div class="col-lg-2" ng-bind="item.user"></div>
+				<div class="col-lg-2" ng-bind="item.username"></div>
 				<div class="col-lg-2" ng-bind="item.sex"></div>
-				<div class="col-lg-2" ng-bind="item.tel"></div>
-				<div class="col-lg-2" ng-bind="item.info"></div>
+				<div class="col-lg-2" ng-bind="item.telephone"></div>
+				<div class="col-lg-4" ng-bind="item.info"></div>
 			</div>
 			
+		</div>
+		
+		<div class="pull-right">
+			<ul class="pagination">
+				<li><a href="#/userList/{{num - 1 < 1 ? 1 : num - 1 }}">前一页</a></li>
+				<li><a href="#/userList/{{+num + 1}}">后一页</a></li>
+			</ul>
 		</div>
 		
 	</div>

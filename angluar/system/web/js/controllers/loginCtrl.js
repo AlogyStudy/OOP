@@ -4,8 +4,6 @@ app.controller('loginCtrl', function ( $scope, $http, $location, $rootScope ) {
 	
 	$scope.submit = function () {
 		
-		console.log( $scope, $rootScope );
-		
 		$http({
 			method: 'POST',
 			url: '../admin/action/login.php',
@@ -22,7 +20,7 @@ app.controller('loginCtrl', function ( $scope, $http, $location, $rootScope ) {
 				
 			}
 			
-		})
+		});
 		
 	}
 	
