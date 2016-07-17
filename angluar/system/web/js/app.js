@@ -2,6 +2,8 @@
 // run 配置
 app.run(function ( $rootScope, $http, $location ) {
 	
+	// 判断用户是否登陆
+	
 	$http({
 		
 		url: '../admin/action/checkLogin.php',
@@ -9,6 +11,7 @@ app.run(function ( $rootScope, $http, $location ) {
 		method: 'GET'
 		
 	})
+	//返回 注册成功信息
 	.success(function ( res ) {
 		
 		// 是否登陆判断

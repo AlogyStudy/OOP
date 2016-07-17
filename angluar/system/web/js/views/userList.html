@@ -1,1 +1,34 @@
-123123
+
+<!--用户列表 tpl-->
+
+<div class="app-user-list">
+	<div class="main-inner">
+		
+		<h2>用户列表</h2>
+		
+		<div class="user-list">
+			
+			<div class="row list-title">
+				<div class="col-lg-2">用户ID</div>
+				<div class="col-lg-2">用户名</div>
+				<div class="col-lg-2">性别</div>
+				<div class="col-lg-2">电话</div>
+				<div class="col-lg-4">简介</div>
+			</div>
+			
+			<div class="row" ng-repeat="item in list">
+				<div class="col-lg-1">
+					<a href="#/userdetail/{{ item.id }}" ng-bind="item.id"></a>
+				</div>
+				<div class="col-lg-2" ng-bind="item.user"></div>
+				<div class="col-lg-2" ng-bind="item.sex"></div>
+				<div class="col-lg-2" ng-bind="item.tel"></div>
+				<div class="col-lg-2" ng-bind="item.info"></div>
+			</div>
+			
+		</div>
+		
+	</div>
+</div>   
+
+

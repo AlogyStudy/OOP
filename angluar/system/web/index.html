@@ -21,7 +21,7 @@
 					
 					<div class="login">
 						<span>你好，欢迎回来！</span>
-						<span class="text-info">{{ userName }}</span>
+						<span class="text-info" ng-bind="userName"></span>
 						<span>|</span>
 						<a href="../admin/action/logout.php">退出</a>
 					</div>
@@ -36,10 +36,10 @@
 				
 				<ul>
 					<li ng-repeat="item in list">
-						<h3>{{ item.title }}</h3>
+						<h3 ng-bind="item.title"></h3>
 						<ul class="childNav">
 							<li ng-repeat="childItem in item.childList">
-								<a href="{{ childItem.url }}">{{ childItem.title }}</a>
+								<a href="{{ childItem.url }}" ng-bind="childItem.title"></a>
 							</li>
 						</ul>
 					</li>
@@ -63,7 +63,7 @@
 		<!--end 配置文件-->
 			
 		<!--model-->	
-		<script src="js/services/models/navModel.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/services/CommonService.js" type="text/javascript" charset="utf-8"></script>
 		<!--end model-->
 			
 		<!--controller-->

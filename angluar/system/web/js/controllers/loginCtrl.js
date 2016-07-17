@@ -4,14 +4,14 @@ app.controller('loginCtrl', function ( $scope, $http, $location, $rootScope ) {
 	
 	$scope.submit = function () {
 		
+		console.log( $scope, $rootScope );
+		
 		$http({
 			method: 'POST',
 			url: '../admin/action/login.php',
 			data: $scope.user
 		})
 		.success(function ( res ) {
-			
-			console.log( res );
 			
 			// 验证登录名成功
 			if ( res && res.errno === 0 ) {
@@ -25,6 +25,5 @@ app.controller('loginCtrl', function ( $scope, $http, $location, $rootScope ) {
 		})
 		
 	}
-	
 	
 });

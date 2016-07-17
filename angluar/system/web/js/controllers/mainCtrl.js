@@ -26,10 +26,18 @@ app.controller('navCtrl', function ( $scope, navModel ) {
 
 
 // userListCtrl userLiast
-app.controller('userListCtrl', function ( $scope, $http ) {
+app.controller('userListCtrl', function ( $scope, $http, $routeParams ) {
+	
+	console.log( $routeParams );
+	
+	$scope.num = $routeParams.pageNum;
 	
 	$http({
-		url: ''
+		url: '../admin/action/userlist.php',
+		method: 'GET',
+		params: {
+			
+		}
 	});
 	
 });
