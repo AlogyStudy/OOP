@@ -24,18 +24,12 @@ li span {
 	padding: 12px;
 	font-size: 0;
 }
-.item1 span {
-	background: url(../img/01.png?__sprite) center no-repeat;
-}
-.item2 span {
-	background: url(../img/02.png?__sprite) center no-repeat;
-}
-
 .item3 span {
-	background: url(../img/03.png?__sprite) center no-repeat;
+	/* 将图片嵌入css中 */ 
+	background: url(../img/03.png?__inline) center;
 }
 .item4 span {
-	background: url(../img/04.png?__sprite) center no-repeat;
+	background: url(../img/04.png?__inline) center;
 }
 
 .demo {

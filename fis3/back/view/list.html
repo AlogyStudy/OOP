@@ -1,0 +1,27 @@
+<script type="text/template" id="tpl_list">
+	<section class="list-page">
+		<ul class="type clearfix">
+			<li v-for="item in types" v-on:click="sortBy(item.key)">
+				<span>{{item.value}}</span>
+				<span class="arrow"></span>
+			</li>
+		</ul>
+		<ul class="list">
+			<li v-for="item in list">
+				<a href="#/product/{{item.id}}">
+					<img v-bind:src="'img/list/' + item.img" alt="">
+					<div class="description">
+						<h3>{{item.title}}</h3>
+						<span class="desc-left price">{{item.price | price}}</span>
+						<span class="desc-left orign-price">{{item.orignPrice | orignPrice}}</span>
+						<span class="desc-right">{{item.sales | sales}}</span>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<div class="load-more" @click="loadMore" v-show="other.length">
+			<span>{{other.length | loadMore}}</span>
+			<span class="arrow"><span class="arrow green"></span></span>
+		</div>
+	</section>
+</script>

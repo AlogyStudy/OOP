@@ -1,0 +1,96 @@
+﻿
+后台管理系统
+
+确定需求
+
+载入需要的框架
+
+确定ng-view
+
+
+确定路由
+	
+	判断是否有用户信息(session)
+	
+	login页面
+	主页
+	
+tpl，cotroller抽离
+
+
+
+登陆页面
+	
+	表单验证
+	button login.$invalid
+
+	提示信息，login.user.$dirty && login.password.$invalid
+	
+	输入信息必须 ng-model 添加双向绑定
+
+	在loginCtrl 中发送请求
+
+	用户名需要挂载到$rootScope 上 主页面显示 欢迎 用户名.
+
+	
+
+
+主页列表渲染
+
+
+配置路由
+		
+
+
+创建用户
+.when('/createuser',  {
+	templateUrl: 'view/createuser.html'
+	controller: 'createuserCtrl'
+});
+	
+
+
+用户列表
+.when('/userlist/pageNum', {});
+需要先有数据，然后渲染列表.
+
+获取数据需要需要有条件
+通过$routeParams 获取.
+
+	
+
+用户详情
+.when('/userdetail', {});
+需要先获取数据，渲染页面. 
+根据用户ID 来获取
+
+
+
+
+
+
+
+新闻列表
+.when('/newslist', {});
+
+
+创建新闻
+.when('/createnews', {});
+
+
+用户详情
+.when('/newsdetail', {});
+
+
+
+
+
+注意：
+表单验证
+form表单的name
+不能和ng-model 的定义成相同的名字
+
+例如： <from name="user">
+	<input type="text" ng-model="user.username" />	
+	</form>
+

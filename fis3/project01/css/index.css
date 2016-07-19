@@ -1,3 +1,6 @@
+body, html {
+	background: yellow;
+}
 ul {
 	margin: 100px auto;
 }
@@ -25,17 +28,16 @@ li span {
 	font-size: 0;
 }
 .item1 span {
-	background: url(../img/01.png?__sprite) center no-repeat;
+	background: url(../img/01.png?__sprite) center;
 }
 .item2 span {
-	background: url(../img/02.png?__sprite) center no-repeat;
+	background: url(../img/02.png?__sprite) center;
 }
-
 .item3 span {
-	background: url(../img/03.png?__sprite) center no-repeat;
+	background: url(../img/03.png?__sprite) center;
 }
 .item4 span {
-	background: url(../img/04.png?__sprite) center no-repeat;
+	background: url(../img/04.png?__sprite) center;
 }
 
 .demo {
