@@ -1,0 +1,34 @@
+
+@space: 20px;
+@BgColor: cyan;
+@color: #fff;
+
+.link-bg {
+    background: @BgColor;
+}
+
+ul {
+    padding: @space * .5;
+    background: .link-bg;
+    width: @space * 6; 
+    height: @space * 2;
+    li {
+        float: left;
+        width: @space * 2;
+        height: @space;
+        list-style: none;
+        text-align: center;
+        line-height: @space;
+        a {
+            color: @color;
+            padding: @space*.15 @space*.15;
+            text-decoration: none;
+        }
+    }
+    li:hover {
+        background: @color;
+        a {
+            color: @BgColor;
+        }
+    }
+}

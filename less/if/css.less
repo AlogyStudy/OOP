@@ -1,0 +1,35 @@
+
+//.size ( @w, @h ) when ( @w > 200 ) {
+//  width: @w;
+//  height: @h;
+//}
+//
+//.size (@w, @h ) when ( @w = 200 ) {
+//  width: @w;
+//  height: @h;    
+//}
+//
+//.size ( @w, @h ) when ( @w < 200 ) {
+//  width: @w;
+//  height: @h;
+//}
+
+// 判断在 300 - 500 范围之间
+//.size ( @w, @h ) when ( @w > 300 ) and ( @w < 500 ) {
+//  width: @w;
+//  height: @h;
+//} 
+
+ // 判断不小于200
+   .size( @w, @h ) when not( @w < 200 ) {
+    width: @w;
+    height: @h; 
+   }
+
+div {
+    .size(100, 200px);
+    background: cyan;
+}
+
+
+

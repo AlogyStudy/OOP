@@ -1,0 +1,91 @@
+
+
+//@color: '100';
+
+// 颜色函数
+
+//body {
+//  height: 400px;
+//  background: rgb(100, 12, 109);
+//  background: rgb(@color, @color, @color);    
+//  background: rgba(100, 12, 109, .3);
+//  background: hsl(200, 30%, 10%);    
+//}
+
+// 编译报错
+//@color: '100';
+//div {
+//  background: rgb(@color, @color, @color);  
+//}
+
+
+
+// 色彩通道
+//@w: 100px;
+//@h: 200px;
+//@color: #00BCD4;
+//@alphaColor: rgba(100, 20, 40, .5);
+//
+//div {
+//  width: @w;
+//  height: @h;
+//  background: rgb(red(@color), red(@color), red(@color));
+//  background: rgb(green(@color), green(@color), green(@color));
+//  background: rgb(blue(@color), blue(@color), blue(@color));
+//  background: rgba(red(@color), green(@alphaColor), blue(@color), alpha(@alphaColor));
+//  background: rgb(hue(@color), hue(@color), hue(@color));
+//  margin: hue(@color);
+//  width: saturation(@color);
+//  height: lightness(@color);
+//}
+
+
+// 色彩操作
+
+//@w: 100px;
+//@h: 200px;
+//
+//@color: cyan;
+//@color2: tan;
+//
+//div {
+// width: @w;
+// height: @h;
+//// background: fade(@color, 10%);
+//// background: fadeIn(@color, 10%); 
+//// background: fadeOut(@color, 90%);
+//// background: greyscale(@color);
+//// background: mix(@color, @color2);
+//// background: mix(@color, @color2, 30%);  
+// background: softlight(@color, @color2); 
+// content: relace('this color is tan', 'tan', 'cyan');
+//}
+//
+//div {
+//  content: relace('this color is tan', 'tan', 'cyan');
+//}
+
+
+
+@w: 100px;
+
+.box1 {
+    .sayW(){
+        @w: 300px;
+    }    
+    width: @w;
+    .sayW();
+}
+
+.box1{
+    p {
+        width: @w;
+    }
+}
+
+.box2 {
+    .box1 .sayW(); // 函数通过命名空间执行
+    width: @w; // @w: 300px;
+}
+
+
