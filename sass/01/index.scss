@@ -1,0 +1,46 @@
+//$w: 100px;
+//body {
+//  height: 400px;
+//  background: cyan;
+//  div {
+//      width: $w;
+//      height: $w;
+//      background: khaki;
+//  }
+//}
+
+
+
+// ---------------------------------
+$w: 400px;
+body {
+    height: $w;
+    $h: 100px;
+    div {
+        width: $w;
+        height: $h;
+        background: cyan;
+        &:hover {
+            background: khaki;
+        }
+        border: {
+            style: solid;
+            top: {
+                width: 10px;
+                color: tan;
+            }
+            bottom: {
+                width: 12px;
+                color: springgreen;
+            }
+        }
+    }
+}
+
+h1 {
+    width: $w;
+    height: $w;
+    background: coral;
+    transform: rotateX(40deg);
+    transition: all 1s;
+}

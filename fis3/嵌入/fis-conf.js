@@ -10,13 +10,20 @@ fis.match('**.{js,png,css}', {
 
 // 压缩css
 fis.match('**.css', {
-	optimizer: fis.plugin('clean-css'),
+//	optimizer: fis.plugin('clean-css'),
 	packTo: 'css/app.css'
 });
 
 
 // 压缩js
 fis.match('**.js', {
-	optimizer: fis.plugin('uglify-js'),
+//	optimizer: fis.plugin('uglify-js'),
 	packTo: 'js/app.js'
 });
+
+
+// 修改打包路径
+fis.match('::package', {
+	postpackager: fis.plugin('loader')
+});
+

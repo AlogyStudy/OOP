@@ -1,0 +1,20 @@
+body {
+  height: 400px; }
+  body div {
+    width: 400px;
+    height: 100px;
+    background: cyan;
+    border-style: solid;
+    border-top-width: 10px;
+    border-top-color: tan;
+    border-bottom-width: 12px;
+    border-bottom-color: springgreen; }
+    body div:hover {
+      background: khaki; }
+
+h1 {
+  width: 400px;
+  height: 400px;
+  background: coral; }
+
+/*# sourceMappingURL=index.css.map */

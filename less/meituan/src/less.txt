@@ -1,0 +1,52 @@
+
+变量
+
+颜色
+字体
+
+
+
+
+混合类
+.clearfix:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.no-line {
+	text-decoration: none;
+}
+
+模块样式
+
+
+复用的方法
+
+.arrow (@b: top, @s: 10px, @c: #000) {
+	border: @s solid transparent;
+	border-@{b}: @s solid @c;
+	width: 0;
+	font-size: 0;
+}
+
+工具方法
+
+.hlh (@h) {
+	height: @h;
+	line-height: @h;
+}
+.font(@c: @defaultFontColor, @fz: @defaultFontSize, @tc: center, @fw: normal) {
+	color: @c;
+	font-size: @fz;
+	text-align: @tc;
+	font-weight: @fw;
+}
+.position (@p: absolute, @t: 0, @l: 0) {
+	position: @p;
+	top: @t;
+	left: @l;
+}
+.pos(@t: 0, @l: 0) {
+	top: @t;
+	left: @l;
+}

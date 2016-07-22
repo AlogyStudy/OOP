@@ -1,0 +1,27 @@
+
+// 布局
+
+@import 'variables.less';  // 全局变量 
+@import 'mixins.less'; // 全局混淆
+
+
+.app-header {
+    color: @while;
+    .navbar {
+       background: @rootScopeColor;
+       .back {
+           float: .fl;
+       } 
+       .login {
+           float: .fr;
+       }
+       h1 {
+         width: .w100;
+         height: @headHeight; 
+         font-size: @defaultFontSize * 2;
+         text-align: .tc;
+         font-weight: .fwn;  
+         line-height: @headHeight;
+       }
+    }
+}

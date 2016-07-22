@@ -1,0 +1,54 @@
+.f10rm {
+  font-size: 1rem;
+}
+.f12rm {
+  font-size: 1.2rem;
+}
+.f14rm {
+  font-size: 1.4rem;
+}
+.f16rm {
+  font-size: 1.6rem;
+}
+.f18rm {
+  font-size: 1.8rem;
+}
+.f20rm {
+  font-size: 2rem;
+}
+.f22rm {
+  font-size: 2.2rem;
+}
+.w100 {
+  width: 100%;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.fwn {
+  font-weight: normal;
+}
+.tc {
+  text-align: center;
+}
+.hide {
+  display: none;
+}
+.clearfix:after {
+  clear: both;
+  display: table;
+  content: " ";
+}
+.gray {
+  background: #f2f2f2;
+}
+.white {
+  background: white;
+}
+.overflow {
+  overflow: hidden;
+  *zoom: 1;
+}
