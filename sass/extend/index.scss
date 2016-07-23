@@ -1,0 +1,23 @@
+
+div {
+    width: 100px;
+}
+
+myDiv {
+    border: 1px solid tan;
+}
+
+#demo {
+    height: 200px;
+}
+
+.app {
+    background: tan;
+}
+
+p {
+    @extend div;
+    @extend myDiv;
+    @extend #demo;
+    @extend .app;
+}
