@@ -89,7 +89,7 @@
 				
 			})()
 			
-			/*var fn = function ( info ) {
+			var fn = function ( info ) {
 				
 				console.log( info.data );
 				
@@ -97,9 +97,13 @@
 				
 			};
 			
-			Observer.add('hello',fn).remove('hello',fn).fire('hello',{
+			var fn2 = function () {
+				console.log('xixihaha');
+			}
+			
+			Observer.add('hello',fn).add('haha', fn2).fire('haha').fire('hello',{
 				'data': '当有天老去'
-			});*/
+			});
 			
 			
 		</script>
