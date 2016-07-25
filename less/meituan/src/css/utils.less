@@ -1,3 +1,48 @@
 
 // 工具类 (函数)
 
+.arrow ( @dir: top, @w: 16px, @color: #fff, @pos: absolute ) {
+    position: @pos;
+    border: @w solid transparent;
+    border-@{dir}: @w solid @color;
+    font-size: 0; 
+}
+
+
+.positionTL ( @pos: absolute, @t: 0, @l: 0 ) {
+    position: @pos;
+    top: @t;
+    left: @l;
+}
+
+
+.posTL ( @t: 0, @l: 0 ) {
+    top: @t;
+    left: @l;
+}
+
+.borderDir (@dir: bottom, @color: #dedede) {
+    border-@{dir}: 1px solid @color;
+}
+
+.fontTextAlign ( @h: 40px, @size: 16px ) {
+    line-height: @h;
+    text-align: center;
+    font-size: @size;
+}
+
+.fontRow (@w: 0) {
+    text-align: center;
+    width: @w;
+}
+
+.lineHeihgt (@h) {
+    line-height: @h;
+    height: @h;
+}
+
+.clearfixAfter() {
+    clear: both;
+    display: table;
+    content: " "
+}

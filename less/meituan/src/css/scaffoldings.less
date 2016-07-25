@@ -1,27 +1,310 @@
 
 // 布局
 
-@import 'variables.less';  // 全局变量 
+@import 'variables.less';  // 全局变量
+@import 'utils.less'; // 工具函数  
 @import 'mixins.less'; // 全局混淆
 
 
+.list () {
+    .borderDir(bottom, #ccc);
+    height: @defaultPadding * 5;
+    img {
+        .fl;
+        width: @defaultPadding * 7;
+        height: @defaultPadding * 4;
+        margin-top: @defaultPadding / 2;
+    }
+    .description {
+        margin-left: 145px;
+        height: @w100;
+        h3 {
+            height: @defaultPadding * 3;
+            padding-top: @defaultPadding / 2;
+            color: @defaultGray;
+            font-weight: normal;
+            font-size: @bigFontSize; 
+        }
+        .desc-left {
+            .fl;
+            font-size: @samllFontSize;
+        }
+        .price {
+            color: @rootScopeColor;
+            font-size: @defaultFontSize;
+        }
+        .orign-price {
+            margin-left: @defaultFontSize / 4;
+        }
+        .desc-right {
+            .fr;
+            font-size: @samllFontSize;
+            color: @defaultGray;
+        }
+    }
+}
+
+
+/**
+ * 主页样式
+ */
 .app-header {
     color: @while;
     .navbar {
        background: @rootScopeColor;
        .back {
-           float: .fl;
+           .positionTL(relative, @samllFontSize);
+           .arrow {
+               .arrow(right, 16px);
+           }
+           .green {
+               .arrow(right, 16px, @rootScopeColor);
+               .posTL(0, 2px);
+           }
        } 
        .login {
-           float: .fr;
+           position: absolute;
+           right: @defaultPadding;
+           line-height: @headHeight;
+           padding-left: @defaultFontSize;
        }
        h1 {
-         width: .w100;
+           .w100;
          height: @headHeight; 
          font-size: @defaultFontSize * 2;
-         text-align: .tc;
-         font-weight: .fwn;  
+         .tc;
+         .fwn;
          line-height: @headHeight;
        }
     }
+    .search {
+        input {
+            .w100;
+            padding: 0 (@defaultPadding/2);
+            height: @inputHeight;
+            line-height: @inputHeight;
+            font-size: @defaultFontSize;
+            box-sizing: border-box;
+            .borderDir();
+        }
+    }
 }
+
+
+/**
+ * 动态组件    
+ */
+
+.home-page {
+    margin-bottom: (@defaultPadding/2);
+    .types {
+        background: @while;
+        li {
+            .fl;
+            .fontRow(@w100/5);
+            margin-bottom: (@defaultPadding/2);
+            margin-top: (@defaultPadding/2);
+            a {
+                color: @defaultGray;
+                img {
+                    width: (@w100*.6);
+                    margin-bottom: (@defaultPadding/4);
+                }
+                span {
+                    display: block;
+                    font-size: @samllFontSize;
+                }
+            }
+        }
+    }
+    .ad {
+        margin: @defaultFontSize/2 @defaultFontSize/4;
+        background: @while;
+        li {
+            .fl;
+            .fontRow(@w100*.33);
+            padding-top: @defaultFontSize/2;
+            .borderDir(right, #ccc);
+            a {
+                color: @defaultGray;
+                h2 {
+                    color: #f76181;
+                    font-size: @bigFontSize;
+                }
+                p {
+                    margin: @defaultFontSize/2 0 @defaultFontSize/1.33;
+                }
+                img {
+                    width: @w100 * .5;
+                }
+            }
+        }
+        li:nth-child(3) {
+            border-right: none;
+        }
+    }
+    .list {
+        background: @while;
+        padding: @defaultFontSize/1.33;
+        padding-bottom: 0;
+        li {
+            .list();
+        }
+    }
+}
+
+/**
+ * list 模块
+ */
+
+.list-page {
+    .type {
+        .borderDir(bottom, #eee);
+        li {
+            .fl;
+            width: @w25;
+            .borderDir(right, #eee);
+            .fontTextAlign(@defaultPadding * 2, @bigFontSize);
+            box-sizing: border-box;
+            .arrow {
+                .arrow(top, 6px, #ccc, relative);
+                .posTL(-2px);
+            }
+        }
+    }
+    .list {
+        background: @while;
+        padding: @defaultFontSize/1.33;
+        padding-bottom: 0;
+        li {
+            .list();
+        }
+    }
+    .load-more {
+        background: @while;
+        .fontTextAlign();
+        .borderDir(bottom, #eee);
+        color: @rootScopeColor;
+        .arrow-more{
+            .arrow(top, 8px, @rootScopeColor, relative);
+            .posTL(0, 5px);
+            .arrow-more-rep {
+                position: absolute;
+                border-top: 8px solid white;
+                .posTL(-11px, -8px);
+            }
+        };
+    }
+}
+
+/**
+ * end list 模块 
+ */
+
+
+/**
+ * 详情页
+ */
+
+.product-page {
+    font-size: @defaultFontSize;
+    .img-container {
+        position: relative;
+        background: @while;
+        color: @while;
+        img {
+            vertical-align: middle;
+            border: 0 none;
+        }
+        .img-bg {
+            position: absolute;
+            bottom: 0;
+            width: @w25 * 4;
+            height: 64px;
+            background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.08), rgb(0, 0, 0));
+            h1 {
+                font-size: @defaultPadding;
+                line-height: @defaultPadding /2 * 3;
+                padding-left: @defaultPadding / 2;
+                box-sizing: border-box;
+            }            
+            p {
+                font-size: @defaultFontSize;
+                padding-left: @defaultPadding / 2;
+                box-sizing: border-box;
+            }
+        }
+    }
+    .price-container {
+        .fontTextAlign(70px);
+        .borderDir(bottom,#ccc);
+        .clearfixAfter();
+        width: @w25 * 4;
+        padding-left: @defaultPadding / 2;
+        background: @while;
+        .btn {
+            .fr;
+            background: orange;
+            color: @while;
+            margin: @defaultPadding / 4 * 3;
+            padding: @defaultPadding / 2 @defaultPadding;
+            line-height: @defaultPadding;
+        }
+        span {
+            .fl;
+        }
+        .price {
+            color: @rootScopeColor;
+            padding-right: @defaultPadding / 2;
+            span {
+                font-size: @samllFontSize * 3;
+            }
+        }
+    }
+    .sale-container {
+        padding: @defaultPadding/2 0;
+        background: @while;
+        li {
+            .fl;
+            color: #6bbd00;
+            width: @w25 * 2;
+            .lineHeihgt(30px);
+            padding-left: @defaultPadding / 2;
+            box-sizing: border-box;
+        }
+        .sales {
+            color: @defaultGray;
+        }
+    }
+    .part {
+        background: @while;
+        margin-top: @defaultPadding / 2;
+        padding: @defaultPadding / 4 @defaultPadding / 2;
+        h2 {
+            .lineHeihgt(40px);
+            .borderDir(bottom, #ccc);
+            margin-bottom: @defaultPadding / 2;
+        }
+        p {
+            line-height: @defaultPadding / 2 * 3;
+        }
+        .see-more {
+            .lineHeihgt(40px);
+            .borderDir(top, #ccc);
+            color: @rootScopeColor;
+        }
+        h3 {
+            color: orange;
+            margin: @defaultPadding 0 @defaultPadding / 2;
+        }
+    }
+}
+
+/**
+ *end 详情页
+ */
+
+
+/**
+ *end 动态组件    
+ */
