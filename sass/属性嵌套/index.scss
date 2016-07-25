@@ -1,0 +1,20 @@
+$w: 100px;
+
+div {
+    width: $w;
+    height: $w;
+    background {
+        color: pink;
+    } 
+    border: {
+        style: solid;
+        top: {
+            width: 5px;
+            color: tan;
+        }
+        left: {
+            width: 2px;
+            color: khaki;
+        }
+    }
+}

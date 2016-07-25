@@ -1,0 +1,18 @@
+$w: 200px;
+$h: 100px;
+$color: cyan; 
+
+@mixin sayBor($w: 300px, $shadow...) {
+    width: $w;
+    height: $h;
+    background: $color;
+    box-shadow: $shadow;
+}
+
+.head {
+    @include sayBor(500px, 2px 2px 10px red);
+}
+
+.box1 {
+    @include sayBor(300px,2px 4px 5px pink);
+}

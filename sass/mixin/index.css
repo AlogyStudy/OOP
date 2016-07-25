@@ -1,0 +1,13 @@
+.head {
+  width: 500px;
+  height: 100px;
+  background: cyan;
+  box-shadow: 2px 2px 10px red; }
+
+.box1 {
+  width: 300px;
+  height: 100px;
+  background: cyan;
+  box-shadow: 2px 4px 5px pink; }
+
+/*# sourceMappingURL=index.css.map */

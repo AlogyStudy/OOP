@@ -1,9 +1,9 @@
 
-div {
+%div {
     width: 100px;
 }
 
-myDiv {
+%myDiv {
     border: 1px solid tan;
 }
 
@@ -16,8 +16,8 @@ myDiv {
 }
 
 p {
-    @extend div;
-    @extend myDiv;
+    @extend %div;
+    @extend %myDiv;
     @extend #demo;
     @extend .app;
 }
