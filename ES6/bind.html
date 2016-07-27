@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			'use strict';
+			
+			function b () {
+				console.log(this.title);
+			}
+			
+			function Book ( title ) {
+				this.title = title;
+			}
+			
+			var book = new Book('javascript');
+			
+			// apply , call 特点：调用就执行
+//			b.call(book);
+//			b.apply(book);
+			
+			// 当执行一个函数的时候更改作用域 
+			var bBindfn = b.bind(book);
+			
+			// 执行更改作用域
+			bBindfn();
+			
+		</script>
+		
+	</body>
+</html>
