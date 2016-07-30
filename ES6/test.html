@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+//			'use strict';
+//			
+//			//请修改以下代码，让控制台正确输出 20,10
+//			
+//			function foo(){
+//				
+//			  a = 20; // 报错 ReferenceError
+//			  
+//			  console.log(a); // undefined
+//			  
+////			  let a = 10;
+//
+//				var a = 10;
+//			  
+//			  console.log(a); // 10
+//			  
+//			}
+//			
+//			foo();
+
+
+//				if ( true ) {
+//					
+//					let a;
+//					
+//					let a; // TypeError thrown.
+//					
+//				}
+
+//				console.log( typeof x ); // undefined
+//				var x; 
+
+
+//					if (true) {
+//					  // TDZ开始
+//					  a = 10; // ReferenceError
+//					  console.log(tmp); // ReferenceError
+//					
+//					  let a; // TDZ结束
+//					  console.log(tmp); // undefined
+//					
+//					  a = 100;
+//					  console.log(tmp); // 100
+//					}
+//					
+//					
+//					console.log( typeof x ); // ReferenceError
+//					let x;	
+//
+				
+//				function bar ( y = 2, x = y ) {
+//					return [x, y];
+//				}
+//				
+//				let q = bar();
+//				console.log(q);
+
+
+				
+				//修改以下代码，让它返回正确的结果： 30, 20
+				
+//				console.log(foo(10));
+//				
+//				var x = 10;
+//				console.log(foo(10));
+//				
+//				function foo(y){
+//				  
+//				  
+//				  console.log(x);
+//				  
+////				  let x;
+//				  
+//				  if(typeof x !== 'undefined'){
+//				  	
+//				    return y += x;
+//				    
+//				  }
+//					
+//				  let x = 20;
+//					
+//				  return y += x;
+//				  
+//				}
+//				
+
+
+			
+//			if(true){
+//				
+//			    setTimeout(function(){
+//			    	
+//			        console.log(x); // 1
+//			        
+//			    });
+//			    
+//			    let x = 1;
+//			    
+//			}
+
+				
+				
+//				function foo (x) {
+//					
+//					x = 1000;
+//					
+//					console.log(x);
+//					
+//					
+//				}
+//				
+//				let x = 10;
+//				
+//				foo(100);
+			
+
+			//修改代码让以下运行结果正确，正确结果为 3
+//			
+//			function foo( x, y ){
+//				
+//			  x = x || 1;
+//			  
+//			  y = y || 2;
+//			  
+//			  return x + y;
+//			  
+//			}
+//			
+//			console.log(foo());
+//			
+
+			//修改下面的代码，输出 [[0,1,2],[0,1,2],[0,1,2]];
+//			function foo(){
+//				
+//			  let ret = [];
+//			  
+//			  for(let i = 0; i < 3; i++){
+//			  	
+//			    let r = [];
+//			    
+//			    for(i = 0; i < 3; i++){
+//			    	
+//			    	r.push(i);
+//			    	
+//			    }
+//			    
+//			    ret[i] = r;
+//			    
+//			  }
+//			  
+//			  return ret;
+//			  
+//			}
+//			
+//			console.log(foo());
+
+
+//				let a = 10;
+//				a = 20;
+//				
+//				console.log(a);
+				
+				
+				
+//				const foo = {};
+//				
+//				foo.k1 = 100;
+//				
+//				console.log( foo.k1 );
+//				
+//				foo = {}; // TypeError: "foo" is read-only
+
+
+//					'use strict';
+//				
+//					const foo = {}
+//					Object.freeze(foo);
+//					
+//					
+//					// 常规模式时，下面一行不起作用, 忽略添加 
+//					// 严格模式时，该行会报错
+//					foo.k1 = 100;
+//					
+//					console.log(foo);
+
+			let num = '10';
+
+			let intro = `<h1>笑一笑,${num * 2}年少</h1>`;
+			
+			let introT = intro.repeat(2);
+			
+			console.log(intro);
+			
+			console.log(introT);
+
+		</script>
+		
+	</body>
+</html>

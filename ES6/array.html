@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="lib/traceur.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/traceur-bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			'use strict';
+			
+			// 类数组对象
+//			let arrayLike = {
+//				0: 'a',
+//				1: 'b',
+//				length: 2
+//			}
+//			
+//			// ES5的写法
+//			let arr1 = [].slice.call(arrayLike); 
+//			
+//			// ES6的写法
+////			let arr2 = Array.from(arrayLike);
+//			let arr2 = Array.from(arrayLike, function ( value, index ) {
+//				
+//				return value + '-xixi';
+//				
+//			});
+			
+//			console.log(arr1, arr2); // ['a', 'b']['a', 'b']  
+
+				
+//				console.log( Array.of(1, 2, 3, 'xixi') );
+//				
+//				console.log( Array(10).length );
+//				console.log( Array(10, 12, 23) );
+//				console.log( Array.of([]) );
+//				console.log( Array.of(undefined) );
+//				console.log( Array.of(1) );
+//				console.log( Array.of(1, 2) );
+//				console.log( Array.of('&') );
+
+			// (n) => n < 0
+//			let num = [1, 2, 23, 10].find( (n) => n > 10 );
+//			
+//			let q = [1, 2, -3, 4].find( function (n) {
+//				
+//				return n < 0;
+//				
+//			} );
+//			
+//			console.log(q, num);
+//			
+//			let a = [1, 2, 2, 3].find( ( value, index, arr ) => value < 2  );
+//			
+//			console.log(a);
+			
+//			let aa = ['cyan', 'pink', 'tan', 'red'].findIndex( (value, index, arr) => Object.is('tan', value) );
+//			
+//			console.log(aa,'-');
+
+
+				let colors = ['cyan', 'pink', 'tan', 'red'];
+				
+				let Idx = colors.keys();
+				let vals = colors.values();
+				let entri = colors.entries();
+				
+				console.log( Idx,vals );  // ArrayIterator {}
+				
+				for ( let index of Idx ) {
+					
+					console.log(index);
+					
+				}
+				
+				for ( let val of vals ) {
+					
+					console.log(val);
+					
+				}
+				
+				
+				console.log(entri);
+				
+//				for ( let entris of entri ) {
+//					
+//					console.log( entris );
+//					
+//				}
+				console.log('-----');
+				
+				console.log( entri.next() ); // [0, "cyan"]
+				console.log( entri.next().value ); // [1, "pink"]
+				console.log( entri.next().value ); // [2, "tan"]
+				console.log( entri.next().value ); // [3, "red"]
+				
+						
+		</script>
+		
+		
+	</body>
+</html>

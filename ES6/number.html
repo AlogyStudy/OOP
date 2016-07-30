@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="lib/traceur.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/traceur-bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="module">
+			
+			'use strict';
+			
+			let num = 1 / 0;
+			
+			console.log( num );
+			
+			console.log( Number.isNaN(num) );;
+			
+			console.log( Number.isInteger(3) );
+			console.log( Number.isInteger(3.0) );
+			console.log( Number.isInteger(-0) );
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

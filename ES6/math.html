@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="lib/traceur.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/traceur-bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="module">
+			
+			'use strict';
+			
+			// sign
+			
+			Math.sign(''); // NaN
+			Math.sign('a'); // NaN 
+			Math.sign(NaN); // NaN
+			Math.sign(false); // NaN
+			Math.sign(undefined); // NaN
+			Math.sign(0); // 0
+			Math.sign(-0); // -0
+			Math.sign(-2); // -1
+			Math.sign(+2); // 1
+			
+			
+//			Math.sign = Math.sign || function ( x ) {
+//				
+//				x = +x;
+				
+//				if ( x === 0 || isNaN(x) ) {
+//					return x;
+//				}
+				
+//				return x > 0 ? 1 : 1;
+				
+//			}
+
+
+			console.log(Math.trunc(123.456));
+			
+			
+		</script>
+		
+		
+	</body>
+</html>
