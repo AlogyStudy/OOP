@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+//			let [a, b, c] = [1, 2, 3];
+//			
+//			console.log(a,b,c);
+//			
+//			let [foo, [[bar], baz]] = [1, [[10], 100]];
+//			
+//			console.log(foo,bar,baz);
+//			
+//			let [d] = []; // undefined
+//			let [e, f] = [1]; // 1 undefined
+//			
+//			console.log(d,e,f);
+			
+//			let [x, y, ...z] = ['a', 'b', 'c', 'd'];
+//			
+//			console.log(x,y,z); // a b ["c", "d"]
+			
+			
+//			let [x, y] = [1, 2, 3];
+//			console.log(x, y); // 1  2
+//			
+//			let [a, [b], c] = [1, [2, 3], 4];
+//			
+//			console.log(a, b, c); // 1 2 4
+
+//				let [a = 100] = [];
+//				
+//				console.log(a); // 100
+
+//					let [a = 1] = [undefined];
+//					let [b = 10] = [null];
+//					let [c = 100] = [NaN];
+//					
+//					console.log(a, b, c); // 1 null NaN
+
+					
+//					function fn () {
+//						console.log('a');
+//					}
+//
+//					let [x = fn()] = [1];
+//					
+//					console.log(x); // 1 
+//					// fn(); 函数不会执行
+
+//						let [x = 1, y = x] = []; // x = 1  y = 1
+//						let [x = y, y = 1] = []; // ReferenceError 
+
+
+
+					// 对象的解构赋值
+					
+//					let {a, b} = {b: 10, a: 100}; 
+//
+//					console.log(a, b); // 10  100
+//					
+//					let { c } = {d: 1000, e: 100 }
+//					console.log(c); // undefined
+
+						
+//						let {foo: baz} = {foo: 'aaa', bar: 'bbb'}
+//						
+//						console.log(baz); // aaa
+//						console.log(foo); // ReferenceError
+//						// 被赋值的是变量baz，而不是模式foo
+
+//						let {x = 3} = {x: undefined}
+//						// x = 3;
+//						
+//						let {y = 10} = {y: null}
+//						
+//						console.log(x, y); // 3 null
+
+
+					// 字符串的解构赋值
+					
+//					const [a, b, c, d, e] = 'hello';
+//					
+//					console.log(a, b, c, d, e); // h e l l o
+//					
+
+				
+						let {foo: baz} = {foo: 'aaa', bar: 'bbb'}
+						
+						console.log( baz );
+				
+
+//					let {toString: s} = 10;
+//					
+//					console.log( s === Number.prototype.toString ); // true
+//					
+//					console.log(s);  // function toString() { [native code] }
+//					
+//					let { toString: t } = true;
+//					
+//					console.log(t); // function toString() { [native code] }
+//					
+//					[[1, 2], [3, 4]].map( ([a, b]) => a + b ); // 3 7
+//					[[, 2], [, 4]].map(function ( [a = 10, b] ) {
+//						return a + b;
+//					}); 
+					
+						
+		</script>
+		
+		<script src="lib/traceur.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/traceur-bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="module">
+			
+			// 数组解构赋值
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="lib/traceur.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/traceur-bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript">
+			
+			'use strict';
+			
+//			function Person ( name, age ) {
+//				return {name, age} // ES6 允许直接引入变量，不用对对象添加同名属性
+//			}
+//			
+//			console.log( Person('cyan', 22) );
+//			
+//			// 允许定义对象时候，对对象属性应用表达式
+//			let a = 'num';
+//			let b = 'ber';
+//			
+//			let obj = {
+//				[a + b]: 100
+//			}
+//			
+//			console.log( obj );
+//			
+//			// 定义函数属性，
+//			let obj1 = {
+//				name: 'cyan',
+//				age: 22,
+//				sayAge: function () {
+//					console.log(this.age); // 22
+//				},
+//				sayName () { // ES6允许定义方法的时候，可以省略方法对应的属性名，和 fucntion 关键字
+//					console.log(this.name); // cyan
+//				}
+//			}
+//			
+//			obj1.sayName();
+//			obj1.sayAge();
+
+//			var foo = 'bar';
+//			var baz = {foo};
+//			baz // {foo: "bar"}
+			
+			// 等同于
+//			var baz = {foo: foo};
+			
+			
+//			let objName = 'bar';
+//			let obj1 = {objName}
+//			
+//			console.log( obj1 ); // Object {foo: "bar"}
+//			
+//			// 等同于
+//			let obj2 = {objName: objName} // Object {foo: "bar"}
+//			console.log(obj2);
+
+
+//				属性名表达式与简洁表示法
+
+//				let obj = {
+//					['h'+ 'ello']() {
+//						let x = 10;
+//						return {x};
+//					}
+//				}
+
+//				console.log( obj.hello() );
+
+
+//					let a = 'cyan';
+//					let b = 'pink';
+//					let color = { [a] }
+//					
+//					console.log(color);
+
+
+//						let a = 'cyan';
+//						let color = { [a]: 'pink' }
+//					
+//						console.log(color);
+
+				'use strict';
+
+//					let obj = {
+//						name: 'cyan',
+//						sayName() {
+//							return this.name; 
+//						}
+//					}
+//			
+//					console.log( obj.sayName.name ); // sayName
+
+
+//			console.log( (new Function()).name ); // anonymous
+//			
+//			let doSomething = function () {}
+//			
+//			console.log( doSomething.bind().name ); //bound doSomething  
+			
+			
+				let obj1 = {
+					x: 1,
+					y: 2
+				}
+				
+				let obj2 = {
+					a: 'a',
+					b: 'b'
+				}
+				
+				console.log( Object.assign(obj1, obj2) );
+				
+				
+				
+
+			
+		</script>
+		
+		
+	</body>
+</html>
