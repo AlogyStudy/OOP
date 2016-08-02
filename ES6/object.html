@@ -106,22 +106,56 @@
 //			console.log( doSomething.bind().name ); //bound doSomething  
 			
 			
-				let obj1 = {
-					x: 1,
-					y: 2
-				}
+//				let obj1 = {
+//					x: 1,
+//					y: 2
+//				}
+//				
+//				let obj2 = {
+//					a: 'a',
+//					b: 'b'
+//				}
+//				
+//				let resObj = Object.assign(obj1, obj2);
+//				
+//				console.log( resObj );
+//				console.log( obj1 );
+//				console.log( resObj == obj1 );
+//				console.log( obj2 );
 				
-				let obj2 = {
-					a: 'a',
-					b: 'b'
-				}
 				
-				console.log( Object.assign(obj1, obj2) );
-				
-				
-				
+//					class Point {
+//						constructor (x, y) {
+//							Object.assign(this,{x, y});
+//						}
+//					}
+//					
+//					let p = new Point(10, 20);
+//					
+//					console.log(p);
 
-			
+
+//						Object.assign(Some.prototype, {
+//							someMethod1 ( arg1, arg2 ) {
+//								// ....
+//							}
+//							someMethod2 ( arg1, arg2 ) {
+//								// ....
+//							}
+//						});
+//				
+//						// 等价
+//						Some.prototype.someMethod1 = function ( arg1, arg2 ) {
+//							// ....
+//						}
+//						Some.prototype.someMethod2 = function ( arg1, arg2 ) {
+//							// ....
+//						}
+
+					let obj = { a: 1, b: 2 };
+					
+					console.log( Object.entries(obj) );  [ ["a", 1], ["b", 2] ]
+						
 		</script>
 		
 		

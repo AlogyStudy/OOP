@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="lib/traceur.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/traceur-bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="module">
+			
+			'use strict';
+			
+			let fn = (...s) => {
+				console.log(arguments);
+				console.log(this);
+				console.log(...s);
+			}
+			
+			
+			fn(10);
+			
+		</script>
+		
+	</body>
+</html>

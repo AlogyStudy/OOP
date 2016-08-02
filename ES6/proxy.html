@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="lib/traceur.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/traceur-bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="module">
+			
+//			let Start = {
+//				count: 0
+//			}
+//			
+//			let obj1 = new Proxy(Start, {
+//				
+//				get: function ( target, key ) {
+//					
+//					console.log(`getting ${key}!`);
+//					
+//					return target[key];
+//					
+//				},
+//				
+//				set: function ( target, key, value ) {
+//					
+//					console.log(`setting ${key}!`);
+//					
+//					return target[key] = value;
+//					
+//				}
+//				
+//			});
+//			
+//			console.log( obj1.count );
+//			
+//			obj1.count = 1;
+//			
+//			console.log( obj1.count );
+			
+			
+			
+//			console.log(++obj.count);
+
+//			var obj = new Proxy({}, {
+//			  get: function (target, key, receiver) {
+//			    console.log(`getting ${key}!`);
+//			    return Reflect.get(target, key, receiver);
+//			  },
+//			  set: function (target, key, value, receiver) {
+//			    console.log(`setting ${key}!`);
+//			    return Reflect.set(target, key, value, receiver);
+//			  }
+//			});
+			
+			
+			
+//			let a = {};
+//			let b = {};
+//			
+//			let proxy = new Proxy(a, b);
+//			
+//			proxy.tag = 'javascript';
+//			
+//			console.log(a.tag); // javascript
+
+//				// 放在object.proxy 属性上
+//				let object = {
+//					proxy: new Proxy(target, handler)
+//				}
+//				
+//				// 其它对象的原型上
+//				let proxy = new Proxy({}, {
+//					get: function ( target, property ) {
+//						console.log( target[property] );
+//						return 10;
+//					}
+//				});
+//				
+//				let obj = Object.create(proxy);
+//				
+//				console.log(obj.time); // 10 
+
+
+//				let target = function () {
+//					return 'target';
+//				}
+//			
+//				let handler = {
+//					apply: function () {
+//						console.log('apply');
+//						return 'handler';
+//					}
+//				}
+//				
+//				let p1 = new Proxy(target, handler);
+//				
+//				console.log(p1()); // hanlder
+
+
+					let headler = {
+						
+						has ( target, key ) {
+							
+							if ( key[0] === '_' ) {
+								return false;
+							}
+							
+							return key in target;
+							
+						}
+						
+					}
+					
+					let target = { _prop: 'aaa', prop: 'bbb' }
+					
+					let proxy = new Proxy(target, headler);
+					
+					console.log( '_prop' in proxy ); // false
+					
+					
+		</script>
+		
+		
+	</body>
+</html>

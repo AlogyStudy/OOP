@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="lib/traceur.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/traceur-bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="module">
+			
+//			let s1 = Symbol('aa');
+//			
+//			console.log(s1);
+
+//				// 没有参数
+//				let s1 = Symbol();
+//				let s2 = Symbol(); 
+//				
+//				console.log(s1 == s2);  // false 
+//				
+//				// 参数
+//				let s3 = Symbol('a');
+//				let s4 = Symbol('b');
+//				
+//				console.log(s3 == s4); // false
+
+//					let sym = Symbol('My Symbol');
+//					
+//					console.log('your symbol is' + sym); // TypeError: Cannot convert a Symbol value to a string
+//					
+//					console.log(`your symbol is` + sym);  // TypeError: Cannot convert a Symbol value to a string
+
+//					let sym = Symbol('My Symbol');
+//					
+//					console.log(String(sym)); 
+//					console.log(sym.toString());
+//					
+//					console.log(Boolean(sym));
+//					console.log(!sym);
+//					
+//					console.log(Number(sym)); // TypeError: Cannot convert a Symbol value to a number
+//					console.log(sym + 2);  // // TypeError: Cannot convert a Symbol value to a number
+
+						
+					//	var mySymbol = Symbol();
+
+//						let mySymbol = Symbol('a');
+						
+						// 第一种方法
+//						let a = {};
+//						a[mySymbol] = 'hello';
+//						
+//						// 第二种写法
+//						let b = {
+//							[mySymbol]: 'hell2'
+//						};
+//						
+//						
+//						// 第三种写法
+//						let c = {};
+//						Object.defineProperty(c, mySymbol, {
+//							value: 'hello3'
+//						});
+//						
+//						console.log(a[mySymbol], b[mySymbol], c[mySymbol]); 
+						
+//						let mySymbol = Symbol('a');
+//						
+//						let obj = {};
+//						
+//						obj[mySymbol] = 'hello';
+//						
+//						console.log( obj[mySymbol] ); // hello
+//						console.log( obj.mySymbol ); // undefind
+
+						
+//						const shapeType = {
+//							triangle: Symbol(),
+//							triangleTow: Symbol()
+//						}
+//						
+//						function getArea ( shape, options ) {
+//							
+//							let area = 0;
+//							
+//							switch ( shape ) {
+//								
+//								case shapeType.triangle:
+//									
+//									area = .5 * options.width * options.height;
+//									
+//									break;
+//									
+//								case shapeType.triangleTow:
+//									
+//									area = .7 * options.width * options.height;
+//									
+//									break;
+//									
+//							}
+//							
+//							return area; 
+//							
+//						}
+//						
+//						let a = getArea( shapeType.triangleTow, { width: 20, height: 20 } );
+//						let b = getArea( shapeType.triangle, { width: 10, height: 10 } );
+//						
+//						console.log( a,b ); // 280 , 50
+//						
+//						console.log( Object.getOwnPropertySymbols(shapeType.triangle) );
+//
+//
+//						let obj1 = {};
+//						let c = Symbol('c');
+//						let d = Symbol('d');
+//						let e = Symbol('e');
+//						
+//						obj1[c] = 'cyan';
+//						obj1[d] = 'tan';
+//						obj1[e] = 'pink';
+//						
+//						let objectSymbol = Object.getOwnPropertySymbols(obj1);
+//
+//						console.log( objectSymbol ); // [Symbol(c), Symbol(d)]
+//						
+//						console.log( Reflect.ownKeys(obj1) );
+
+
+				
+//				Reflect.ownKeys(); // 返回所有类型的键名， 包括常规键名 和  Symbol
+				
+//						let obj = {
+//							[Symbol('my_key')]: 1,
+//							enum: 2,
+//							nonEnum: 3
+//						};
+//						
+//						console.log( Reflect.ownKeys(obj) ); // ["enum", "nonEnum", Symbol(my_key)]
+						
+
+//					let arr = [12, 234, 234, 2];
+//					
+//					for ( let val of arr ) {
+//						
+//						console.log(val);
+//						
+//					}
+//					
+//					var l = Object.keys(arr);
+//					
+//					console.log(l);
+					
+					
+					let s1 = Symbol.for('a');
+					let s2 = Symbol.for('b');
+					let s3 = Symbol('b');
+					
+					console.log( s1 === s2 ); // true
+					
+					console.log( Symbol.keyFor(s1), Symbol.keyFor(s2), Symbol.keyFor(s3) ); // a b undefined 
+								
+		</script>
+		
+	</body>
+</html>
