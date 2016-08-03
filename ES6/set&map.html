@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			
+			'use strict';
+			
+//			let s1 = new Set();
+//			
+//			console.log(s1);
+//			console.log( Object.prototype.toString.call(s1) ); // [Object Set]
+
+//			let s2 = new Set([123, 23, , 345, 345, 23]);
+//			
+//			console.log(s2); // Set {123, 23, undefined, 345}
+//			console.log(...s2); // 123 23 undefined 345
+//			
+//			console.log( s2.size ); // 4
+
+
+//				var items = new Set([1, 2, 3, 5, 6, 3, 4]);
+//				
+//				for ( let item of items.entries() ) {
+//					
+//					console.log(item);
+//					
+//				}
+//				
+//				console.log( Array.from(items) );  // [1, 2, 3, 5, 6, 4]
+//				
+//			
+//				let set = new Set(['pink', 'cyan', 'tan']);
+//	
+//				for (let item of set.keys()) {
+//				  console.log(item);
+//				}
+//				// pink
+//				// cyan
+//				// tan
+//				
+//				for (let item of set.values()) {
+//				  console.log(item);
+//				}
+//				// pink
+//				// cyan
+//				// tan
+//				
+//				for (let item of set.entries()) {
+//				  console.log(item);
+//				}
+//				// ["pink", "pink"]
+//				// ["cyan", "cyan"]
+//				// ["tan", "tan"]		
+//				
+			
+			
+			
+//			console.log( Set.prototype[Symbol.iterator] === Set.prototype.values ); // true
+
+
+//				var ws = new WeakSet();
+//				
+//				console.log( ws.add(window) ); // window对象
+//				console.log( ws.add({a: 10}) ); //  Object {a: 10}} 
+////				console.log( ws.add(Symbol()) );  // TypeError: Invalid value used in weak set
+////				console.log( ws.add(1) ); //  TypeError: Invalid value used in weak set
+////				console.log( ws.add('abc') ); //  TypeError: Invalid value used in weak set 
+
+
+//				var ws = new WeakSet();
+//				
+//				var a = [[1, 2], [3, 4]];
+//				
+//				console.log( ws.add(a) ); // WeakSet {[Array[2], Array[2]]}
+//				console.log( new WeakSet(a) );  // WeakSet {[1, 2], [3, 4]}
+
+//					new WeakSet([1, 2]); // TypeError: Invalid value used in weak set
+
+
+//					var ws = new WeakSet();
+//					
+//					ws.add(window);
+//					
+//					console.log( ws.has(window) ); // true
+
+
+
+
+// --------------------------------------------------Map
+
+//					var m  = new Map();
+//					
+//					var o = {p: 'hello'}
+//					
+//					m.set(o, 'content');
+//					
+//					console.log( m.get(o) ); // content
+
+//					var  m = new Map([['name', 'cyan']]);
+//					
+//					console.log( m.get('name') );
+					
+					
+							
+//					let colorsMap = new Map();
+//					
+//					colorsMap.set(1, 'tan')
+//						.set(1, 'pink');
+//						
+//					console.log( colorsMap.get(1) ); // pink	
+
+
+//					let m = new Map();
+//					
+//					m.set(['a'], 111);
+//					
+//					console.log( m.get(['a']) ); // undefeinds
+
+
+
+//					 let m = new Map([
+//					 	['f', false],
+//					 	['t', true]
+//					 ]);
+//					 
+//					 
+//					 for ( let item of m.keys() ) {
+//					 	console.log( item );
+//					 }
+//					 // f
+//					 // t
+//					 
+//					 for ( let item of m.values() ) {
+//					 	console.log( item );
+//					 }
+//					 // false
+//					 // true
+//					 
+//					 
+//					 for ( let item of m.entries() ) {
+//					 	console.log( item );
+//					 }
+//					 // ["f", false]
+//					 // ["t", true]
+//					 
+//						m.forEach( ( val, idx, map ) => {
+//							
+//							console.log( val, idx, map );
+//							
+//						} );
+
+					
+
+
+
+//					 let m = new Map([
+//					 	['f', false],
+//					 	['t', true]
+//					 ]);
+//					 
+//					 console.log(...m);  // ["f", false] ["t", true]
+
+
+			
+//  function strMapToObj ( strMap ) {
+//      let obj = Object.create(null);
+//      for ( let [k, v] of strMap ) {
+//          obj[k] = v;
+//      }
+//      return obj;
+//  }
+//  let myMap = new Map().set('yes', true).set('no', false);
+//  console.log(strMapToObj(myMap) );  // Object {yes: true, no: false}
+//  
+
+//	function objtoStrMap ( obj ) {
+//	    let strMap = new Map();
+//	    for ( let k of Object.keys(obj) ) {
+//	        strMap.set(k, obj[k]);
+//	    }
+//	    return strMap;
+//	}
+//
+//	console.log( objtoStrMap({yes: true, no: false}) ); // Map {"yes" => true, "no" => false}
+
+//
+//// Map 转为对象
+//function strMapToObj ( strMap ) {
+//  let obj = Object.create(null);
+//  for ( let [k, v] of strMap ) {
+//      obj[k] = v;
+//  }
+//  return obj;
+//}
+//
+//
+//// Map 转为JSON
+//function strMapToJson ( strMap ) {
+//	return JSON.stringify( strMapToObj(strMap) );
+//}
+//
+//let myMap = new Map().set('yes', true).set('no', false);
+//
+//console.log( strMapToJson(myMap) ); // {"yes":true,"no":false}
+//
+//
+//function mapToArrayJson ( map ) {
+//	return JSON.stringify([...map]);
+//}
+//
+//let myMap2 = new Map().set('a', 'tan').set('b', 'pink').set('c', 'tan');
+//
+//console.log( mapToArrayJson(myMap2) ); // [["a","tan"],["b","pink"],["c","tan"]] 
+//// 转为二维数组
+
+
+
+
+
+
+
+//	function objToStrMap ( obj ) {
+//	    let strMap = new Map();
+//	    for ( let k of Object.keys(obj) ) {
+//	        strMap.set(k, obj[k]);
+//	    }
+//	    return strMap;
+//	}
+//	
+//	function jsonToStrMap ( jsonStr ) {
+//		return objToStrMap(JSON.parse(jsonStr));
+//	}
+//	
+//	let json = '{"a": "tan", "b": "pink", "c": "cyan"}';
+//	
+//	console.log( jsonToStrMap(json) ); // Map {"a" => "tan", "b" => "pink", "c" => "cyan"}
+
+
+let wp = new WeakMap();
+
+wp.set(document.body, 'body');
+
+console.log( wp ); // WeakMap {body {} => "body"}
+
+
+					
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

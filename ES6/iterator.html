@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+//			let s = new Set([0, 2, 1]);
+//			
+//			console.log(s);
+
+
+//			// 模拟Next方法
+//			function makeInterator () {
+//				let nextIndex = 0;
+//				return {
+//					next: function () {
+//						return nextIndex < array.length ? { value: array[nextIndex++] } : {done: true} 
+//					}
+//				}
+//			}
+
+//			let obj = {
+//				data: ['hello', 'world'];
+//				[Symbol.iterator] () {
+//					const self = this;
+//					let index = 0;
+//					return {
+//						next() {
+//							if ( index < self.data.length ) {
+//								return {
+//									value: self.data[index++],
+//									done: false
+//								}
+//							} else {
+//								return { value: undefeind, done: true }
+//							}
+//						}
+//					}
+//				}
+//			}
+
+
+//			let iterable = {
+//				0: 'a',
+//				1: 'b',
+//				2: 'c',
+//				length: 3,
+//				[Symbol.iterator]: Array.prototype[Symbol.iterator]
+//			}
+//			
+//			for ( let item of iterable ) {
+//				console.log(item);
+//			}
+			// a
+			// b
+			// c
+			
+			
+//			let s1 = new Set().add('a').add('b').add('c');
+//			
+//			let [x ,y] = s1;
+//			
+//			let [first, ...rest] = s1;
+//			
+//			console.log( first, ...rest ); // a b c
+
+
+			let it = makeIterator(['a', 'b']);
+			
+			it.next();
+			it.next();
+			it.next();
+			
+			function makeIterator ( arr ) {
+				
+				var nextIndex = 0;
+				return {
+					next: function () {
+						return nextIndex < array.length ? {  value: array[nextIdex++] } : { done: true }
+					}
+				}
+				
+			}
+			
+			
+			
+
+		</script>
+		
+	</body>
+</html>
