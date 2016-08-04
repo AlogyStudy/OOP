@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app"></div>
+		
+		<script src="lib/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/x-jsx">
+			
+			'use strict';
+			
+			// Componedt
+			let Style = React.createClass({
+				
+				changeContent: function ( ev ) {
+					
+					ev.target.innerHTML = '修改后的文案';
+					
+				},
+				
+				render: function () {
+					
+					let sty = {
+						color: 'red',
+						border: '1px solid #000',
+						borderBottom: '2px solid tan'
+					}
+					
+					return (
+						<div style={sty}>
+							title
+							<h1 style={{'background': 'tan' }} onClick={this.changeContent}>titile2</h1>
+						</div>
+					);
+					
+				}
+				
+			});
+			
+			// 渲染
+			ReactDOM.render(<Style />, document.querySelector('.app'));
+			
+			
+		</script>
+		
+	</body>
+</html>

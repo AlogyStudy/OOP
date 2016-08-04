@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app"></div>
+		
+		<script src="lib/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/x-jsx">
+			
+			'use strict';
+			
+			
+			// 创建 Component
+			let Dom = React.createClass({
+				
+				getInitialState: function () {
+					
+					return {
+						index: 0,
+						txt: '嘻嘻哈哈'
+					}
+					
+				},
+				
+				render: function () {
+					
+//					console.log( this.state );
+					
+					return (
+						<div>
+							<button onClick={this.clickContent}>点击显示内容</button>
+							<p>{this.state.txt}</p>
+						</div>
+					);
+					
+				},
+				
+				clickContent: function () {
+					
+					this.setState({
+						txt: '么么哒'
+					});
+					
+				}
+				
+			});
+			
+			// 渲染组件
+			ReactDOM.render(<Dom />, document.querySelector('.app'));
+			
+		</script>
+		
+		
+	</body>
+</html>

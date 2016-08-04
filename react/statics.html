@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app"></div>
+		
+		<script src="lib/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			'use strict';
+			
+			
+			// Component
+			let oDiv = React.createClass({
+				
+				// 定义组件类方法
+				statics: {
+					statisMethod: () => {
+						return true;
+					}
+				},
+				// Class 分为类方法和实例方法， 实例方法可以访问this，而类方法不能。
+				// 不能在Class中返回状态或者属性。
+				
+				render: function () {
+					return (
+						<div>嘻嘻哈哈</div>
+					);
+				}
+			});
+			
+			// 渲染组件
+			ReactDOM.render(<oDiv />, document.querySelector('.app'));
+			
+			
+		</script>
+		
+	</body>
+</html>

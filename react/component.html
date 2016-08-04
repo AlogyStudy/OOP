@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app"></div>
+		
+		<script src="lib/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			'use strict';
+			
+			
+			// component
+			let Uls = React.createClass({
+				render: function () {
+					
+					return React.createElement(
+						'ul',
+						null,
+						React.createElement(
+							'li',
+							null,
+							'a'
+						),
+						React.createElement(
+							'li',
+							null,
+							'b'
+						),
+						React.createElement(
+							'li',
+							null,
+							'c'
+						)
+					)
+					
+				}
+			});
+			
+			// 组件变成虚拟DOM
+			let ul = React.createElement(Uls, null);
+			
+			// 渲染页面
+			ReactDOM.render(ul, document.querySelector('.app'));
+			
+		</script>
+		
+	</body>
+</html>

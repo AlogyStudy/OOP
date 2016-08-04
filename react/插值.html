@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app"></div>
+		
+		<script src="lib/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/x-jsx">
+			
+			'use strict';
+			
+			// Component
+			let Header = React.createClass({
+				render: function () {
+					
+					let userName = 'cyan';
+					let date = new Date();
+					
+					return (
+						<div className="header">
+							<div className="inner">
+								<div className="left">
+									<span>{userName}</span>
+									&emsp;
+									<span>{date.getHours() > 12 ? '下午' : '上午'}</span>	
+								</div>
+							</div>
+						</div>	
+					);
+				}
+			});
+			
+			// 渲染
+			ReactDOM.render(<Header />, document.querySelector('.app'));
+			
+		</script>
+		
+	</body>
+</html>

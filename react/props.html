@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app"></div>
+		<div class="app1"></div>
+		
+		<script src="lib/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/x-jsx">
+			
+			'use strict';
+			
+			// Component
+			let Prat = React.createClass({
+				
+				getDefaultProps: function () {
+					return {
+						title: ['默认标题']
+					}
+				},
+				
+				createLi: function () {
+					
+					return this.props.title.map( ( val, idx ) => {
+						return (<li key={idx} >{ val }</li>);
+					} );
+					
+				},
+				
+				render: function () {
+					
+//					console.log( this.props.children );
+					
+//					console.log( this.props );
+					return (
+						<div className="part">
+							<ul className="header">
+								{this.createLi()}
+							</ul>
+						</div>
+					);
+					
+				}
+				
+			});
+			
+			// 渲染
+			ReactDOM.render(<Prat />, document.querySelector('.app'));
+			ReactDOM.render(<Prat title={['新闻', '今日话题']} />, document.querySelector('.app1'));
+			
+		</script>
+		
+	</body>
+</html>
