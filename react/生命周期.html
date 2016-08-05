@@ -6,13 +6,16 @@
 	</head>
 	<body>
 		
+		<div class="app" id="app"></div>
+		
 		<script src="lib/react.js" type="text/javascript" charset="utf-8"></script>
 		<script src="lib/react-dom.js" type="text/javascript" charset="utf-8"></script>
 		
-		<script type="text/javascript">
+		<script type="text/x-jsx">
 			
 			'use strict';
 			
+			// Component
 			let GoBack = React.createClass({
 				
 				getDefaultProps: function () {
@@ -26,22 +29,85 @@
 				},
 				
 				getInitialState: function () {
+					
 					console.log(222);
 					
 					return {
-						sateteTitle: this.props.title;
+						stateTitle: this.props.title
 					}
 					
 				},
 				
 				componentWillMount: function () {
-					
-					
+					console.log(333,this.state, this.props);
 					
 				},
 				
+				render: function () {
+					console.log(444);
+					return (<div className="go-back">{ this.props.title }</div>);
+					
+				},
+				
+				componentDidMount: function () {
+					
+					console.log(555);
+					
+					const _this = this;
+					
+					setTimeout(function () {
+						
+						_this.setState({
+							
+							stateTitle: '修改后title'
+							
+						});
+						
+					}, 1000);
+					
+				}
+				
 			});
 			
+			
+			let Main = React.createClass({
+				
+				getDefaultProps: function () {
+					
+					return {
+						title: ''
+					}
+					
+				},
+				
+				getInitialState: function () {
+					
+					return {
+						title: '么么哒'
+					}
+					
+				},
+				
+				render: function () {
+					
+					return (
+						<div className="main">
+							{/* 子组件 */}
+							{/*
+							  * <GoBack title={this.props.title} />
+								*	<GoBack title="返回顶部文案" />	
+							  * */}
+							<GoBack title={this.state.title} />
+						</div>
+					);
+					
+				}
+				
+			});
+			
+			// 渲染 
+			ReactDOM.render(<Main title="嘻嘻哈哈" />, document.querySelector('.app') );
+
 		</script>
 		
 	</body>

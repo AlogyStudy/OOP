@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app"></div>
+		
+		<script src="lib/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/x-jsx">
+			
+			'use strict';
+			
+			let Search = React.createClass({
+				render: function () {
+					
+					// 模拟搜索之后文案显示
+					let content = {
+						__html: '<span style="color: cyan">搜索结果，么么哒</span>'
+					}
+					
+					return (
+						<div className="search-grpup">
+							<input ref="serachInput" type="text" />
+							<button onClick={this.clickSearch}>搜索</button>
+							<span dangerouslySetInnerHTML={content}></span>	
+							{/* 使用行内式的样式，需要通过 dangerouslySetInnerHTML属性设置 */}
+						</div>
+					);
+				},
+				clickSearch: function ( ev ) {
+					
+					let vals = this.refs.serachInput.value;
+					
+					console.log(vals);
+					
+				}
+			});
+			
+			// 渲染
+			ReactDOM.render(<Search />, document.querySelector('.app'));
+			
+		</script>
+		
+	</body>
+</html>
