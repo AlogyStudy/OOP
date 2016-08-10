@@ -2,8 +2,16 @@
 @import 'utils.less';
 @import 'variables.less';
 
+body {
+    font-family: "微软雅黑";
+}
+
 .header {
     background: @while;
+    margin-bottom: 0;
+    .nav .choose a {
+        background: @defaultGray;
+    }
     .container {
         div {
             a {
@@ -19,5 +27,91 @@
                 }
             }
         }
+    }
+}
+
+.app-banner {
+    background: @rootScopeColor;
+    text-align: center;
+    padding: @defaultPadding / 2 * 5;
+    color: @while;
+    .app-b-logo {
+        width: @defaultPadding * 5;
+        height: @defaultPadding * 5;
+        border-radius: @defaultPadding / 2;
+        line-height: @defaultPadding * 5;
+        margin: @defaultPadding / 2 auto;
+        border: 1px solid @while;
+        font-size: @defaultPadding * 3;
+    }
+    .app-logo-txt {
+        font-size: @defaultPadding / 2 * 3;
+    }
+    .btn-outline {
+        border: 1px solid @while;
+        margin: @defaultPadding;
+        &:hover {
+            background: @while;
+        }
+    }
+    .vers {
+        color: @color3e;
+    }
+}
+
+
+.first-list {
+    text-align: center;
+    div {
+        h2 {
+            margin: @defaultPadding * 2 0;
+        }
+        p.title {
+            margin: @defaultPadding * 2 0;
+        }
+    }
+    img {
+        max-width: 100%;
+    }
+    .textleft {
+        text-align: left;    
+        line-height: @defaultPadding / 2 * 3;
+    }
+    .lock {
+        p {
+            font-size: @defaultPadding;
+            line-height: @defaultPadding * 3;
+        }
+        button {
+            width: @defaultPadding * 12;
+            height: @defaultPadding * 2 + 6;
+            text-align: center;
+            line-height: @defaultPadding;
+            border: 1px solid @rootScopeColor;
+            border-radius: @defaultPadding/2 - 5;
+            background: none;
+            font-size: @defaultPadding - 2;
+            &:hover {
+                background: @rootScopeColor;
+                color: @while;
+            }
+        }
+    }
+}
+
+
+.second-list {
+    text-align: center;
+    .container {
+        h2 {
+            line-height: @defaultPadding * 2;
+            margin: @defaultPadding * 2;
+        }
+        p {
+            line-height: @defaultPadding;
+        }
+    }
+    img {
+        max-width: 100%;
     }
 }

@@ -21,7 +21,6 @@ fis.match('**.jsx', {
 
 
 // 编译HTML中的JSX
-
 fis.match('**.html:jsx', {
 	
 	parser: fis.plugin('babel2'),
