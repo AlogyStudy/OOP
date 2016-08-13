@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app"></div>
+		
+		<script src="lib/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/x-jsx">
+		
+			'use strict';
+			
+			const  Select = React.createClass({
+				
+				// 初始化 状态
+				getInitialState: function () {
+					
+					return {
+						selectValue: ''
+					}
+					
+				},
+				
+				render: function () {
+					
+					return (
+						<div>
+							<select defaultValue={this.state.selectValue} onChange={this.changeSelect}>
+								<option value="cyan">cyan</option>
+								<option value="tan">tan</option>
+								<option value="khaki">khaki</option>
+							</select>
+							<span></span>
+						</div>
+					);
+					
+				},
+				
+				changeSelect: function ( ev ) {
+					
+					let vals = ev.target.value;
+					
+					this.setState({
+						selectValue: vals
+					});
+					
+				}
+				
+			});
+			
+			// render	
+			ReactDOM.render(<Select />, document.querySelector('.app'));
+			
+		</script>
+		
+		
+	</body>
+</html>

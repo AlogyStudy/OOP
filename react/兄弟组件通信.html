@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app"></div>
+		
+		<script src="lib/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/x-jsx">
+			
+			'use strict';
+			
+			// 实现 组件之间的  双向数据绑定
+			
+			// InputMsg Component
+			const InputMsg = React.createClass({
+				
+				render: function () {
+					
+//					console.log( this.props.changeMsg() );
+					
+					return (
+						<div>
+							<input type="text" onChange={this.props.changeMsg} />
+						</div>
+					);
+				}
+				
+			});
+			
+			// ShowMsg Component
+			const ShowMsg = React.createClass({
+				
+				getDefaultProps: function () {
+					return {
+						msg: '嘻嘻哈哈' 
+					}
+				},
+				
+				render: function () {
+					return (
+						<div>
+							<p>{ this.props.msg }</p>
+						</div>
+					);
+				}
+				
+			});
+			
+			// App Component
+			const App = React.createClass({
+				
+				getInitialState: function () {
+				
+					return {
+						msg: 'world'
+					}
+				
+				},
+				
+				render: function () {
+					
+					return (
+						<div className="mian">
+							<InputMsg changeMsg={this.changeMsg} />
+							<ShowMsg msg={this.state.msg} />
+						</div>
+					);
+					
+				},
+				
+				changeMsg: function ( ev ) {
+					
+					let vals = ev.target.value;
+					
+					this.setState({
+						msg: vals
+					});
+					
+				}
+				
+			});
+			
+			// render
+			ReactDOM.render(<App />, document.querySelector('.app')); 
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app"></div>
+		
+		<script src="lib/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/x-jsx">
+			
+			'use strict';
+			
+			const Search = React.createClass({ 
+				
+				getInitialState: function () {
+					
+					return {
+						inp: '默认状态',
+						txt: ''
+					}
+					
+				},
+				
+				render: function () {
+					return (
+						<div className="search">
+							<div className="search-group">
+								<input type="text" placeholder={this.state.inp} onChange={this.inpChange} />
+								<button>百度一下</button>
+								<span>{this.state.txt}</span>
+							</div>
+						</div>
+					);
+				},
+				
+				inpChange: function ( ev ) {
+					
+					let vals = ev.target.value;
+					
+					if ( vals.length > 10  ) {
+						
+						this.setState({
+							inp: vals,
+							txt: '不能超过10个字符'
+						});
+						
+					}
+					
+				}
+			});
+			
+			// 渲染
+			ReactDOM.render(<Search />, document.querySelector('.app'));
+			
+		</script>
+		
+		
+	</body>
+</html>

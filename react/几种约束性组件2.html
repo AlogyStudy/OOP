@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="app"></div>
+		
+		<script src="lib/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/x-jsx">
+			
+			'use strict';
+			
+			const Checkbox = React.createClass({
+				
+				getInitialState: function () {
+					
+					return {
+						cb1: false,
+						cb2: false
+					}
+					
+				},
+				
+				render: function () {
+					
+					return (
+						
+						<div>
+							<button onClick={this.showReslut}>结果</button>
+							<input ref="cb1" type="checkbox" defaultChecked="true" onChange={this.change} />篮球
+							<input ref="cb2" type="checkbox" />足球
+						</div>
+						
+					);
+					
+				},
+				
+				componentDidMount: function () {
+					
+					let dom = ReactDOM.findDOMNode(this);
+					
+					let inps = ReactDOM.findDOMNode( this.refs.cb1 );
+					// 获取 this.refs.cb1 的 所在DOM，并不能传入 this.refs。
+					
+				},
+				
+				showReslut: function () {
+					
+					console.log( this.refs.cb1.checked, this.refs.cb2.checked );
+					
+				},
+				
+				change: function ( ev ) {
+					
+					let cheVals = ev.target.checked;
+					
+					this.setState({
+						'cb1': cheVals 
+					});
+					
+				}
+				
+			});
+			
+			// render
+			ReactDOM.render(<Checkbox />, document.querySelector('.app'));
+			
+		</script>
+		
+	</body>
+</html>

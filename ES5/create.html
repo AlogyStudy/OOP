@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			'use strict';
+			
+			var Book = function (title, price) {
+				
+				this.title = title;
+				
+				this.price = price;
+				
+			}
+			
+			Book.prototype.sayTitle = function () {
+				
+				return this.price;
+				
+			}
+			
+			var book = new Book('one', 10);
+			
+			// 创建一个继承类
+			var NewBook = Object.create(book);
+			
+			console.log(NewBook.constructor);
+			
+			var price = NewBook.sayTitle();
+			
+			console.log(price);
+			
+			// 模拟 Object.create();
+			// 寄生式继承
+			Object.prototype.create = function ( obj ) {
+				
+				try{
+					
+					if ( obj && obj.constructor === Object ) {
+						
+						function F () {}
+						
+						F.prototype = obj;
+						
+						return F;
+						
+					}
+						
+					
+				}catch(e){
+					//TODO handle the exception
+				}
+				
+			}
+		
+			// 创建一个继承类
+			var NewBook = Object.create(book);
+			
+			console.log(NewBook.constructor);
+			
+			var price = NewBook.sayTitle();
+			
+			console.log(price);
+			
+		</script>
+		
+	</body>
+</html>

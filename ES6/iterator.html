@@ -55,9 +55,16 @@
 //			for ( let item of iterable ) {
 //				console.log(item);
 //			}
-			// a
-			// b
-			// c
+//			// a
+//			// b
+//			// c
+
+//NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+//// 或者
+//NodeList.prototype[Symbol.iterator] = [][Symbol.iterator];
+
+
+
 			
 			
 //			let s1 = new Set().add('a').add('b').add('c');
@@ -69,21 +76,52 @@
 //			console.log( first, ...rest ); // a b c
 
 
-			let it = makeIterator(['a', 'b']);
-			
-			it.next();
-			it.next();
-			it.next();
-			
-			function makeIterator ( arr ) {
+//			let it = makeIterator(['a', 'b']);
+//			
+//			it.next();
+//			it.next();
+//			it.next();
+//			
+//			function makeIterator ( arr ) {
+//				
+//				var nextIndex = 0;
+//				return {
+//					next: function () {
+//						return nextIndex < array.length ? {  value: array[nextIdex++] } : { done: true }
+//					}
+//				}
+//				
+//			}
+
+//			let str = 'hello';
+//			
+//			console.log( [...str] ); // ["h", "e", "l", "l", "o"]
+//			
+//			let arr = ['b', 'c'];
+//			
+//			console.log( ['a', ...arr, 'd'] ); // ["a", "b", "c", "d"] 
+
 				
-				var nextIndex = 0;
-				return {
-					next: function () {
-						return nextIndex < array.length ? {  value: array[nextIdex++] } : { done: true }
-					}
-				}
-				
+//				let someString = 'hi';
+//				
+//				console.log( typeof someString[Symbol.iterator] ); // function
+//				
+//				let it = someString[Symbol.iterator](); // 指针对象
+//				
+//				console.log( it.next() ); // Object {value: "h", done: false}
+//				console.log( it.next() ); // Object {value: "i", done: false}
+//				console.log( it.next() ); // Object {value: undefined, done: true}
+//				
+//				
+
+			var arr = ['a', 'b', 'c', 'd'];
+			
+			for ( let a in arr ) {
+				console.log(a) // 0 1 2 3
+			}
+			
+			for (let a of arr) {
+				console.log( a ); // a b c d 
 			}
 			
 			

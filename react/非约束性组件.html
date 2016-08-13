@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+
+		<div class="app"></div>
+
+		<script src="lib/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/x-jsx">
+			
+			'use strict';
+			
+			// Component
+			const Search = React.createClass({
+				
+				clickBtn: function ( ev ) {
+					
+					let vals = this.refs.serchInput.value;
+					
+					console.log(vals);					
+					
+				},
+				
+				render: function () {
+					return (
+						<div className="serach">
+							<div className="serach-logo">
+								{/* <input ref="serchInput" type="text" placeholder="用户输入的内容" /> */}
+								<input ref="serchInput" type="text" defaultValue="用户输入的内容" />
+								<button onClick={this.clickBtn}>搜索</button>
+							</div>
+						</div>
+					);
+				}
+				
+			});
+			
+			// render
+			ReactDOM.render(<Search />, document.querySelector('.app'));
+			
+		</script>
+		
+	</body>
+</html>

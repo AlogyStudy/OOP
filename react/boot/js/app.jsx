@@ -163,6 +163,11 @@
 								{this.createList(this.props.secondList)}
 							</div>
 							
+							<div className="small-intro">
+								<p>我们在“优站精选”里展示了许多精美的 Bootstrap 网站。</p>
+								<span>逛一逛,优站精选</span>
+							</div>
+							
 						</div>
 					
 					</div>
@@ -221,7 +226,21 @@
 	const StatMain = React.createClass({
 		render: function () {
 			return (
-				<div style={{ display: this.props.show ? 'block' : 'none' }}>StatMain</div>
+				<div style={{ display: this.props.show ? 'block' : 'none' }}>
+					
+					<div className="stat-banner">
+					
+						<div className="contanier">
+						
+							<h2>起步</h2>
+							
+							<p>简要介绍 Bootstrap，以及如何下载、使用，还有基本模版和案例，等等。</p>
+							
+						</div>
+					
+					</div>
+					
+				</div>
 			);
 		}
 	});

@@ -1,0 +1,99 @@
+body {
+  font-family: "微软雅黑";
+}
+.header {
+  background: #ffffff;
+  margin-bottom: 0;
+}
+.header .nav .choose a {
+  background: #f9f9f9;
+}
+.header .container div a {
+  color: #6f5499;
+}
+.header .container div a:hover {
+  cursor: pointer;
+  background: #f9f9f9;
+}
+.header .container .curpors li a {
+  color: #6f5499;
+}
+.header .container .curpors li a:hover {
+  cursor: pointer;
+  background: #f9f9f9;
+}
+.app-banner {
+  background: #6f5499;
+  text-align: center;
+  padding: 50px;
+  color: #ffffff;
+}
+.app-banner .app-b-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  line-height: 100px;
+  margin: 10px auto;
+  border: 1px solid #ffffff;
+  font-size: 60px;
+}
+.app-banner .app-logo-txt {
+  font-size: 30px;
+}
+.app-banner .btn-outline {
+  border: 1px solid #ffffff;
+  margin: 20px;
+}
+.app-banner .btn-outline:hover {
+  background: #ffffff;
+}
+.app-banner .vers {
+  color: #eeeeee;
+}
+.first-list {
+  text-align: center;
+}
+.first-list div h2 {
+  margin: 40px 0;
+}
+.first-list div p.title {
+  margin: 40px 0;
+}
+.first-list img {
+  max-width: 100%;
+}
+.first-list .textleft {
+  text-align: left;
+  line-height: 30px;
+}
+.first-list .lock p {
+  font-size: 20px;
+  line-height: 60px;
+}
+.first-list .lock button {
+  width: 240px;
+  height: 46px;
+  text-align: center;
+  line-height: 20px;
+  border: 1px solid #6f5499;
+  border-radius: 5px;
+  background: none;
+  font-size: 18px;
+}
+.first-list .lock button:hover {
+  background: #6f5499;
+  color: #ffffff;
+}
+.second-list {
+  text-align: center;
+}
+.second-list .container h2 {
+  line-height: 40px;
+  margin: 40px;
+}
+.second-list .container p {
+  line-height: 20px;
+}
+.second-list img {
+  max-width: 100%;
+}

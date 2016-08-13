@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	</head>
+	<body>
+		
+		<style>
+			.pink {
+				width: 100px;
+				height: 100px;
+				background: tan;
+			} 
+		</style>
+		
+		<div class="app"></div>
+		
+		<script src="js/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			
+			
+		</script>
+		
+		<script type="text/x-jsx">
+			
+			'use strict';
+			
+//			React.initializeTouchEvents(true);
+//				console.log( React );
+			
+			// Component
+			const Dom = React.createClass({
+				
+				render: function () {
+					debugger;
+					return (
+						<div className="pink" onTouchstart={this.touchend} onClick={this.click}>
+							<h1>嘻嘻哈哈</h1>
+						</div>
+					);
+				},
+				
+				touchend: function () {
+					
+					alert(123);
+					
+				},
+				
+				click: function (){
+					alert('xixi');
+				}
+				
+			});
+			
+			ReactDOM.render(<Dom />, document.querySelector('.app'));
+			
+		</script>
+		
+		<script type="text/javascript">
+			
+			ontouchstart
+			
+		</script>
+		
+	</body>
+</html>
