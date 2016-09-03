@@ -1,0 +1,14 @@
+
+#box {
+	background-color: cyan;
+	height: 10px;
+	width: 10px;
+	background-image: url(img/a.jpeg);
+}
+
+
+.avatar {
+	width: 100px;
+	height: 100px;
+	background: tan;
+}
