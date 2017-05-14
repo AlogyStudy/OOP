@@ -37,6 +37,13 @@ http.createServer(function ( req, res ) {
 5. MVC只是手段，目标是`模块化`和`复用`
 
 
+# MVVM模式的好处
+
+* 低耦合：View可以独立于Model变化和修改，一个ViewModel可以绑定到不同的View上，当View变化的时候Model可以不变，当Model变化的时候View也可以不变. 
+* 可重用性：可以把一些视图的逻辑放在ViewModel里面，让很多View重用这段视图逻辑
+* 独立开发：开发人员可以专注于业务逻辑和数据的开发(ViewModel).设计人员可以专注于界面(View)的设计
+* 可测试性： 可以针对ViewModel来对界面(View)进行测试.  
+
 # angular 使用流程
 
 通过指定`ng-app`定义angular应用的 `控制范围`
@@ -45,6 +52,17 @@ angular.module('mod'); // 获取模块
 angular.module('mod', []); // 定义模块
 
 
+# 模块
+一切是从模块开始，module就是容器，其它的元素都挂在module里面.
+
+* module
+* config filter directive factory controller
+* routes service
+* provider
+* value
+
+模块是一些功能的集合，如控制器，服务，过滤器，指令等子元素组成的整体.
+
 AngularJS 应用引导过程有3个重要点：
 1. 注入器(injector)将用于创建此应用程序的依赖注入 (dependency injector);
 2. 注入器将会创建根作用域作为应用模型的范围
@@ -52,8 +70,12 @@ AngularJS 应用引导过程有3个重要点：
 
 injector --> scope --> ngApp(DOM)
 
-# factory、service、provider是什么关系
 
+
+# factory、service、provider是什么关系
+  
+定义服务
+ 
 factory
 把service的方法和数据放在一个对象里，并返回这个对象
 
@@ -94,7 +116,42 @@ app.provider('FooService', function () {
 		}
 	}
 	
-	this.
+	this.$get = function () {
+		var self = this;
+		return {
+			target: 'provider',
+			sayHello: function () {
+				return self.configData + 'hello' + this.target;
+			}
+		}
+	}
 	
 });
+
+// 注入的是 FooService 的 provider
+app.config(function ( FooServiceProvider ) {
+	FooServiceProvider.setConfigData('config data');
+});
+
 ```
+从底层实现上来看，service调用了factory，返回其实例
+factory调用了provider,返回其$get 中定义的内容.
+
+factory和service功能类似，只不过factory是普通function，可以返回任何东西( return 的都可以被访问 )
+service是构造器，可以不返回(绑定到this的都可以被访问)
+provider是加强版factory，返回一个可配置的factory
+
+
+
+# ng-include 将多个页面的公共页面提取出来.
+
+```html
+<div ng-include="'header.html'"></div>
+```
+
+注意使用点：
+1. 必须用web容器打开站点才能成功，用本地文件的模式访问会报错
+2. ng-include 的值是如果要写为文件名的话需要加单引号，否则会被当作一个变量来处理.
+
+
+	

@@ -26,6 +26,7 @@ define(function ( require ) {
 				list: []
 			}
 		},
+		
 		// 组件创建完成自动调用
 		created: function () {
 			
